@@ -1,0 +1,496 @@
+swagger: '2.0'
+info:
+  description: Service used to retrieve and store product information for Mercadona
+  version: v1
+  title: Products service Demo
+host: products-crud-api.endpoints.mdona-cloud-lab-fwkcloudnative.cloud.goog
+basePath: /democna/products/v2
+tags:
+  - name: products
+    description: Product Controller
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: Method to retrieve a collection of products
+      description: 'This method retrieves a collection of products by page, size and product name parameters'
+      operationId: getProductCollection
+      produces:
+        - application/json
+      parameters:
+        - name: firstPage
+          in: query
+          description: 'Requested page (first page is page 1). If not specified 1 is used. [Cannot be negative or zero]'
+          required: false
+          type: integer
+          default: 1
+          format: int32
+        - name: pageSize
+          in: query
+          description: 'Number of retrieved elements per page. if not specified 10 is used. [Cannot be less than 1]'
+          required: false
+          type: integer
+          default: 10
+          format: int32
+        - name: name
+          in: query
+          description: Name for the product
+          required: false
+          default: ""
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProductResourceCollectionResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+    post:
+      tags:
+        - products
+      summary: Method to add one product to the data storage
+      description: This method creates a new product with the given body information
+      operationId: createProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: productRequest
+          description: productRequest
+          required: true
+          schema:
+            $ref: '#/definitions/ProductRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/ProductResourceResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+  /products-collection:
+    post:
+      tags:
+        - products
+      summary: Method to load a collection of products to the data storage
+      description: This method load a collection of products in the database with the array given in the body
+      operationId: createProductCollection
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: productCollectionRequest
+          description: productCollectionRequest
+          required: true
+          schema:
+            $ref: '#/definitions/ProductCollectionRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/ProductResourceCollectionResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+  /products/{id}:
+    get:
+      tags:
+        - products
+      summary: Method to retrieve one product
+      description: This method retrieves a product defined by a specific id
+      operationId: getProduct
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProductResourceResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+    put:
+      tags:
+        - products
+      summary: Method to update a product from the data storage
+      description: This method updates a product with the given id and body information
+      operationId: updateProduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+        - in: body
+          name: productUpdateRequest
+          description: ProductUpdateRequest
+          required: true
+          schema:
+            $ref: '#/definitions/ProductUpdateRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProductResourceResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+    delete:
+      tags:
+        - products
+      summary: Method to delete a product from the data storage
+      description: This method delete a product from the database with the given id
+      operationId: deleteProduct
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResource'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResource'
+
+definitions:
+  ConditionEnum:
+    type: string
+    enum:
+      - new
+      - refurbished
+  ErrorResource:
+    type: object
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+      details:
+        type: array
+        items:
+          type: string
+    title: ErrorResource
+  ProductRequest:
+    type: object
+    required:
+      - name
+      - price
+    properties:
+      name:
+        type: string
+        minLength: 3
+        maxLength: 20
+      price:
+        type: number
+        minimum: 0
+        maximum: 500
+      brandCode:
+        type: string
+      brandDescription:
+        type: string
+      brandName:
+        type: string
+      description:
+        type: string
+      format:
+        type: string
+      image:
+        type: string
+      mercaCode:
+        type: string
+      priceType:
+        type: string
+      email:
+        type: string
+        format: email
+      expeditionDate:
+        type: string
+        format: date-time
+      expirationDate:
+        type: string
+        format: date-time
+      color:
+        $ref: '#/definitions/ColorEnum'
+      condition:
+        $ref: '#/definitions/ConditionEnum'
+    title: ProductRequest
+  ProductUpdateRequest:
+    type: object
+    required:
+      - name
+      - price
+      - brandCode
+      - brandDescription
+      - brandName
+      - description
+      - format
+      - image
+      - mercaCode
+      - priceType
+      - email
+      - expeditionDate
+      - expirationDate
+      - color
+      - condition
+    properties:
+      name:
+        type: string
+        minLength: 3
+        maxLength: 20
+      price:
+        type: number
+        minimum: 0
+        maximum: 500
+      brandCode:
+        type: string
+      brandDescription:
+        type: string
+      brandName:
+        type: string
+      description:
+        type: string
+      format:
+        type: string
+      image:
+        type: string
+      mercaCode:
+        type: string
+      priceType:
+        type: string
+      email:
+        type: string
+        format: email
+      expeditionDate:
+        type: string
+        format: date-time
+      expirationDate:
+        type: string
+        format: date-time
+      color:
+        $ref: '#/definitions/ColorEnum'
+      condition:
+        $ref: '#/definitions/ConditionEnum'
+    title: ProductUpdateRequest
+  ProductCollectionRequest:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/ProductRequest'
+    title: ProductCollectionRequest
+  ProductResource:
+    type: object
+    properties:
+      brandCode:
+        type: string
+      brandDescription:
+        type: string
+      brandName:
+        type: string
+      description:
+        type: string
+      format:
+        type: string
+      id:
+        type: integer
+        format: int64
+      image:
+        type: string
+      mercaCode:
+        type: integer
+        format: int32
+      name:
+        type: string
+      price:
+        type: number
+      priceType:
+        type: string
+      email:
+        type: string
+        format: email
+      expeditionDate:
+        type: string
+        format: date-time
+      expirationDate:
+        type: string
+        format: date-time
+      color:
+        $ref: '#/definitions/ColorEnum'
+      condition:
+        $ref: '#/definitions/ConditionEnum'
+    title: ProductResource
+  ProductResourceCollection:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/ProductResource'
+    title: ProductResourceCollection
+  ProductResourceCollectionResponse:
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/ProductResourceCollection'
+      pagination:
+        $ref: '#/definitions/Pagination'
+    title: ProductResourceCollectionResponse
+  ProductResourceResponse:
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/ProductResource'
+    title: ProductResourceResponse
+  ColorEnum:
+    type: string
+    enum:
+      - black
+      - white
+      - red
+      - green
+      - blue
+  Pagination:
+    type: object
+    properties:
+      requestedPage:
+        type: integer
+        format: int32
+      requestedSize:
+        type: integer
+        format: int32
+      retrievedResults:
+        type: integer
+        format: int32
+      totalResults:
+        type: integer
+        format: int64
+      nextPage:
+        type: string
+      previousPage:
+        type: string
