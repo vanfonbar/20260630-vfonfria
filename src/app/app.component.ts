@@ -7,15 +7,9 @@ import { MLoggerService } from '@mercadona-fwk-front/core/logger';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
-  constructor(
-    private mLoggerService: MLoggerService
-  ) {
-  }
+  constructor(private mLoggerService: MLoggerService) {}
 
   ngOnInit(): void {
     this.mLoggerService.log('Welcome to FWK Front Angular Responsive');
   }
-
-
 }

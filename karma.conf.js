@@ -1,7 +1,7 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -37,24 +37,24 @@ module.exports = function(config) {
         { type: 'cobertura', subdir: 'report-xml' } // (xml format supported by Jenkins)
       ],
       watermarks: {
-        statements: [ 60, 90 ],
-        functions: [ 60, 90 ],
-        branches: [ 60, 90 ],
-        lines: [ 60, 90 ]
+        statements: [60, 90],
+        functions: [60, 90],
+        branches: [60, 90],
+        lines: [60, 90]
       }
     },
     specReporter: {
-      maxLogLines: 50,             // limit number of lines logged per test
+      maxLogLines: 50, // limit number of lines logged per test
       suppressErrorSummary: false, // do not print error summary
-      suppressFailed: false,      // do not print information about failed tests
-      suppressPassed: false,      // do not print information about passed tests
-      suppressSkipped: false,      // do not print information about skipped tests
-      showSpecTiming: false,      // print the time elapsed for each spec
-      failFast: false,             // test would finish with error when a first fail occurs
+      suppressFailed: false, // do not print information about failed tests
+      suppressPassed: false, // do not print information about passed tests
+      suppressSkipped: false, // do not print information about skipped tests
+      showSpecTiming: false, // print the time elapsed for each spec
+      failFast: false, // test would finish with error when a first fail occurs
       prefixes: {
-        success: '     OK: ',      // override prefix for passed tests, default is '✓ '
-        failure: ' FAILED: ',      // override prefix for failed tests, default is '✗ '
-        skipped: 'SKIPPED: '      // override prefix for skipped tests, default is '- '
+        success: '     OK: ', // override prefix for passed tests, default is '✓ '
+        failure: ' FAILED: ', // override prefix for failed tests, default is '✗ '
+        skipped: 'SKIPPED: ' // override prefix for skipped tests, default is '- '
       }
     },
     reporters: ['kjhtml', 'spec', 'coverage'],

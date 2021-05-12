@@ -11,9 +11,7 @@ import { MPageNotFoundModule } from '@mercadona-fwk-front/core-ui/page-not-found
 import { MPageErrorModule } from '@mercadona-fwk-front/core-ui/page-error';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -29,5 +27,4 @@ import { MPageErrorModule } from '@mercadona-fwk-front/core-ui/page-error';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

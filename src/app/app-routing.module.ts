@@ -5,7 +5,10 @@ import { MPageNotFoundComponent } from '@mercadona-fwk-front/core-ui/page-not-fo
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/welcome-to-fwka/welcome-to-fwka.module').then(m => m.WelcomeToFwkaModule)
+    loadChildren: () =>
+      import('./pages/welcome-to-fwka/welcome-to-fwka.module').then(
+        (m) => m.WelcomeToFwkaModule
+      )
   },
   {
     path: '',
@@ -22,5 +25,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

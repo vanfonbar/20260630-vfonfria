@@ -6,12 +6,10 @@ import { IMAGES } from './embedded-images';
   templateUrl: './welcome-to-fwka.component.html',
   styleUrls: ['./welcome-to-fwka.component.scss']
 })
-export class WelcomeToFwkaComponent  {
-
+export class WelcomeToFwkaComponent {
   images = IMAGES;
 
-  constructor() {
-  }
+  constructor() {}
 
   goToUrl(url: string): void {
     window.open(url, '_blank');
