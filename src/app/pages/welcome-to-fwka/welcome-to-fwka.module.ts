@@ -5,10 +5,6 @@ import { WelcomeToFwkaComponent } from './welcome-to-fwka.component';
 
 @NgModule({
   declarations: [WelcomeToFwkaComponent],
-  imports: [
-    CommonModule,
-    WelcomeToFwkaRoutingModule
-  ]
+  imports: [CommonModule, WelcomeToFwkaRoutingModule]
 })
-export class WelcomeToFwkaModule {
-}
+export class WelcomeToFwkaModule {}

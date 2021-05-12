@@ -4,70 +4,115 @@
 
 Si es la primera vez que accedes a utilizar el entorno de Mercadona debes ejecutar el comando:
 
-```` 
+````sh
 npm login
-```` 
+````
 
 Tu usuario es el acrónimo: e_xyz o de ofidona.
 
 La contraseña es la API Key que puedes encontrar en tu perfil de usuario del Artifactory.
 
-## Instalación:
+## Instalación
 
 Ejecutar los comandos en el siguiente orden:
 
 Instalar las dependencias
 
-```` 
+````sh
 npm install
-```` 
+````
 
 Añadir la configuración necesaria del proyecto:
 
 - Pedirá los idiomas a soportar por la aplicación por defecto ya viene configurado en Español, si desea utilizar otro
   idioma ejecutar el siguiente comando
 
-````
+````sh
 ng add @mercadona-fwk-front/schematics
 ````
 
 Si la aplicación requiere de login ejecutar el siguiente comando:
 
-````
+````sh
 ng generate @mercadona-fwk-front/schematics:login
 ````
 
-## Ejecución:
+## Ejecución
 
 Modo desarrollo
 
-````
+````sh
 npm start
 ````
 
 Modo producción
 
-````
+````sh
 npm run start:pro
 ````
 
 Disponible en modo HMR Hot Reload Module [+info](https://webpack.js.org/guides/hot-module-replacement)
 
-````
+````sh
 npm run start:hmr
 ````
 
 - Abrir el navegador e ir a la página [http://localhost:4200](http://localhost:4200)
 
+## Parseado del código [lint]
+
+Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts y html
+es correcto y cumple todas las reglas definidas a nivel de clean code: eslint y prettier.
+
+Las reglas de eslint están definidas en el archivo `.eslintrc.json` y las de prettier en `.prettierrc.json`.
+En caso de tener directorios en el repositorio que no queremos que sean analizados por prettier,
+deberemos añadirlos al archivo `.prettierignore`.
+
+````bash
+npm run lint
+npm run lint:fix
+````
+
+También es recomendable que todo desarrollador introduzca en su settings del repositorio
+`.vscode/settings.json` una serie de reglas básicas para forzar el eslint y prettier
+mientras se realiza el trabajo en el ide.
+
+````json
+{
+  "editor.rulers": [120],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.alwaysShowStatus": true,
+  "yaml.validate": true,
+}
+````
+
 ## Construcción
 
-````
+````sh
 npm run build:pro
 ````
 
-### Listado completo de scripts disponibles:
+### Listado completo de scripts disponibles
 
-#### Mediante el comando "npm run command" siendo command:
+#### Mediante el comando "npm run command" siendo command
 
 - **ng**
 
@@ -116,9 +161,13 @@ Ejecuta los test end to end
 
 - **lint**
 
-Ejecuta el lint, es el proceso de ejecutar un programa que analiza su código en busca de errores programáticos y
+Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores programáticos y
 estilísticos, verifica cualquier error potencial en su código, como errores de sintaxis, nombres de variables mal
 escritos etc...
+
+- **lint:fix**
+
+Ejecuta la revisión de lint junto a prettier, y trata de solucionar de forma automática todo problema detectado.
 
 - **generate:doc**
 
@@ -127,11 +176,11 @@ Ejecuta la generación de la documentación
 - **generate:api**
 
 Genera los módulos y servicios en base a una definición swagger mirar la
-documentación https://confluence.mercadona.com/pages/viewpage.action?pageId=904103030
+documentación <https://confluence.mercadona.com/pages/viewpage.action?pageId=904103030>
 
 ### Comandos de análisis
 
-#### Previamente ejecutar "npm run build:pro" para los siguientes comandos:
+#### Previamente ejecutar "npm run build:pro" para los siguientes comandos
 
 - **analyze:source-map**
 
@@ -144,13 +193,13 @@ Ejecuta el webpack analyzer, esta es una herramienta visual para ver qué compon
 de nuestro paquete. Utiliza el archivo JSON de estadísticas del paquete web para proporcionarnos una visualización de
 mapa de árbol interactivo del contenido de nuestro paquete.
 
-## Ejemplos de ayuda al desarrollador:
+## Ejemplos de ayuda al desarrollador
 
 - Comunicación contra el backend mediante el fichero proxy.conf.js (En modo desarrollo)
 - Definición swagger para la generación de servicios y modelos, dentro de la carpeta swagger se encuentran los ficheros
   necesarios
 
-## Documentación:
+## Documentación
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
 web de documentación.
@@ -181,4 +230,3 @@ web de documentación.
 - [Integración con portales (MPlatformModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
 - [Página not found (MPageNotFoundModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
 - [Página de error (MPageErrorModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
-  

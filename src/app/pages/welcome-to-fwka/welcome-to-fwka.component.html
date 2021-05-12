@@ -1,139 +1,218 @@
 <div class="col-12 text-center py-5">
-    <img [src]="images.IMAGE_TOP" class="img-fluid img-principal">
-    <h2 class="title-fwk">Mercadona Framework <br> Front Responsive</h2>
+  <img [src]="images.IMAGE_TOP" class="img-fluid img-principal" />
+  <h2 class="title-fwk">
+    Mercadona Framework <br />
+    Front Responsive
+  </h2>
+</div>
+
+<div class="container">
+  <div
+    class="row align-items-center pb-5 clickable"
+    (click)="goToUrl('https://confluence.mercadona.com/display/FFAR')"
+  >
+    <div class="col-sm text-center text-sm-right">
+      <img [src]="images.IMAGE_BLOCKS_1" class="img-secondary" />
+    </div>
+    <div class="col-sm text-center text-sm-left">
+      <h4 class="secondary-text">Blog de Confluence</h4>
+      <div class="text-content">
+        Desde el blog podrás estar al día de todas las noticias y
+        actualizaciones que se hagan en el Sistema de diseño.
+      </div>
+    </div>
   </div>
-  
+
+  <div
+    class="row align-items-center pb-5 clickable"
+    (click)="
+      goToUrl('https://zeroheight.com/39eafa15b/v/latest/p/304102-qu-es-mus')
+    "
+  >
+    <div class="col-sm text-center text-sm-left">
+      <img [src]="images.IMAGE_BLOCKS_2" class="img-secondary" />
+    </div>
+    <div class="col-sm text-center text-sm-right order-sm-first">
+      <h4 class="secondary-text">Introducción a la guía de estilos</h4>
+      <div class="text-content">
+        Descubre como el Sistema de diseño unificado te ayudará a crear mejores
+        productos y experiencias digitales.
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="row align-items-center pb-5 clickable"
+    (click)="
+      goToUrl(
+        'https://confluence.mercadona.com/display/FFAR/4-+Manual+del+desarrollador+del+FWK+Front+de+Mercadona'
+      )
+    "
+  >
+    <div class="col-sm text-center text-sm-right">
+      <img [src]="images.IMAGE_BLOCKS_3" class="img-secondary" />
+    </div>
+    <div class="col-sm text-center text-sm-left">
+      <h4 class="secondary-text">
+        Manual del desarrollador del FWK Front de Mercadona
+      </h4>
+      <div class="text-content">
+        Por donde empezar a desarrollar los productos digitales. Aquí
+        encontrarás los pasos a seguir para desarrollar la mejor experiencia
+        digital.
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="row align-items-center pb-5 clickable"
+    (click)="
+      goToUrl(
+        'https://zeroheight.com/39eafa15b/v/latest/p/44a983-overview/b/980460'
+      )
+    "
+  >
+    <div class="col-sm text-center text-sm-left">
+      <img [src]="images.IMAGE_BLOCKS_4" class="img-secondary" />
+    </div>
+    <div class="col-sm text-center text-sm-right order-sm-first">
+      <h4 class="secondary-text">Componentes</h4>
+      <div class="text-content">
+        Aquí tendrás acceso a todos los componentes que forman la librería.
+        Diseñados y desarrollados para cumplir una función específica en la
+        interfaz.
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="row align-items-center clickable"
+    (click)="
+      goToUrl('https://zeroheight.com/39eafa15b/v/latest/p/52fa4a-recursos')
+    "
+  >
+    <div class="col-sm text-center text-sm-right">
+      <img [src]="images.IMAGE_BLOCKS_5" class="img-secondary" />
+    </div>
+    <div class="col-sm text-center text-sm-left">
+      <h4 class="secondary-text">Recursos</h4>
+      <div class="text-content">
+        Accede a los recursos y empieza a utilizarlos crear tus aplicaciones
+        digitales.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-tipos py-5 my-5">
+  <h3 class="title-tipos text-center">Páginas tipo</h3>
+
   <div class="container">
-  
-    <div class="row align-items-center pb-5 clickable" (click)="goToUrl('https://confluence.mercadona.com/display/FFAR')">
-      <div class="col-sm text-center text-sm-right">
-        <img [src]="images.IMAGE_BLOCKS_1" class="img-secondary">
+    <div class="row">
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://www.figma.com/file/BQrus0BfexdqOgZqEZXqMn/01-Login?node-id=232%3A1406'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_TYPES_1" class="img-secondary" />
+        <div class="img-secondary-text">Login</div>
       </div>
-      <div class="col-sm text-center text-sm-left">
-        <h4 class="secondary-text">Blog de Confluence</h4>
-        <div class="text-content">
-          Desde el blog podrás estar al día de todas las noticias y actualizaciones que se hagan en el Sistema de
-          diseño.
-        </div>
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://www.figma.com/file/tqArSvsgandNYbHf5Vw0tv/03-Error-page'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_TYPES_2" class="img-secondary" />
+        <div class="img-secondary-text">Error</div>
       </div>
-    </div>
-  
-    <div class="row align-items-center pb-5 clickable" (click)="goToUrl('https://zeroheight.com/39eafa15b/v/latest/p/304102-qu-es-mus')">
-      <div class="col-sm text-center text-sm-left">
-        <img [src]="images.IMAGE_BLOCKS_2" class="img-secondary">
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://www.figma.com/file/ROMOZIXE6pQF67zherQwla/04-Dashboard?node-id=416%3A9086'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_TYPES_3" class="img-secondary" />
+        <div class="img-secondary-text">Dashboard</div>
       </div>
-      <div class="col-sm text-center text-sm-right order-sm-first">
-        <h4 class="secondary-text">Introducción a la guía de estilos</h4>
-        <div class="text-content">
-          Descubre como el Sistema de diseño unificado te ayudará a crear mejores productos y experiencias digitales.
-        </div>
-      </div>
-    </div>
-  
-    <div class="row align-items-center pb-5 clickable" (click)="goToUrl('https://confluence.mercadona.com/display/FFAR/4-+Manual+del+desarrollador+del+FWK+Front+de+Mercadona')">
-      <div class="col-sm text-center text-sm-right">
-        <img [src]="images.IMAGE_BLOCKS_3" class="img-secondary">
-      </div>
-      <div class="col-sm text-center text-sm-left">
-        <h4 class="secondary-text">Manual del desarrollador del FWK Front de Mercadona</h4>
-        <div class="text-content">
-          Por donde empezar a desarrollar los productos digitales. Aquí encontrarás los pasos a seguir para desarrollar
-          la mejor experiencia digital.
-        </div>
-      </div>
-    </div>
-  
-    <div class="row align-items-center pb-5 clickable" (click)="goToUrl('https://zeroheight.com/39eafa15b/v/latest/p/44a983-overview/b/980460')">
-      <div class="col-sm text-center text-sm-left">
-        <img [src]="images.IMAGE_BLOCKS_4" class="img-secondary">
-      </div>
-      <div class="col-sm text-center text-sm-right order-sm-first">
-        <h4 class="secondary-text">Componentes</h4>
-        <div class="text-content">
-          Aquí tendrás acceso a todos los componentes que forman la librería. Diseñados y desarrollados para cumplir una
-          función específica en la interfaz.
-        </div>
-      </div>
-    </div>
-  
-    <div class="row align-items-center clickable" (click)="goToUrl('https://zeroheight.com/39eafa15b/v/latest/p/52fa4a-recursos')">
-      <div class="col-sm text-center text-sm-right">
-        <img [src]="images.IMAGE_BLOCKS_5" class="img-secondary">
-      </div>
-      <div class="col-sm text-center text-sm-left">
-        <h4 class="secondary-text">Recursos</h4>
-        <div class="text-content">
-          Accede a los recursos y empieza a utilizarlos crear tus aplicaciones digitales.
-        </div>
-      </div>
-    </div>
-    
-  </div>
-  
-  
-  
-  <div class="bg-tipos py-5 my-5">
-  
-    <h3 class="title-tipos text-center">Páginas tipo</h3>
-  
-    <div class="container">
-      <div class="row">
-  
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://www.figma.com/file/BQrus0BfexdqOgZqEZXqMn/01-Login?node-id=232%3A1406')">
-          <img [src]="images.IMAGE_PAGE_TYPES_1" class="img-secondary">
-          <div class="img-secondary-text">Login</div>
-        </div>
-        
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://www.figma.com/file/tqArSvsgandNYbHf5Vw0tv/03-Error-page')">
-          <img [src]="images.IMAGE_PAGE_TYPES_2" class="img-secondary">
-          <div class="img-secondary-text">Error</div>
-        </div>
-        
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://www.figma.com/file/ROMOZIXE6pQF67zherQwla/04-Dashboard?node-id=416%3A9086')">
-          <img [src]="images.IMAGE_PAGE_TYPES_3" class="img-secondary">
-          <div class="img-secondary-text">Dashboard</div>
-        </div>
-        
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://www.figma.com/file/BGNNrPjjebwPH8yYUg7MWI/02-Ficha-Detalle')">
-          <img [src]="images.IMAGE_PAGE_TYPES_4" class="img-secondary">
-          <div class="img-secondary-text">Ficha Detalle</div>
-        </div>
-      </div>
-    </div>
-  
-  </div>
-  
-  
-  
-  <div class="py-5 my-5">
-  
-    <h3 class="title-tipos text-center">Módulos</h3>
-  
-    <div class="container">
-      <div class="row">
-  
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://confluence.mercadona.com/pages/viewpage.action?pageId=906272836')">
-          <img [src]="images.IMAGE_PAGE_MODULES_1" class="img-secondary">
-          <div class="img-secondary-text">Autenticación</div>
-        </div>
-  
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://confluence.mercadona.com/pages/viewpage.action?pageId=897732307')">
-          <img [src]="images.IMAGE_PAGE_MODULES_2" class="img-secondary">
-          <div class="img-secondary-text">Traducciones</div>
-        </div>
-  
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://confluence.mercadona.com/pages/viewpage.action?pageId=899450842')">
-          <img [src]="images.IMAGE_PAGE_MODULES_3" class="img-secondary">
-          <div class="img-secondary-text">Storage</div>
-        </div>
-  
-        <div class="col-6 col-sm text-center clickable" (click)="goToUrl('https://confluence.mercadona.com/pages/viewpage.action?pageId=910789733')">
-          <img [src]="images.IMAGE_PAGE_MODULES_4" class="img-secondary">
-          <div class="img-secondary-text">Maquetación Boostrap</div>
-        </div>
-  
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://www.figma.com/file/BGNNrPjjebwPH8yYUg7MWI/02-Ficha-Detalle'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_TYPES_4" class="img-secondary" />
+        <div class="img-secondary-text">Ficha Detalle</div>
       </div>
     </div>
   </div>
-  <footer></footer>
-  
+</div>
+
+<div class="py-5 my-5">
+  <h3 class="title-tipos text-center">Módulos</h3>
+
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://confluence.mercadona.com/pages/viewpage.action?pageId=906272836'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_MODULES_1" class="img-secondary" />
+        <div class="img-secondary-text">Autenticación</div>
+      </div>
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://confluence.mercadona.com/pages/viewpage.action?pageId=897732307'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_MODULES_2" class="img-secondary" />
+        <div class="img-secondary-text">Traducciones</div>
+      </div>
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://confluence.mercadona.com/pages/viewpage.action?pageId=899450842'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_MODULES_3" class="img-secondary" />
+        <div class="img-secondary-text">Storage</div>
+      </div>
+
+      <div
+        class="col-6 col-sm text-center clickable"
+        (click)="
+          goToUrl(
+            'https://confluence.mercadona.com/pages/viewpage.action?pageId=910789733'
+          )
+        "
+      >
+        <img [src]="images.IMAGE_PAGE_MODULES_4" class="img-secondary" />
+        <div class="img-secondary-text">Maquetación Boostrap</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer></footer>

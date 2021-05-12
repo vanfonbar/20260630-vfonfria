@@ -8,5 +8,4 @@ const routes: Routes = [{ path: '', component: WelcomeToFwkaComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class WelcomeToFwkaRoutingModule {
-}
+export class WelcomeToFwkaRoutingModule {}

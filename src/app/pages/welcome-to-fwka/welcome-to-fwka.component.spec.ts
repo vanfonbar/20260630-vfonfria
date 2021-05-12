@@ -8,9 +8,8 @@ describe('WelcomeToFwkaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomeToFwkaComponent ]
-    })
-    .compileComponents();
+      declarations: [WelcomeToFwkaComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
