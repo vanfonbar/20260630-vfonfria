@@ -98,11 +98,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@mercadona-fwk-front/styles/sass/_reset.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/_bootstrap-grid.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/fonts/_font-face.scss",
+              "node_modules/@mercadona-fwk-front/styles/sass/reset.scss",
+              "node_modules/@mercadona-fwk-front/styles/sass/bootstrap-grid.scss",
+              "node_modules/@mercadona-fwk-front/styles/sass/fonts/font-face.scss",
               "node_modules/@mercadona-fwk-front/styles/sass/themes/menta.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/_elements.scss",
+              "node_modules/@mercadona-fwk-front/styles/sass/elements.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
             ],
