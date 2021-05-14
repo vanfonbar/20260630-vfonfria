@@ -61,10 +61,10 @@ npm run start:hmr
 
 ## Parseado del código [lint]
 
-Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts y html
+Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts, html y scss
 es correcto y cumple todas las reglas definidas a nivel de clean code: eslint y prettier.
 
-Las reglas de eslint están definidas en el archivo `.eslintrc.json` y las de prettier en `.prettierrc.json`.
+Las reglas de eslint están definidas en el archivo `.eslintrc.json`, las de prettier en `.prettierrc.json` y las de stylelint en `.stylelintrc.json`.
 En caso de tener directorios en el repositorio que no queremos que sean analizados por prettier,
 deberemos añadirlos al archivo `.prettierignore`.
 
