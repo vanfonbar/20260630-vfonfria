@@ -81,7 +81,7 @@ mientras se realiza el trabajo en el ide.
 {
   "editor.rulers": [120],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -109,7 +109,7 @@ mientras se realiza el trabajo en el ide.
 }
 ````
 
-Existe una extensión de VSCode para stylelint: `stylelint.vscode-stylelint`
+Existe una extensión de VSCode para stylelint `stylelint.vscode-stylelint` para que continuamente valide las reglas de lint en los archivos de scss
 
 ## Construcción
 
@@ -174,7 +174,7 @@ escritos etc...
 
 - **lint:fix**
 
-Ejecuta la revisión de lint junto a prettier, y trata de solucionar de forma automática todo problema detectado.
+Ejecuta la revisión de lint junto a prettier y stylelint, y trata de solucionar de forma automática todo problema detectado.
 
 - **generate:doc**
 
