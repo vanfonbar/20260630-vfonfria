@@ -81,7 +81,7 @@ mientras se realiza el trabajo en el ide.
 {
   "editor.rulers": [120],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -99,10 +99,17 @@ mientras se realiza el trabajo en el ide.
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[scss]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  },
   "eslint.alwaysShowStatus": true,
   "yaml.validate": true,
 }
 ````
+
+Existe una extensión de VSCode para stylelint: `stylelint.vscode-stylelint`
 
 ## Construcción
 
