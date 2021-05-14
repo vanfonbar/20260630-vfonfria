@@ -27,7 +27,6 @@
     "audit": "npm audit --production",
     "lint": "ng lint && npx prettier --check \"**/*.{ts,js,html}\" && npx stylelint -s scss \"**/*.scss\"",
     "lint:fix": "ng lint --fix && npx prettier --write \"**/*.{ts,js,html}\" && npx stylelint -s scss --fix \"**/*.scss\"",
-    "lint:scss": "npx stylelint -s scss \"**/*.scss\"",
     "generate:doc": "compodoc -p tsconfig.json",
     "generate:api": "ng-swagger-gen --config swagger/swagger.config.json",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
