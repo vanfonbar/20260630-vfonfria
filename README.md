@@ -119,7 +119,7 @@ npm run build:pro
 
 ### Listado completo de scripts disponibles
 
-#### Mediante el comando "npm run command" siendo command
+Mediante el comando "npm run command" siendo command:
 
 - **ng**
 
@@ -145,6 +145,10 @@ Compila la aplicación
 
 Compila la aplicación en modo producción junto al source map, los source map es un archivo JSON que contiene toda la
 información necesaria para asignar el código transpilado a las fuentes originales
+
+- **build:dev**
+
+Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle)
 
 - **test**
 
@@ -187,7 +191,7 @@ documentación <https://confluence.mercadona.com/pages/viewpage.action?pageId=90
 
 ### Comandos de análisis
 
-#### Previamente ejecutar "npm run build:pro" para los siguientes comandos
+Previamente ejecutar "npm run build:dev" para los siguientes comandos.
 
 - **analyze:source-map**
 
