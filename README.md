@@ -62,54 +62,21 @@ npm run start:hmr
 ## Parseado del código [lint]
 
 Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts, html y scss
-es correcto y cumple todas las reglas definidas a nivel de clean code: eslint y prettier.
+es correcto y cumple todas las reglas definidas a nivel de clean code: eslint, prettier y stylelint.
 
 Las reglas de eslint están definidas en el archivo `.eslintrc.json`, las de prettier en `.prettierrc.json` y las de stylelint en `.stylelintrc.json`.
-En caso de tener directorios en el repositorio que no queremos que sean analizados por prettier,
-deberemos añadirlos al archivo `.prettierignore`.
+En caso de tener directorios en el repositorio que no queremos que sean analizados por prettier, deberemos añadirlos al archivo `.prettierignore`.
 
 ````bash
 npm run lint
 npm run lint:fix
 ````
 
-También es recomendable que todo desarrollador introduzca en su settings del repositorio
-`.vscode/settings.json` una serie de reglas básicas para forzar el eslint y prettier
-mientras se realiza el trabajo en el ide.
+También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint, prettier y stylelint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
 
-````json
-{
-  "editor.rulers": [120],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": true
-    }
-  },
-  "eslint.alwaysShowStatus": true,
-  "yaml.validate": true,
-}
-````
-
-Existe una extensión de VSCode para stylelint `stylelint.vscode-stylelint` para que continuamente valide las reglas de lint en los archivos de scss
+- ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
+- Prettier - Code formatter (Prettier - esbenp.prettier-vscode)
+- stylelint (stylelint - stylelint.vscode-stylelint)
 
 ## Construcción
 
@@ -142,11 +109,6 @@ Inicia la aplicación en modo remplazo de módulo caliente
 Compila la aplicación
 
 - **build:pro**
-
-Compila la aplicación en modo producción junto al source map, los source map es un archivo JSON que contiene toda la
-información necesaria para asignar el código transpilado a las fuentes originales
-
-- **build:dev**
 
 Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle)
 
