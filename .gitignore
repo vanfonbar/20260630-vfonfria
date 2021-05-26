@@ -47,6 +47,7 @@ Thumbs.db
 /integration/bazel/bazel-*
 *.log
 node_modules
+*.tgz
 
 # Include when developing application packages.
 pubspec.lock
