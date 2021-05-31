@@ -82,7 +82,7 @@ async function main(...args) {
   const newPackageName = getPackageName(config, scope, appName);
   const newVersion = config.reset
     ? packageContent.dependencies['@mercadona-fwk-front/core']
-    : '0.0.1';
+    : '0.0.0';
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
   await writeFile(packagePath, JSON.stringify(packageContent, null, 2) + '\n', {
