@@ -35,13 +35,13 @@ const YOUR_APP_NAME_FILES = [
   'src/environments/environment.ts'
 ].map((rootPath) => getRelativePath('../' + rootPath));
 
-const FILES_TO_AUTODESTROY = [
-  'scripts/config-archetype.js',  
-].map((rootPath) => getRelativePath('../' + rootPath));
+const FILES_TO_AUTODESTROY = ['scripts/config-archetype.js'].map((rootPath) =>
+  getRelativePath('../' + rootPath)
+);
 
-const DIRS_TO_AUTODESTROY = [  
-  'scripts'
-].map((rootPath) => getRelativePath('../' + rootPath));
+const DIRS_TO_AUTODESTROY = ['scripts'].map((rootPath) =>
+  getRelativePath('../' + rootPath)
+);
 
 async function replaceFiles(filepaths, oldText, newText) {
   let filesReplaced = [];
@@ -95,21 +95,21 @@ async function main(...args) {
 const getPackageName = (config, scope, appName) => {
   if (config.reset) return '@mercadona-fwk-front/arquetype';
   return scope ? `${scope}/${appName}` : appName;
-}
+};
 
 const autoDestroyConfArchetype = () => {
   try {
-    FILES_TO_AUTODESTROY.forEach(fileToDelete => fs.unlinkSync(fileToDelete));  
-    DIRS_TO_AUTODESTROY.forEach(dirToDelete => fs.rmdirSync(dirToDelete));  
+    FILES_TO_AUTODESTROY.forEach((fileToDelete) => fs.unlinkSync(fileToDelete));
+    DIRS_TO_AUTODESTROY.forEach((dirToDelete) => fs.rmdirSync(dirToDelete));
   } catch (error) {
-    log(`Error when autodestroy scripts folder and content. Cause: ${error}`); 
-  }  
-}
+    log(`Error when autodestroy scripts folder and content. Cause: ${error}`);
+  }
+};
 
 const sanitizeAppName = (appName) => {
   const regex = /-front$/gm;
-  return regex.test(appName) ? appName.substr(0,appName.length - 6) :  appName;  
-}
+  return regex.test(appName) ? appName.substr(0, appName.length - 6) : appName;
+};
 
 if (module === require.main) {
   main(...process.argv.slice(2))
