@@ -36,10 +36,10 @@ module.exports = function (config) {
         { type: 'cobertura', subdir: 'report-xml' } // (xml format supported by Jenkins)
       ],
       watermarks: {
-        statements: [60, 90],
-        functions: [60, 90],
-        branches: [60, 90],
-        lines: [60, 90]
+        statements: [0, 90],
+        functions: [0, 90],
+        branches: [0, 90],
+        lines: [0, 90]
       }
     },
     specReporter: {
