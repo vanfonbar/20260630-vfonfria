@@ -7,7 +7,7 @@
 /out-tsc
 
 # dependencies
-/node_modules
+node_modules
 
 # profiling files
 chrome-profiler-events*.json
@@ -27,7 +27,7 @@ speed-measure-plugin*.json
 !.vscode/extensions.json
 !.vscode/recommended-settings.json
 !.vscode/recommended-launch.json
-.history/*
+.history
 
 # misc
 /.sass-cache
@@ -46,7 +46,6 @@ Thumbs.db
 /bazel-out
 /integration/bazel/bazel-*
 *.log
-node_modules
 *.tgz
 
 # Include when developing application packages.
@@ -88,9 +87,6 @@ yarn-error.log
 .ng-dev.user*
 .notes.md
 baseline.json
-
-# Ignore .history for the xyz.local-history VSCode extension
-.history
 
 # CLDR data
 tools/gulp-tasks/cldr/cldr-data/
