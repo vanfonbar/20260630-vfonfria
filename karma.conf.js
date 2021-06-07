@@ -45,10 +45,10 @@ module.exports = function (config) {
         }
       },
       watermarks: {
-        statements: [70, 90],
-        functions: [70, 90],
-        branches: [70, 90],
-        lines: [70, 90]
+        statements: [75, 90],
+        functions: [75, 90],
+        branches: [75, 90],
+        lines: [75, 90]
       }
     },
     specReporter: {
