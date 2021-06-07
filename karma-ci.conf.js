@@ -35,11 +35,19 @@ module.exports = function (config) {
         { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
         { type: 'cobertura', subdir: 'report-xml' } // (xml format supported by Jenkins)
       ],
+      check: {
+        global: {
+          statements: 0,
+          functions: 0,
+          branches: 0,
+          lines: 0
+        }
+      },
       watermarks: {
-        statements: [0, 90],
-        functions: [0, 90],
-        branches: [0, 90],
-        lines: [0, 90]
+        statements: [75, 90],
+        functions: [75, 90],
+        branches: [75, 90],
+        lines: [75, 90]
       }
     },
     specReporter: {
