@@ -16,8 +16,7 @@
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "prettier"
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "@angular-eslint/component-selector": [
@@ -118,8 +117,7 @@
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "prettier"
+        "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "arrow-body-style": ["off"],
@@ -166,8 +164,7 @@
     {
       "files": ["*.util.ts"],
       "extends": [
-        "plugin:@angular-eslint/recommended",
-        "prettier"
+        "plugin:@angular-eslint/recommended"
       ],
       "rules": {
         "arrow-body-style": ["off"],
@@ -187,8 +184,7 @@
     {
       "files": ["*.html"],
       "extends": [
-        "plugin:@angular-eslint/template/recommended",
-        "prettier"
+        "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
     }
