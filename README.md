@@ -14,27 +14,16 @@ La contraseña es la API Key que puedes encontrar en tu perfil de usuario del Ar
 
 ## Instalación
 
-Ejecutar los comandos en el siguiente orden:
+En primer lugar deberemos instalar los siguiente elementos:
 
-Instalar las dependencias
+- Dependencias.
+- Idiomas: la aplicación ya viene configurada por defecto en Español, de todas maneras, podemos cambiar esta configuración e incluso añadir más idiomas.
+- Autenticación: si la aplicación requiere de login deberemos instalar el módulo de autenticación correspondiente.
 
-````sh
-npm install
-````
-
-Añadir la configuración necesaria del proyecto:
-
-- Pedirá los idiomas a soportar por la aplicación por defecto ya viene configurado en Español, si desea utilizar otro
-  idioma ejecutar el siguiente comando
+El siguiente comando le guía de forma intuitiva y sencilla a través de la instalación de todos los elementos anteriores: 
 
 ````sh
-ng add @mercadona-fwk-front/schematics
-````
-
-Si la aplicación requiere de login ejecutar el siguiente comando:
-
-````sh
-ng generate @mercadona-fwk-front/schematics:login
+npm run init:install
 ````
 
 ## Ejecución
@@ -42,7 +31,7 @@ ng generate @mercadona-fwk-front/schematics:login
 Modo desarrollo
 
 ````sh
-npm start
+npm run start
 ````
 
 Modo producción
@@ -62,20 +51,18 @@ npm run start:hmr
 ## Parseado del código [lint]
 
 Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts, html y scss
-es correcto y cumple todas las reglas definidas a nivel de clean code: eslint, prettier y stylelint.
+es correcto y cumple todas las reglas definidas a nivel de clean code: eslint y stylelint.
 
-Las reglas de eslint están definidas en el archivo `.eslintrc.json`, las de prettier en `.prettierrc.json` y las de stylelint en `.stylelintrc.json`.
-En caso de tener directorios en el repositorio que no queremos que sean analizados por prettier, deberemos añadirlos al archivo `.prettierignore`.
+Las reglas de eslint están definidas en el archivo `.eslintrc.json`, y las de stylelint en `.stylelintrc.json`.
 
 ````bash
 npm run lint
 npm run lint:fix
 ````
 
-También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint, prettier y stylelint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
+También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint y stylelint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
 
 - ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
-- Prettier - Code formatter (Prettier - esbenp.prettier-vscode)
 - stylelint (stylelint - stylelint.vscode-stylelint)
 
 ## Construcción
@@ -86,120 +73,125 @@ npm run build:pro
 
 ### Listado completo de scripts disponibles
 
-Mediante el comando "npm run command" siendo command:
-
-- **ng**
-
 Comando para poder ejecutar los comando de angular cuando no está instalado angular-cli en global.
+````sh
+npm run ng -- [parámetros del ng]
+````
 
-- **start**
+Inicia la aplicación.
+````sh
+npm run start
+````
 
-Inicia la aplicación
+Inicia la aplicación en modo producción.
+````sh
+npm run start:pro
+````
 
-- **start:pro**
+Inicia la aplicación en modo reemplazo de módulo caliente.
+````sh
+npm run start:hmr
+````
 
-Inicia la aplicación en modo producción
+Compila la aplicación.
+````sh
+npm run build
+````
 
-- **start:hmr**
+Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle).
+````sh
+npm run build:pro
+````
 
-Inicia la aplicación en modo remplazo de módulo caliente
+Ejecuta los unit test en modo watch junto al code coverage para Chrome.
+````sh
+npm run test
+````
 
-- **build**
+Ejecuta los unit test en modo watch junto al code coverage para Safari.
+````sh
+npm run test:safari
+````
 
-Compila la aplicación
+Ejecuta los unit test en modo watch a false junto al code coverage para chrome.
+````sh
+npm run test:coverage
+````
 
-- **build:pro**
+Ejecuta los unit test específico para el entorno CI/CD en modo ChromeHeadlessCI.
+````sh
+npm run test:ci
+````
 
-Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle)
-
-- **test**
-
-Ejecuta los unit test en modo watch junto al code coverage para Chrome
-
-- **test:safari**
-
-Ejecuta los unit test en modo watch junto al code coverage para Safari
-
-- **test:coverage**
-
-Ejecuta los unit test en modo watch a false junto al code coverage para chrome
-
-- **test:ci**
-
-Ejecuta los unit test específico para el entorno CI/CD en modo ChromeHeadlessCI
-
-- **e2e**
-
-Ejecuta los test end to end
-
-- **lint**
+Ejecuta los test end to end.
+````sh
+npm run e2e
+````
 
 Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores programáticos y
 estilísticos, verifica cualquier error potencial en su código, como errores de sintaxis, nombres de variables mal
-escritos etc...
+escritos etc.
+````sh
+npm run lint
+````
 
-- **lint:fix**
+Ejecuta la revisión de eslint y stylelint, y trata de solucionar de forma automática todo problema detectado.
+````sh
+npm run lint:fix
+````
 
-Ejecuta la revisión de lint junto a prettier y stylelint, y trata de solucionar de forma automática todo problema detectado.
-
-- **generate:doc**
-
-Ejecuta la generación de la documentación
-
-- **generate:api**
+Ejecuta la generación de la documentación.
+````sh
+npm run generate:doc
+````
 
 Genera los módulos y servicios en base a una definición swagger mirar la
 documentación <https://confluence.mercadona.com/pages/viewpage.action?pageId=904103030>
+````sh
+npm run generate:api
+````
 
 ### Comandos de análisis
 
-Previamente ejecutar "npm run build:dev" para los siguientes comandos.
-
-- **analyze:source-map**
+Previamente ejecutar "npm run build:pro" para los siguientes comandos:
 
 Ejecuta la el mapa de origen, determina de qué archivo proviene cada byte en su código minimizado, muestra una
 visualización de mapa de árbol para revisar de dónde proviene todo el código.
-
-- **analyze:webpack-bundle**
+````sh
+npm run analyze:source-map
+````
 
 Ejecuta el webpack analyzer, esta es una herramienta visual para ver qué componentes están contribuyendo más al tamaño
 de nuestro paquete. Utiliza el archivo JSON de estadísticas del paquete web para proporcionarnos una visualización de
 mapa de árbol interactivo del contenido de nuestro paquete.
+````sh
+npm run analyze:webpack-bundle
+````
 
 ## Ejemplos de ayuda al desarrollador
 
 - Comunicación contra el backend mediante el fichero proxy.conf.js (En modo desarrollo)
-- Definición swagger para la generación de servicios y modelos, dentro de la carpeta swagger se encuentran los ficheros
-  necesarios
+- Definición swagger para la generación de servicios y modelos, dentro de la carpeta swagger se encuentran los ficheros necesarios
 
 ## Documentación
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
 web de documentación.
 
-[1- Introducción al "FWK Front Angular Responsive"](https://confluence.mercadona.com/pages/viewpage.action?pageId=906293117)
+[1- Cómo empezar](https://mus.mercadona.com/39eafa15b/v/11842/p/401878-alta-red-mercadona)
 
-[2- Criterios de uso "FWK Front Angular Responsive"](https://confluence.mercadona.com/pages/viewpage.action?pageId=908092204)
+[2- Archetype](https://mus.mercadona.com/39eafa15b/v/11842/p/09e42e-solicitar-archetype/b/877554)
 
-[3- Conocimientos previos para desarrollar](https://confluence.mercadona.com/display/FFAR/3-+Conocimientos+previos+para+desarrollar)
+[3- Módulos Core](https://mus.mercadona.com/39eafa15b/v/11842/p/855cff-mtranslate/b/9943e8)
 
-[4- Manual del desarrollador](https://confluence.mercadona.com/display/FFAR/4+-+Manual+del+desarrollador)
+[4- Módulos Core UI](https://mus.mercadona.com/39eafa15b/v/11842/p/543c40-mauthtoken/b/84bf44)
 
-[5- Contacta con nosotros](https://confluence.mercadona.com/display/FFAR/5-+Contacta+con+nosotros)
+[5- Schematics](https://mus.mercadona.com/39eafa15b/v/11842/p/26a24f-ng-add)
 
-## Dependencias FWKA
+[6- Componentes](https://mus.mercadona.com/39eafa15b/v/11842/p/01f2b5-componentes)
 
-- [Librería de core](https://mercadona.zeroheight.com/styleguide/s/42749/p/5669a0-mdulos-core)
-- [Librería de core-ui](https://mercadona.zeroheight.com/styleguide/s/42749/p/81121e-mdulos-core-ui)
-- [Librería de componentes](https://mercadona.zeroheight.com/styleguide/s/42749/p/906f72-componentes-web)
-- [Librería de styles](https://mercadona.zeroheight.com/styleguide/s/42749/p/82cd9a-estilos-para-desarrollo)
-- [Librería de iconos](https://mercadona.zeroheight.com/styleguide/s/42749/p/767129--iconos/b/797268)
+[7- Estilos](https://mus.mercadona.com/39eafa15b/v/11842/p/82cd9a-estilos)
 
-## Módulos FWKA
+[8- Iconos](https://mus.mercadona.com/39eafa15b/v/11842/p/767129--iconos/b/797268)
 
-- [Error handler (MErrorHandlerModule)](https://mercadona.zeroheight.com/styleguide/s/42749/p/76850c-merrorhandler/b/92f686)
-- [Módulo de gestión de logs (MLoggerModule)](https://mercadona.zeroheight.com/styleguide/s/42749/p/34cc9b-mlogger/b/78ba4d)
-- [Módulo de traducciones (MTranslateModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
-- [Integración con portales (MPlatformModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
-- [Página not found (MPageNotFoundModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
-- [Página de error (MPageErrorModule)](https://zeroheight.com/39eafa15b/v/latest/p/55c539-iniciar-el-proyecto)
+[9- Contacta con nosotros](https://confluence.mercadona.com/display/FFAR/5-+Contacta+con+nosotros)
