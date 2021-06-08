@@ -31,7 +31,7 @@ const YOUR_APP_NAME_FILES = [
   'package.json',
   'angular.json',
   'src/index.html',
-  'src/app-config/app-config.constants.ts',
+  'src/app/app-config.constants.ts',
   'src/environments/environment.ts'
 ].map((rootPath) => getRelativePath('../' + rootPath));
 

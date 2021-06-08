@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MErrorHandlerModule } from '@mercadona-fwk-front/core-ui/error-handler';
 import { MPlatformModule } from '@mercadona-fwk-front/core/platform';
 import { MTranslateModule } from '@mercadona-fwk-front/core/translate';
-import { APP_CONFIG } from '../app-config/app-config.constants';
+import { APP_CONFIG } from './app-config.constants';
 import { MLoggerModule } from '@mercadona-fwk-front/core/logger';
 import { MPageNotFoundModule } from '@mercadona-fwk-front/core-ui/page-not-found';
 import { MPageErrorModule } from '@mercadona-fwk-front/core-ui/page-error';
