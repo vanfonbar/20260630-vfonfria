@@ -50,20 +50,18 @@ npm run start:hmr
 
 ## Parseado del código [lint]
 
-Disponemos de dos scripts en el package.json para poder validar que el linteado de todo js, ts, html y scss
-es correcto y cumple todas las reglas definidas a nivel de clean code: eslint y stylelint.
+Disponemos de dos scripts en el package.json para poder validar que el linteado es correcto y cumple todas las reglas definidas a nivel de clean code: eslint.
 
-Las reglas de eslint están definidas en el archivo `.eslintrc.json`, y las de stylelint en `.stylelintrc.json`.
+Las reglas de eslint están definidas en el archivo `.eslintrc.json`.
 
 ````bash
 npm run lint
 npm run lint:fix
 ````
 
-También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint y stylelint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
+También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
 
 - ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
-- stylelint (stylelint - stylelint.vscode-stylelint)
 
 ## Construcción
 
@@ -74,56 +72,67 @@ npm run build:pro
 ### Listado completo de scripts disponibles
 
 Comando para poder ejecutar los comando de angular cuando no está instalado angular-cli en global.
+
 ````sh
 npm run ng -- [parámetros del ng]
 ````
 
 Inicia la aplicación.
+
 ````sh
 npm run start
 ````
 
 Inicia la aplicación en modo producción.
+
 ````sh
 npm run start:pro
 ````
 
 Inicia la aplicación en modo reemplazo de módulo caliente.
+
 ````sh
 npm run start:hmr
 ````
 
 Compila la aplicación.
+
 ````sh
 npm run build
 ````
 
 Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle).
+
 ````sh
 npm run build:pro
 ````
 
 Ejecuta los unit test en modo watch junto al code coverage para Chrome.
+
 ````sh
 npm run test
 ````
 
 Ejecuta los unit test en modo watch junto al code coverage para Safari.
+
 ````sh
 npm run test:safari
 ````
 
 Ejecuta los unit test en modo watch a false junto al code coverage para chrome.
+
 ````sh
 npm run test:coverage
 ````
 
 Ejecuta los unit test específico para el entorno CI/CD en modo ChromeHeadlessCI.
+
 ````sh
 npm run test:ci
 ````
 
 Ejecuta los test end to end.
+
 ````sh
 npm run e2e
 ````
@@ -131,22 +140,26 @@ npm run e2e
 Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores programáticos y
 estilísticos, verifica cualquier error potencial en su código, como errores de sintaxis, nombres de variables mal
 escritos etc.
+
 ````sh
 npm run lint
 ````
 
-Ejecuta la revisión de eslint y stylelint, y trata de solucionar de forma automática todo problema detectado.
+Ejecuta la revisión de eslint y trata de solucionar de forma automática todo problema detectado.
+
 ````sh
 npm run lint:fix
 ````
 
 Ejecuta la generación de la documentación.
+
 ````sh
 npm run generate:doc
 ````
 
 Genera los módulos y servicios en base a una definición swagger mirar la
 documentación <https://confluence.mercadona.com/pages/viewpage.action?pageId=904103030>
+
 ````sh
 npm run generate:api
 ````
@@ -157,6 +170,7 @@ Previamente ejecutar "npm run build:pro" para los siguientes comandos:
 
 Ejecuta la el mapa de origen, determina de qué archivo proviene cada byte en su código minimizado, muestra una
 visualización de mapa de árbol para revisar de dónde proviene todo el código.
+
 ````sh
 npm run analyze:source-map
 ````
@@ -164,6 +178,7 @@ npm run analyze:source-map
 Ejecuta el webpack analyzer, esta es una herramienta visual para ver qué componentes están contribuyendo más al tamaño
 de nuestro paquete. Utiliza el archivo JSON de estadísticas del paquete web para proporcionarnos una visualización de
 mapa de árbol interactivo del contenido de nuestro paquete.
+
 ````sh
 npm run analyze:webpack-bundle
 ````
