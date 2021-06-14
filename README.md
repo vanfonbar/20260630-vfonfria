@@ -63,6 +63,27 @@ También es recomendable que todo desarrollador introduzca en su settings del re
 
 - ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
 
+### .eslintrc.json
+
+#### Plugins utilizados
+
+- deprecation
+  - warning si una librería o método utilizado ha sido deprecado <https://www.npmjs.com/package/eslint-plugin-deprecation>
+- prefer-arrow
+  - Recomienda arrow functions sobre functions <https://www.npmjs.com/package/eslint-plugin-prefer-arrow>
+
+#### Secciones en el archivo
+
+La sección de `overrides` eslintrc está dividida por cada extensión posible.
+Las extensiones con reglas especificas actualmente son las siguientes:
+
+- ["*.ts"],
+- ["*.spec.ts", "*.e2e-spec.ts"]
+- ["*.html"]
+
+Por definición, toda regla en la sección de *.ts es aplicada a todo archivo con esta extensión.
+Además, la sección ["*.spec.ts", "*.e2e-spec.ts"] añaden la regla de no permitir fdescribe y fit en ningún test.
+
 ## Construcción
 
 ````sh
