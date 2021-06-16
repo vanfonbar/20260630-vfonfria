@@ -48,7 +48,6 @@
     "@mercadona-fwk-front/core-ui": "file:../mercadona-fwk-front/dist/libs/core-ui/mercadona-fwk-front-core-ui-0.0.0.tgz",
     "@mercadona-fwk-front/icons": "file:../mercadona-fwk-front/dist/libs/icons/mercadona-fwk-front-icons-0.0.0.tgz",
     "@mercadona-fwk-front/styles": "file:../mercadona-fwk-front/dist/libs/styles/mercadona-fwk-front-styles-0.0.0.tgz",
-    "bootstrap": "4.5.3",
     "rxjs": "6.6.3",
     "tslib": "2.1.0",
     "zone.js": "0.11.4"
