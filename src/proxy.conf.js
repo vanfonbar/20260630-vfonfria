@@ -1,4 +1,5 @@
-// Descomentar el siguiente código que se encuentra a continuación para su uso, remplazándolo con la url necesaria del backend
+// Descomentar el siguiente código que se encuentra a continuación para su uso,
+// remplazándolo con la url necesaria del backend
 
 /*
 const PROXY_CONFIG = [

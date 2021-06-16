@@ -142,6 +142,76 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {}
+    },
+    {
+      "files": ["*.js"],
+      "extends": [
+        "eslint:recommended"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 9
+      },
+      "env": {
+        "node": true,
+        "es6": true
+      },
+      "rules": {
+        "no-extra-parens": ["error", "all", { "nestedBinaryExpressions": false }],
+        "no-template-curly-in-string": "error",
+        "no-unsafe-optional-chaining": "error",
+        "require-atomic-updates": "error",
+        "complexity": ["error", { "max": 3 }],
+        "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
+        "eqeqeq": "error",
+        "no-caller": "error",
+        "no-else-return": "error",
+        "no-implicit-coercion": "error",
+        "no-iterator": "error",
+        "no-loop-func": "error",
+        "no-new-func": "error",
+        "no-return-assign": "error",
+        "no-sequences": "error",
+        "no-throw-literal": "error",
+        "yoda": ["error", "never", { "exceptRange": true }],
+        "no-shadow": "error",
+        "curly": "error",
+        "brace-style": "error",
+        "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true }],
+        "max-len": ["error",
+          {
+            "code": 120,
+            "ignoreUrls": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true,
+            "ignoreRegExpLiterals": true
+          }
+        ],
+        "object-curly-spacing": [
+          "error", "always", { "arraysInObjects": true }
+        ],
+        "eol-last": ["error", "always"],
+        "keyword-spacing": ["error", { "before": true }],
+        "semi-spacing": "error",
+        "semi": "off",
+        "@typescript-eslint/semi": ["error"],
+        "space-before-function-paren": ["error",
+          {
+            "anonymous": "never",
+            "asyncArrow": "always",
+            "named": "never"
+          }
+        ],
+        "arrow-body-style": 0,
+        "prefer-arrow/prefer-arrow-functions": [
+          "error",
+          {
+            "disallowPrototype": true,
+            "singleReturnOnly": false,
+            "classPropertiesAllowed": false,
+            "allowStandaloneDeclarations": true
+          }
+        ]
+      }
     }
   ]
 }

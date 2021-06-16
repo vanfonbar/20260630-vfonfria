@@ -20,7 +20,7 @@ En primer lugar deberemos instalar los siguiente elementos:
 - Idiomas: la aplicación ya viene configurada por defecto en Español, de todas maneras, podemos cambiar esta configuración e incluso añadir más idiomas.
 - Autenticación: si la aplicación requiere de login deberemos instalar el módulo de autenticación correspondiente.
 
-El siguiente comando le guía de forma intuitiva y sencilla a través de la instalación de todos los elementos anteriores: 
+El siguiente comando le guía de forma intuitiva y sencilla a través de la instalación de todos los elementos anteriores:
 
 ````sh
 npm run init:install
@@ -80,9 +80,44 @@ Las extensiones con reglas especificas actualmente son las siguientes:
 - ["*.ts"],
 - ["*.spec.ts", "*.e2e-spec.ts"]
 - ["*.html"]
+- ["*.js"]
 
 Por definición, toda regla en la sección de *.ts es aplicada a todo archivo con esta extensión.
 Además, la sección ["*.spec.ts", "*.e2e-spec.ts"] añaden la regla de no permitir fdescribe y fit en ningún test.
+La sección de ["*.js"] aplica el conjunto de reglas eslint:recommended, y añade reglas utilizadas en el conjunto de ["*.ts"] para mantener un código homogéneo.
+
+#### Configuración de rutas para lint
+
+en el archivo `angular.json`, sección lint, vienen reflejados que rutas van a ser validadas por eslint. En caso de tener código necesario en nuestro repositorio en otras rutas (como un directorio `tools`) es necesario añadirlo al siguiente array.
+
+Actualmente, y a modo de ejemplo:
+
+- Se valida todo .ts dentro de /src
+- Se valida todo .html dentro de /src
+- Se valida todo .ts dentro de /e2e
+- Se valida todo .html dentro de /e2e
+- Se valida todo .js dentro de /src
+- Se valida todo .js dentro de /scripts
+- Se valida todo .js en el nivel de root del proyecto
+
+```json
+{
+  "lint": {
+    "builder": "@angular-eslint/builder:lint",
+    "options": {
+      "lintFilePatterns": [
+        "src/**/*.ts",
+        "src/**/*.html",
+        "e2e/**/*.ts",
+        "e2e/**/*.html",
+        "src/**/*.js",
+        "scripts/**/*.js",
+        "*.js"
+      ]
+    }
+  },
+}
+```
 
 ## Construcción
 

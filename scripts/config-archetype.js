@@ -8,6 +8,7 @@ const errorAndClose = (...m) => {
   process.exit(1);
 };
 
+
 const getRelativePath = (route) => join(__dirname, route);
 
 const getFileText = (route) => readFile(route, { encoding: 'utf-8' });
@@ -50,7 +51,7 @@ async function replaceFiles(filepaths, oldText, newText) {
     filepaths.map((filepath) =>
       replaceFileContent(filepath, new RegExp(oldText, 'g'), newText)
         .then(() => filesReplaced.push(filepath))
-        .catch((e) => filesError.push(filepath))
+        .catch(() => filesError.push(filepath))
     )
   );
   log(
@@ -61,10 +62,14 @@ async function replaceFiles(filepaths, oldText, newText) {
   }
 }
 
+// TODO: put complexity to 3. 2 better
+// eslint-disable-next-line complexity
 async function main(...args) {
   const config = parseArguments(...args);
   const appName = sanitizeAppName(config.appName);
-  if (!appName) errorAndClose('Mandatory argument --appName not provided');
+  if (!appName) {
+    errorAndClose('Mandatory argument --appName not provided');
+  }
   const scope = config.scope;
   const currentAppName = config.reset ? appName : 'yourAppName';
   const newAppName = config.reset ? 'yourAppName' : appName;
@@ -93,7 +98,9 @@ async function main(...args) {
 }
 
 const getPackageName = (config, scope, appName) => {
-  if (config.reset) return '@mercadona-fwk-front/arquetype';
+  if (config.reset) {
+    return '@mercadona-fwk-front/arquetype';
+  }
   return scope ? `${scope}/${appName}` : appName;
 };
 
