@@ -1,18 +1,16 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "davidanson.vscode-markdownlint",
-
-    "msjsdiag.debugger-for-chrome",
-    "madhusuthanan.angular-unit-testing-snippets",
     "angular.ng-template",
-
-    "xyz.local-history",
-    "editorconfig.editorconfig",
-    "waderyan.gitblame",
-
     "coenraads.bracket-pair-colorizer",
-    "wayou.vscode-todo-highlight",
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "madhusuthanan.angular-unit-testing-snippets",
+    "msjsdiag.debugger-for-chrome",
     "shardulm94.trailing-spaces",
+    "vscode-icons-team.vscode-icons",
+    "waderyan.gitblame",
+    "wayou.vscode-todo-highlight",
+    "xyz.local-history"
   ]
 }
