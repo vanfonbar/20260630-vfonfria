@@ -262,6 +262,18 @@ npm run analyze:webpack-bundle
 
 Extensiones recomendadas para linteo de código, y estilos:
 
+- davidanson.vscode-markdownlint
+  - Revisa y repara normas básicas de estilo en archivos .md
+  Configuración básica en settings.json para autoFix. Revisad la documentación de la extensión para más posibilidades.
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": true
+  }
+}
+```
+
 - dbaeumer.vscode-eslint
   - Integra ESLint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts
 
@@ -275,17 +287,7 @@ Extensiones recomendadas para linteo de código, y estilos:
 }
 ```
 
-- davidanson.vscode-markdownlint
-  - Revisa y repara normas básicas de estilo en archivos .md
-  Configuración básica en settings.json para autoFix. Revisad la documentación de la extensión para más posibilidades.
-
-```json
-{
-  "editor.codeActionsOnSave": {
-    "source.fixAll.markdownlint": true
-  }
-}
-```
+Notas: se han reportado problemas con la extensión `dbaeumer.jshint`. En caso de tenerla instalada es aconsejable deshabilitarla para que no interfiera con ESLint al validar arhivos .js
 
 - editorconfig.editorconfig
   - Fuerza configuración del ide. Funciona con `.editorconfig`
@@ -324,6 +326,27 @@ trim_trailing_whitespace = false
 
 Extensiones recomendadas como utilidades para el desarrollador:
 
+- angular.ng-template
+  - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig (tsconfig.app.json), consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
+
+```json
+{
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  }
+}
+```
+
+- coenraads.bracket-pair-colorizer
+  - Identifica cada par de corchetes con diferentes colores.
+
+- madhusuthanan.angular-unit-testing-snippets
+  - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets.
+
+
+- mhutchie.git-graph
+  - Permite visualizar el repositorio como si fuera un grafo, permitiendo acciones de Git en el mismo.
+
 - msjsdiag.debugger-for-chrome
   - Permite hacer debug de código en el propio chrome. Configuración en `.vscode/launch.json` [+info](https://go.microsoft.com/fwlink/?linkid=830387)
 
@@ -342,36 +365,20 @@ Extensiones recomendadas como utilidades para el desarrollador:
 }
 ```
 
-- madhusuthanan.angular-unit-testing-snippets
-  - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets.
+- shardulm94.trailing-spaces
+  - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
 
-- angular.ng-template
-  - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig (tsconfig.app.json), consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
-
-```json
-{
-  "angularCompilerOptions": {
-    "strictTemplates": true
-  }
-}
-```
-
-- xyz.local-history
-  - Permite visualizar cambios realizados cada vez que se guardó el archivo.
+- vscode-icons-team.vscode-icons
+  - Añade iconos representativos de un proyecto Angular a los ficheros según la extensión, de esta forma, es más fácil identificarlos a simple vista.
 
 - waderyan.gitblame
   - Permite ver quien fue el autor y a qué commit pertenece cada línea.
 
-- coenraads.bracket-pair-colorizer
-  - Identifica cada par de corchetes con diferentes colores.
-
 - wayou.vscode-todo-highlight
   - Resalta el color de todo `TODO:` y `FIXME:` por defecto en el código. Con consenso del equipo, pueden definirse otras palabras clave y configurar el estilo. Repasad la documentación de la extensión en caso de ser necesario incluir más palbras clave.
 
-- shardulm94.trailing-spaces
-  - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
-
-Notas: se han reportado problemas con la extensión `dbaeumer.jshint`. En caso de tenerla instalada es aconsejable deshabilitarla para que no interfiera con ESLint al validar arhivos .js
+- xyz.local-history
+  - Permite visualizar cambios realizados cada vez que se guardó el archivo.
 
 ## Documentación
 
