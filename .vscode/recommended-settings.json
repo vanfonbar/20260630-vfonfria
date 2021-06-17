@@ -6,5 +6,8 @@
   },
   "eslint.alwaysShowStatus": true,
   "eslint.validate": [ "typescript", "javascript", "html" ],
-  "yaml.validate": true
+  "yaml.validate": true,
+  "search.exclude": {
+    "**/.history": true
+  }
 }
