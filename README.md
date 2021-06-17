@@ -59,36 +59,34 @@ npm run lint
 npm run lint:fix
 ````
 
-También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el eslint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
-
-- ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
-
 ### .eslintrc.json
 
 #### Plugins utilizados
 
 - deprecation
-  - warning si una librería o método utilizado ha sido deprecado <https://www.npmjs.com/package/eslint-plugin-deprecation>
+  - warning si una librería o método utilizado ha sido deprecado [+info](https://www.npmjs.com/package/eslint-plugin-deprecation)
 - prefer-arrow
-  - Recomienda arrow functions sobre functions <https://www.npmjs.com/package/eslint-plugin-prefer-arrow>
+  - Recomienda arrow functions sobre functions [+info](https://www.npmjs.com/package/eslint-plugin-prefer-arrow)
 
-#### Secciones en el archivo
+#### Reglas de ESLint
 
-La sección de `overrides` eslintrc está dividida por cada extensión posible.
-Las extensiones con reglas especificas actualmente son las siguientes:
+Se definen cuatro grandes grupos de archivos en los que se aplican reglas específicas de ESLint:
 
 - ["*.ts"],
 - ["*.spec.ts", "*.e2e-spec.ts"]
 - ["*.html"]
 - ["*.js"]
 
-Por definición, toda regla en la sección de *.ts es aplicada a todo archivo con esta extensión.
-Además, la sección ["*.spec.ts", "*.e2e-spec.ts"] añaden la regla de no permitir fdescribe y fit en ningún test.
-La sección de ["*.js"] aplica el conjunto de reglas eslint:recommended, y añade reglas utilizadas en el conjunto de ["*.ts"] para mantener un código homogéneo.
+Todo fichero TypeScript deberá cumplir las reglas definidas en ["*.ts"].
+Los ficheros con las extensiones ["*.spec.ts", "*.e2e-spec.ts"] cumplirán todas las reglas de ["*.ts"] y además añaden la regla de no permitir `fdescribe` y `fit` en ningún test.
+Los ficheros de la sección de ["*.js"] aplican el conjunto de reglas eslint:recommended, y añade reglas utilizadas en el conjunto de ["*.ts"] para mantener un código homogéneo.
+Se definen reglas específicas de HTML para los ficheros de la sección ["*.html"].
+
+Para más información acerca de las reglas de ESLint definidas en el FWKA, puedes pulsar [aquí](https://mus.mercadona.com/39eafa15b/v/11842/p/16ad9a-ficheros-de-configuracin/b/08ae6d/t/07d243)
 
 #### Configuración de rutas para lint
 
-en el archivo `angular.json`, sección lint, vienen reflejados que rutas van a ser validadas por eslint. En caso de tener código necesario en nuestro repositorio en otras rutas (como un directorio `tools`) es necesario añadirlo al siguiente array.
+En el archivo `angular.json`, sección lint, vienen reflejados que rutas van a ser validadas por ESLint. En caso de tener código necesario en nuestro repositorio en otras rutas (como un directorio `tools`) es necesario añadirlo al siguiente array.
 
 Actualmente, y a modo de ejemplo:
 
@@ -119,9 +117,9 @@ Actualmente, y a modo de ejemplo:
 }
 ```
 
-En caso de necesitar omitir el proceso de eslint en archivos o directorios completos, se recomienda el uso de `.eslintignore`.
+En caso de necesitar omitir el proceso de ESLint en archivos o directorios completos, se recomienda el uso de `.eslintignore`.
 Por defecto viene configurada la excepción de lint sobre el directorio donde se espera tener la api autogenerada por swagger.
-Utilizad el .eslintignore únicamente para excluir de eslint los archivos autogenerados en el proyecto.
+Utilizad el `.eslintignore` únicamente para excluir de ESLint los archivos autogenerados en el proyecto.
 
 ```bash
 # See https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file
@@ -130,6 +128,10 @@ Utilizad el .eslintignore únicamente para excluir de eslint los archivos autoge
 # API autogenerada
 /src/app/api
 ```
+
+También es recomendable que todo desarrollador introduzca en su settings del repositorio `.vscode/settings.json` las reglas contenidas en `.vscode/recommended-settings.json`. Estas reglas son una serie de reglas básicas para forzar el ESLint mientras se realiza el trabajo en el ide. Para el funcionamiento del ide con estas reglas es necesario tener los siguientes plugins instalados:
+
+- ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
 
 ## Construcción
 
@@ -213,7 +215,7 @@ escritos etc.
 npm run lint
 ````
 
-Ejecuta la revisión de eslint y trata de solucionar de forma automática todo problema detectado.
+Ejecuta la revisión de ESLint y trata de solucionar de forma automática todo problema detectado.
 
 ````sh
 npm run lint:fix
@@ -258,10 +260,10 @@ npm run analyze:webpack-bundle
 
 ## Extensiones recomendadas en VSCode
 
-Extensiones recomendadas para linteo de código, y estilo:
+Extensiones recomendadas para linteo de código, y estilos:
 
 - dbaeumer.vscode-eslint
-  - Integra Eslint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts
+  - Integra ESLint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts
 
 ```json
 {
@@ -287,7 +289,7 @@ Extensiones recomendadas para linteo de código, y estilo:
 
 - editorconfig.editorconfig
   - Fuerza configuración del ide. Funciona con `.editorconfig`
-  Configuración básica en `.editorconfig`. No modificar este archivo sin consenso por parte de todo el equipo. <https://editorconfig.org>
+  Configuración básica en `.editorconfig`. No modificar este archivo sin consenso por parte de todo el equipo [+info](https://editorconfig.org)
 
 ```bash
 # Editor configuration, see https://editorconfig.org
@@ -312,7 +314,7 @@ trim_trailing_whitespace = false
 ```
 
 - redhat.vscode-yaml
-  - En caso de utilizar archivos yaml en el proyecto, es altamente recomendable instalar un parseador de yml.
+  - En caso de utilizar archivos yaml en el proyecto, es altamente recomendable instalar un parseador de yaml.
 
 ```json
 {
@@ -323,7 +325,7 @@ trim_trailing_whitespace = false
 Extensiones recomendadas como utilidades para el desarrollador:
 
 - msjsdiag.debugger-for-chrome
-  - Permite hacer debug de código en el propio chrome. Configuración en `.vscode/launch.json`. Para más información, visitar la página de la extensión o <https://go.microsoft.com/fwlink/?linkid=830387>
+  - Permite hacer debug de código en el propio chrome. Configuración en `.vscode/launch.json` [+info](https://go.microsoft.com/fwlink/?linkid=830387)
 
 ```json
 {
@@ -344,7 +346,7 @@ Extensiones recomendadas como utilidades para el desarrollador:
   - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets.
 
 - angular.ng-template
-  - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig, consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
+  - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig (tsconfig.app.json), consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
 
 ```json
 {
@@ -355,10 +357,10 @@ Extensiones recomendadas como utilidades para el desarrollador:
 ```
 
 - xyz.local-history
-  - Permite visualizar cambios realizados cada vez que se guardó el archivo
+  - Permite visualizar cambios realizados cada vez que se guardó el archivo.
 
 - waderyan.gitblame
-  - Permite ver quien fue el autor y a que commit pertenece cada línea.
+  - Permite ver quien fue el autor y a qué commit pertenece cada línea.
 
 - coenraads.bracket-pair-colorizer
   - Identifica cada par de corchetes con diferentes colores.
@@ -369,7 +371,7 @@ Extensiones recomendadas como utilidades para el desarrollador:
 - shardulm94.trailing-spaces
   - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
 
-notas: se han reportado problemas con la extensión `dbaeumer.jshint`. En caso de tenerla instalada es aconsejable deshabilitarla para que no interfiera con eslint al validar arhivos .js
+Notas: se han reportado problemas con la extensión `dbaeumer.jshint`. En caso de tenerla instalada es aconsejable deshabilitarla para que no interfiera con ESLint al validar arhivos .js
 
 ## Documentación
 
