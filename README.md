@@ -256,6 +256,121 @@ npm run analyze:webpack-bundle
 - Comunicación contra el backend mediante el fichero proxy.conf.js (En modo desarrollo)
 - Definición swagger para la generación de servicios y modelos, dentro de la carpeta swagger se encuentran los ficheros necesarios
 
+## Extensiones recomendadas en VSCode
+
+Extensiones recomendadas para linteo de código, y estilo:
+
+- dbaeumer.vscode-eslint
+  - Integra Eslint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [ "typescript", "javascript", "html" ]
+}
+```
+
+- davidanson.vscode-markdownlint
+  - Revisa y repara normas básicas de estilo en archivos .md
+  Configuración básica en settings.json para autoFix. Revisad la documentación de la extensión para más posibilidades.
+
+```json
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": true
+  }
+}
+```
+
+- editorconfig.editorconfig
+  - Fuerza configuración del ide. Funciona con `.editorconfig`
+  Configuración básica en `.editorconfig`. No modificar este archivo sin consenso por parte de todo el equipo. <https://editorconfig.org>
+
+```bash
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+
+[*.js]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+```
+
+- redhat.vscode-yaml
+  - En caso de utilizar archivos yaml en el proyecto, es altamente recomendable instalar un parseador de yml.
+
+```json
+{
+  "yaml.validate": true
+}
+```
+
+Extensiones recomendadas como utilidades para el desarrollador:
+
+- msjsdiag.debugger-for-chrome
+  - Permite hacer debug de código en el propio chrome. Configuración en `.vscode/launch.json`. Para más información, visitar la página de la extensión o <https://go.microsoft.com/fwlink/?linkid=830387>
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "type": "chrome",
+          "request": "launch",
+          "name": "Launch Chrome against localhost",
+          "url": "http://localhost:4200",
+          "webRoot": "${workspaceFolder}"
+      }
+  ]
+}
+```
+
+- madhusuthanan.angular-unit-testing-snippets
+  - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets.
+
+- angular.ng-template
+  - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig, consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
+
+```json
+{
+  "angularCompilerOptions": {
+    "strictTemplates": true
+  }
+}
+```
+
+- xyz.local-history
+  - Permite visualizar cambios realizados cada vez que se guardó el archivo
+
+- waderyan.gitblame
+  - Permite ver quien fue el autor y a que commit pertenece cada línea.
+
+- coenraads.bracket-pair-colorizer
+  - Identifica cada par de corchetes con diferentes colores.
+
+- wayou.vscode-todo-highlight
+  - Resalta el color de todo `TODO:` y `FIXME:` por defecto en el código. Con consenso del equipo, pueden definirse otras palabras clave y configurar el estilo. Repasad la documentación de la extensión en caso de ser necesario incluir más palbras clave.
+
+- shardulm94.trailing-spaces
+  - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
+
+notas: se han reportado problemas con la extensión `dbaeumer.jshint`. En caso de tenerla instalada es aconsejable deshabilitarla para que no interfiera con eslint al validar arhivos .js
+
 ## Documentación
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
