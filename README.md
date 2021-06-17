@@ -119,6 +119,18 @@ Actualmente, y a modo de ejemplo:
 }
 ```
 
+En caso de necesitar omitir el proceso de eslint en archivos o directorios completos, se recomienda el uso de `.eslintignore`.
+Por defecto viene configurada la excepción de lint sobre el directorio donde se espera tener la api autogenerada por swagger.
+Utilizad el .eslintignore únicamente para excluir de eslint los archivos autogenerados en el proyecto.
+
+```bash
+# See https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file
+# for more about ignoring files and paths on eslint
+
+# API autogenerada
+/src/app/api
+```
+
 ## Construcción
 
 ````sh
