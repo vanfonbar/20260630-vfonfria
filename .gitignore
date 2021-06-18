@@ -29,6 +29,9 @@ speed-measure-plugin*.json
 !.vscode/recommended-launch.json
 .history
 
+# documentation
+documentation
+
 # misc
 /.sass-cache
 /connect.lock

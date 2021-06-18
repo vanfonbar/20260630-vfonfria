@@ -227,7 +227,7 @@ Ejecuta la revisión de ESLint y trata de solucionar de forma automática todo p
 npm run lint:fix
 ````
 
-Ejecuta la generación de la documentación.
+Ejecuta la generación de la documentación. El fichero de configuración `tsconfig.doc.json` define qué ficheros se incluyen en la documentación. 
 
 ````sh
 npm run generate:doc

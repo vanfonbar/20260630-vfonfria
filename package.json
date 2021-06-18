@@ -29,7 +29,7 @@
     "audit": "npm audit --production",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "generate:doc": "compodoc -p tsconfig.json",
+    "generate:doc": "compodoc -p tsconfig.doc.json",
     "generate:api": "ng-swagger-gen --config swagger/swagger.config.json && npm run lint:fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json"
