@@ -26,7 +26,7 @@
     "test:coverage": "ng test --watch=false --code-coverage=true --browsers Chrome",
     "test:ci": "ng test --karma-config=karma-ci.conf.js --no-progress --code-coverage=true --watch=false --browsers ChromeHeadlessCI",
     "e2e": "ng e2e",
-    "audit": "npm audit --production",
+    "audit": "npm audit",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "generate:doc": "compodoc -p tsconfig.doc.json",
