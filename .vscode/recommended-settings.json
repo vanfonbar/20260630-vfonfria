@@ -8,6 +8,9 @@
   "eslint.validate": [ "typescript", "javascript", "html" ],
   "yaml.validate": true,
   "search.exclude": {
-    "**/.history": true
+    "**/.history": true,
+    "**/documentation": true,
+    "**/node_modules": true,
+    "**/coverage": true
   }
 }
