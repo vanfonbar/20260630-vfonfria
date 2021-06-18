@@ -165,6 +165,12 @@ Inicia la aplicación en modo reemplazo de módulo caliente.
 npm run start:hmr
 ````
 
+Visualiza la documentación generada previamente con `npm run generate:doc`, levanta un servidor para su visualización.
+
+````sh
+npm run start:doc
+````
+
 Compila la aplicación.
 
 ````sh

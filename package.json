@@ -18,6 +18,7 @@
     "start": "ng serve",
     "start:pro": "ng serve --prod",
     "start:hmr": "ng serve --hmr",
+    "start:doc": "compodoc -s",
     "build": "ng build",
     "build:pro": "ng build --prod --source-map=true --stats-json",
     "test": "ng test --watch --code-coverage=true --browsers Chrome",
@@ -29,7 +30,6 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "generate:doc": "compodoc -p tsconfig.json",
-    "start:doc": "compodoc -s",
     "generate:api": "ng-swagger-gen --config swagger/swagger.config.json && npm run lint:fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json"
