@@ -15,7 +15,7 @@ import { MPageErrorModule } from '@mercadona-fwk-front/core-ui/page-error';
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
-    MErrorHandlerModule,
+    MErrorHandlerModule.forRoot(),
     MTranslateModule.forRoot(APP_CONFIG.language),
     MLoggerModule.forRoot(),
     MPlatformModule.forRoot({
@@ -27,4 +27,4 @@ import { MPageErrorModule } from '@mercadona-fwk-front/core-ui/page-error';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
