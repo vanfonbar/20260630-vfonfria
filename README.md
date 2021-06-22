@@ -52,14 +52,17 @@ npm run start:hmr
 
 Disponemos de dos scripts en el package.json para poder validar que el linteado es correcto y cumple todas las reglas definidas a nivel de clean code: eslint.
 
-Las reglas de eslint están definidas en el archivo `.eslintrc.json`.
+A su vez, la configuración de eslint se realiza gracias a dos archivos de configuración.
+
+- Las reglas de eslint del proyecto están definidas en el archivo `.eslintrc.js`. Las reglas definidas en este archivo pueden sobreescribir, o implementar nuevas reglas sobre `.eslint-config-basic.js`
+- El conjunto de reglas de eslint recomendadas, basadas en angular:recommended y eslint:recommended para archivos .ts y .js están definidas en el archivo `.eslint-config-basic.js`. Este último archivo no ha de editarse.
 
 ````bash
 npm run lint
 npm run lint:fix
 ````
 
-### .eslintrc.json
+### .eslintrc.js
 
 #### Plugins utilizados
 
@@ -81,6 +84,62 @@ Todo fichero TypeScript deberá cumplir las reglas definidas en ["*.ts"].
 Los ficheros con las extensiones ["*.spec.ts", "*.e2e-spec.ts"] cumplirán todas las reglas de ["*.ts"] y además añaden la regla de no permitir `fdescribe` y `fit` en ningún test.
 Los ficheros de la sección de ["*.js"] aplican el conjunto de reglas eslint:recommended, y añade reglas utilizadas en el conjunto de ["*.ts"] para mantener un código homogéneo.
 Se definen reglas específicas de HTML para los ficheros de la sección ["*.html"].
+
+Por defecto, `.eslintrc.js` extiende `.eslintrc-config-basic.js`. Podemos sobreescribir el comportamiento de las reglas de `.eslintrc-config-basic.js` o imponer nuevas editando la sección correspondiente en `.eslintrc.js`. Pero nunca, editar o desactivar el extend de `.eslintrc-config-basic.js`
+
+```js
+{
+      'files': ['*.ts'],
+      'parserOptions': {
+        'ecmaVersion': 2020,
+        'sourceType': 'module',
+        'project': [
+          'tsconfig.json',
+          'e2e/tsconfig.json'
+        ],
+        'createDefaultProgram': true
+      },
+      'extends': [
+        './.eslint-config-basic.js'
+      ],
+      'rules': {
+        ...
+      }
+    },
+```
+
+Si por ejemplo utilizamos underscore-dangle en nuestros archivos .ts, tendremos por defecto un error
+
+```ts
+const _config = 'value';
+// error  Unexpected dangling '_' in '_config'          no-underscore-dangle
+```
+
+Para habilitar el uso de no-underscore-dangle en archivos .ts, aunque su uso no esté recomendado, deberemos de añadir una regla a `.eslintrc.js`
+
+```js
+{
+      'files': ['*.ts'],
+      'parserOptions': {
+        'ecmaVersion': 2020,
+        'sourceType': 'module',
+        'project': [
+          'tsconfig.json',
+          'e2e/tsconfig.json'
+        ],
+        'createDefaultProgram': true
+      },
+      'extends': [
+        './.eslint-config-basic.js'
+      ],
+      'rules': {
+        'no-underscore-dangle': 'off',
+        ...
+      }
+    },
+```
+
+De esta forma sobreescribimos el comportamiento de la regla no-underscore-dangle, que viene de './.eslint-config-basic.js', que a su vez es parte de eslint:recommended
 
 Para más información acerca de las reglas de ESLint definidas en el FWKA, puedes pulsar [aquí](https://mus.mercadona.com/39eafa15b/v/11842/p/16ad9a-ficheros-de-configuracin/b/08ae6d/t/07d243)
 

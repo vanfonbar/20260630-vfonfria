@@ -8,7 +8,6 @@ const errorAndClose = (...m) => {
   process.exit(1);
 };
 
-
 const getRelativePath = (route) => join(__dirname, route);
 
 const getFileText = (route) => readFile(route, { encoding: 'utf-8' });
