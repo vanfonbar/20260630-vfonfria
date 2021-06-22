@@ -38,6 +38,9 @@ module.exports = {
             ]
           }
         ],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+
         // Best Practice
         'complexity': ['error', { 'max': 3 }],
         'consistent-return': ['error', { 'treatUndefinedAsUnspecified': true }],
@@ -52,8 +55,8 @@ module.exports = {
         'no-sequences': 'error',
         'no-throw-literal': 'error',
         'yoda': ['error', 'never', { 'exceptRange': true }],
-        'no-shadow': 'error',
         'curly': 'error',
+
         // Stylistic Issues
         '@angular-eslint/component-selector': [
           'error',
@@ -172,6 +175,7 @@ module.exports = {
         'no-template-curly-in-string': 'error',
         'no-unsafe-optional-chaining': 'error',
         'require-atomic-updates': 'error',
+
         // Best Practice
         'complexity': ['error', { 'max': 3 }],
         'consistent-return': ['error', { 'treatUndefinedAsUnspecified': true }],
@@ -188,6 +192,7 @@ module.exports = {
         'yoda': ['error', 'never', { 'exceptRange': true }],
         'no-shadow': 'error',
         'curly': 'error',
+
         // Stylistic Issues
         'brace-style': 'error',
         'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
