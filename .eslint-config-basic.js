@@ -11,7 +11,12 @@ module.exports = {
       ],
       'rules': {
         // Possible Errors
-        'no-extra-parens': ['error', 'all', { 'nestedBinaryExpressions': false }],
+        'no-extra-parens': 'off',
+        '@typescript-eslint/no-extra-parens': [
+          'error',
+          'all',
+          { 'nestedBinaryExpressions': false, 'returnAssign': false }
+        ],
         'no-template-curly-in-string': 'error',
         'no-unsafe-optional-chaining': 'error',
         'require-atomic-updates': 'error',
