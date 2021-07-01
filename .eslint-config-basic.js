@@ -43,8 +43,8 @@ module.exports = {
             ]
           }
         ],
-        "no-shadow": "off",
-        "@typescript-eslint/no-shadow": "error",
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': 'error',
 
         // Best Practice
         'complexity': ['error', { 'max': 3 }],
