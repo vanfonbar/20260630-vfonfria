@@ -85,7 +85,7 @@ async function main(...args) {
   const packageContent = await getFileJson(packagePath);
   const newPackageName = getPackageName(config, scope, appName);
   const newVersion = config.reset
-    ? packageContent.dependencies['@mercadona-fwk-front/core']
+    ? packageContent.dependencies['@mercadona/core']
     : '0.0.0';
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
@@ -98,7 +98,7 @@ async function main(...args) {
 
 const getPackageName = (config, scope, appName) => {
   if (config.reset) {
-    return '@mercadona-fwk-front/arquetype';
+    return '@mercadona/arquetype';
   }
   return scope ? `${scope}/${appName}` : appName;
 };

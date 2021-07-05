@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MPageNotFoundComponent } from '@mercadona-fwk-front/core-ui/page-not-found';
+import { MPageNotFoundComponent } from '@mercadona/core-ui/page-not-found';
 
 const routes: Routes = [
   {

@@ -1,4 +1,4 @@
-import { MEnviroment } from '@mercadona-fwk-front/core/utils/environment';
+import { MEnviroment } from '@mercadona/core/utils/environment';
 
 /**
  * Define here local environment variables

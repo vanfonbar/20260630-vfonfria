@@ -27,18 +27,18 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "node_modules/@mercadona-fwk-front/styles/fonts",
+                "input": "node_modules/@mercadona/styles/fonts",
                 "output": "/assets/fonts/"
               },
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "node_modules/@mercadona-fwk-front/styles/sass/reset.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/bootstrap-grid.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/fonts/font-face.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/themes/menta.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/elements.scss",
+              "node_modules/@mercadona/styles/sass/reset.scss",
+              "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",
+              "node_modules/@mercadona/styles/sass/fonts/font-face.scss",
+              "node_modules/@mercadona/styles/sass/themes/menta.scss",
+              "node_modules/@mercadona/styles/sass/elements.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
             ],
@@ -98,11 +98,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@mercadona-fwk-front/styles/sass/reset.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/bootstrap-grid.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/fonts/font-face.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/themes/menta.scss",
-              "node_modules/@mercadona-fwk-front/styles/sass/elements.scss",
+              "node_modules/@mercadona/styles/sass/reset.scss",
+              "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",
+              "node_modules/@mercadona/styles/sass/fonts/font-face.scss",
+              "node_modules/@mercadona/styles/sass/themes/menta.scss",
+              "node_modules/@mercadona/styles/sass/elements.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
             ],

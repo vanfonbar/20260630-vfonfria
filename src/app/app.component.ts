@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MLoggerService } from '@mercadona-fwk-front/core/logger';
+import { MLoggerService } from '@mercadona/core/logger';
 
 @Component({
   selector: 'app-root',
