@@ -22,6 +22,8 @@
     "start:doc": "compodoc -s",
     "build": "ng build",
     "build:pro": "ng build --configuration production --source-map=true --stats-json",
+    "build:doc": "compodoc -p tsconfig.doc.json",
+    "build:api": "ng-swagger-gen --config swagger/swagger.config.json && npm run lint:fix",
     "test": "ng test --watch --code-coverage=true --browsers Chrome",
     "test:safari": "ng test --watch --code-coverage=true --browsers Safari",
     "test:coverage": "ng test --watch=false --code-coverage=true --browsers Chrome",
@@ -30,8 +32,6 @@
     "audit": "npm audit",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "generate:doc": "compodoc -p tsconfig.doc.json",
-    "generate:api": "ng-swagger-gen --config swagger/swagger.config.json && npm run lint:fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json"
   },
