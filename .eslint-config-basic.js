@@ -27,6 +27,7 @@ module.exports = {
             'allowShortCircuit': true
           }
         ],
+        'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'error',
         'no-duplicate-imports': 'error',
         'no-dupe-class-members': 'off',
