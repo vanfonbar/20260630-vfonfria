@@ -32,7 +32,7 @@ const YOUR_APP_NAME_FILES = [
   'angular.json',
   'src/index.html',
   'src/app/app-config.constants.ts',
-  'src/environments/environment.ts'
+  'src/environments/environment.ts',
 ].map((rootPath) => getRelativePath('../' + rootPath));
 
 const FILES_TO_AUTODESTROY = ['scripts/config-archetype.js'].map((rootPath) =>
@@ -66,9 +66,11 @@ async function replaceFiles(filepaths, oldText, newText) {
 async function main(...args) {
   const config = parseArguments(...args);
   const appName = sanitizeAppName(config.appName);
+  const isCPDDeployed = 'isCPDDeployed' in config;
   if (!appName) {
     errorAndClose('Mandatory argument --appName not provided');
   }
+
   const scope = config.scope;
   const currentAppName = config.reset ? appName : 'yourAppName';
   const newAppName = config.reset ? 'yourAppName' : appName;
@@ -89,12 +91,24 @@ async function main(...args) {
     : '0.0.0';
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
-  await writeFile(packagePath, JSON.stringify(packageContent, null, 2) + '\n', {
-    encoding: 'utf-8'
-  });
-
+  await writeAppFile(packagePath, packageContent);
+  await setBasehref(appName, isCPDDeployed);
   autoDestroyConfArchetype();
 }
+
+const writeAppFile = async (filePath, fileContent) => {
+  await writeFile(filePath, JSON.stringify(fileContent, null, 2) + '\n', {
+    encoding: 'utf-8',
+  });
+};
+
+const setBasehref = async (appName, isCPDDeployed) => {
+  const angularPath = getRelativePath('../angular.json');
+  const angularContent = await getFileJson(angularPath);
+  const baseHref = isCPDDeployed ? `/${appName}/ang/` : '/';
+  angularContent.projects[appName].architect.build.options.baseHref = baseHref;
+  await writeAppFile(angularPath, angularContent);
+};
 
 const getPackageName = (config, scope, appName) => {
   if (config.reset) {
