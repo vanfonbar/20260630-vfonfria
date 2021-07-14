@@ -286,7 +286,7 @@ Ejecuta la revisión de ESLint y trata de solucionar de forma automática todo p
 npm run lint:fix
 ````
 
-Ejecuta la generación de la documentación. El fichero de configuración `tsconfig.doc.json` define qué ficheros se incluyen en la documentación. 
+Ejecuta la generación de la documentación. El fichero de configuración `tsconfig.doc.json` define qué ficheros se incluyen en la documentación.
 
 ````sh
 npm run generate:doc
@@ -325,7 +325,9 @@ npm run analyze:webpack-bundle
 
 ## Extensiones recomendadas en VSCode
 
-Extensiones recomendadas para linteo de código, y estilos:
+En el archivo `.vscode/recommended-settings.json` podrás encontrar la configuración mínima recomendada para las extensiones listadas. Cada desarrollador deberá de rellenar su `.vscode/settings.json` dependiendo de las extensiones instaladas. Este último archivo por defecto no entra en el repositorio, pero puede ser editado en caso de llegar a un consenso en el equipo editando el `.gitignore` del repositorio.
+
+###  Extensiones recomendadas para linteo de código, y estilos
 
 - davidanson.vscode-markdownlint
   - Revisa y repara normas básicas de estilo en archivos .md
@@ -340,7 +342,7 @@ Extensiones recomendadas para linteo de código, y estilos:
 ```
 
 - dbaeumer.vscode-eslint
-  - Integra ESLint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts
+  - Integra ESLint en el IDE validando en tiempo real el código sobre las reglas definidas en todo archivo .ts y .js. Automáticamente realizará la validación sobre el conjunto de reglas definidas en el repositorio.
 
 ```json
 {
@@ -389,7 +391,54 @@ trim_trailing_whitespace = false
 }
 ```
 
-Extensiones recomendadas como utilidades para el desarrollador:
+Se puede configurar en settings que reglas de validación van a utilizarse. Se adjunta algunas de ellas, es recomendable visitar la documentación de la extensión :
+
+```json
+{
+  "yaml.validate": true,
+  "yaml.format.singleQuote": true,
+  "yaml.format.bracketSpacing": true,
+  "yaml.format.proseWrap": "preserve", // always | never
+  "yaml.format.printWidth": 80, // 120, 140...
+  // ...
+}
+```
+
+En caso de querer definir schemas, para validar la configuración contra un conjunto de valores posibles, se recomienda revisar la sección `Using yaml.schemas settings` en el readme <https://github.com/redhat-developer/yaml-language-server/tree/master#using-yamlschemas-settings>
+
+A falta de mejor documentación de todas las opciones, es recomendable revisar los handlers `src/languageserver/handlers/`
+<https://github.com/redhat-developer/yaml-language-server/tree/master/src/languageserver/handlers>
+
+- shardulm94.trailing-spaces
+  - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
+
+- coenraads.bracket-pair-colorizer
+  - Identifica cada par de corchetes con diferentes colores.
+
+- voldemortensen.rainbow-tags
+  - Pinta de colores los diferentes pares de etiquetas en archivos html
+
+- oderwat.indent-rainbow
+  - Identifica todas las identaciones y las pinta de diferentes colores para agilizar en la lectura. Se puede configurar para definir en que archivos queremos que funcione
+
+```json
+{
+  "indentRainbow.includedLanguages": ["typescript", "html"],
+  "indentRainbow.excludedLanguages": ["plaintext"],
+  "indentRainbow.updateDelay": 100
+}
+```
+
+###  Extensiones recomendadas como utilidades para el desarrollador en proyectos TS y node
+
+- vscode-icons-team.vscode-icons
+  - Añade iconos representativos de un proyecto Angular a los ficheros según la extensión, de esta forma, es más fácil identificarlos a simple vista.
+
+- wayou.vscode-todo-highlight
+  - Resalta el color de todo `TODO:` y `FIXME:` por defecto en el código. Con consenso del equipo, pueden definirse otras palabras clave y configurar el estilo. Repasad la documentación de la extensión en caso de ser necesario incluir más palbras clave.
+
+- 42crunch.vscode-openapi
+  - Añade soporte para la especificación de OpenApi <https://github.com/OAI/OpenAPI-Specification>
 
 - angular.ng-template
   - Permite validación en tiempo real en las templates de angular. Exige configuración en el tsconfig (tsconfig.app.json), consenso en el equipo, y configuración específica en el proyecto. Recomendada pero no configurada en archetype. Para más información: <https://angular.io/guide/template-typecheck> <https://angular.io/guide/typescript-configuration> <https://angular.io/guide/angular-compiler-options>
@@ -402,15 +451,83 @@ Extensiones recomendadas como utilidades para el desarrollador:
 }
 ```
 
-- coenraads.bracket-pair-colorizer
-  - Identifica cada par de corchetes con diferentes colores.
-
 - madhusuthanan.angular-unit-testing-snippets
-  - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets.
+  - Conjunto de snippets para testeo unitario en angular con jasmine. Recomendable visitar la sección del snippet en VSCode para conocer los snippets. Muchos de estos atajos utilizan `async` de `@angular/core/testing`, el cual está deprecado y es necesario editarlo a `waitForAsync`. Algunos de sus atajos:
+    - jat-component-basic: Unfold theunit test setup for component (Runs in isolation)
+    - jat-component-with-service-mock: Component unit test setup with a sample mock service (Runs in isolation)
+    - jat-mock-observable-success-service: Mock service which returns an observable, to use in useClass provider
+    - jat-suite: Generates a jasmine describe block (Test suite)
+    - jat-spec: Generates an it block (Test spec)
+    - jat-use-value-provider: Angular useValue provider to inject mock value as dependency instead of an injection token or injected service.
+    - jat-use-class-provider: Angular useClass provider to inject a mock class as dependency instead of an injection token or injected service.
+    - jat-mock-router: Mock Class to use as a mock for the injected Router class (Has minimal methods like navigate, navigateByUrl etc. These can be extended)
+    - jat-http-success-spec: Spec that makes use of angular HttpTestingController to test http requests
+    - jat-http-error-spec: Spec that makes use of angular HttpTestingController to test http requests that may return error
+    jat-dispatch-event-spec: Spec that dispatches an event to simulate user interactions in unit tests
+    - jat-before-each: Generates an empty before each block
+    - jat-before-each-wait-for-async: Creates an asynchronous before each block
+    - jat-service-before-each : Creates a before each block for testing your service
 
+ej:
 
-- mhutchie.git-graph
-  - Permite visualizar el repositorio como si fuera un grafo, permitiendo acciones de Git en el mismo.
+```ts
+
+jat-before-e // tab
+
+beforeEach(() => {
+
+});
+
+jat-s // tab
+it('should ', () => {
+
+});
+
+```
+
+- mikael.angular-beastcode
+  - Conjunto de snippets de ts y html en angular. Recomendable visitar la sección del snippet en VSCode para conocer los snippets. Es posible ver recomendaciones de los snippets posibles con la siguiente configuración. Es recomendable acceder a la ficha de la extensión para conocer todos los plugins útiles en el proyecto.
+  - Grupos de sus atajos:
+    - ng-: Angular Snippets
+    - fx-: Angular Flex Layout Snippets
+    - ngrx-: Angular NgRx Snippets
+    - ngxs-: Angular Ngxs Snippets
+    - m-: Angular Material Design Snippets
+    - rx-: RxJS Snippets for both TypeScript and JavaScript
+    - sw-: Service Workers Snippets
+    - t-: Test Snippets
+    - e-: Test Expect Snippets
+    - pwa-: Progressive Web Applications Snippets
+  - Algunos de sus atajos:
+    - ng-for-trackBy: `*ngFor="let item of items; trackBy:item.id"`
+    - e-ntbf: `expect().not.toBeFalsy();`
+    - e-ntbt: `expect().not.toBeTruthy();`
+    - e-thbc: `expect().toHaveBeenCalled();`
+    - m-button: `<button mat-button>text</button>`
+    - m-chip: `<mat-chip>text</mat-chip>`
+    - ng-afterViewInit: `ngAfterViewInit(): void { }`
+    - ng-button: `<button (click)="onClick()">name</button>`
+    - ng-debug: `<pre>{{ obj | json }}</pre>`
+    - ng-if-else: `<ng-container *ngIf="expression; else elseTemplate"></ng-container><ng-template #elseTemplate></ng-template>`
+    - ng-pipe-lowercase: `{{ variable | lowercase }}`
+    - ng-router-link: `<a [routerLink]="[ '/path', routeParam ]">name</a>`
+    - ng-switch: `<span [ngSwitch]=""><p *ngSwitchCase="true"></p><p *ngSwitchCase="false"></p><p *ngSwitchDefault></p></span>`
+    - ng-template: `<ng-template #name></ng-template>`
+    - t-afterAll: `afterAll(() => {});`
+    - t-afterEach: `afterEach(() => {});`
+    - t-beforeAll: `beforeAll(() => {});`
+    - t-beforeEach: `beforeEach(() => {});`
+    - t-describe-it: `describe('Description', () => {it('Test', () => {expect().toBe();});});`
+    - t-ite: `it('Test', () => {expect().toBe();});`
+
+- zignd.html-css-class-completion
+  - Autocompletado para las definiciones de css
+
+```json
+{
+  "html-css-class-completion.HTMLLanguages": ["html"]
+}
+```
 
 - msjsdiag.debugger-for-chrome
   - Permite hacer debug de código en el propio chrome. Configuración en `.vscode/launch.json` [+info](https://go.microsoft.com/fwlink/?linkid=830387)
@@ -430,20 +547,43 @@ Extensiones recomendadas como utilidades para el desarrollador:
 }
 ```
 
-- shardulm94.trailing-spaces
-  - Resalta todo trailing space que se deje en el código, y por defecto los elimina al guardar el archivo.
+- stringham.move-ts
+  - Permite mover archivos ts actualizando sus imports dentro del espacio de trabajo. En caso de querer utilizarlo, es recomendable marcarle un nuevo atajo de teclado en `keybindings.json`:
 
-- vscode-icons-team.vscode-icons
-  - Añade iconos representativos de un proyecto Angular a los ficheros según la extensión, de esta forma, es más fácil identificarlos a simple vista.
+```json
+{
+  "key": "ctrl+alt+m",
+  "command": "move-ts.move",
+  "when": "editorTextFocus"
+}
+```
 
-- waderyan.gitblame
-  - Permite ver quien fue el autor y a qué commit pertenece cada línea.
+- formulahendry.auto-rename-tag
+  - Permite autorenombrar el par de etiquetas HTML o XML al editarlas
 
-- wayou.vscode-todo-highlight
-  - Resalta el color de todo `TODO:` y `FIXME:` por defecto en el código. Con consenso del equipo, pueden definirse otras palabras clave y configurar el estilo. Repasad la documentación de la extensión en caso de ser necesario incluir más palbras clave.
+```json
+{
+    "auto-rename-tag.activationOnLanguage": ["html", "xml"]
+}
+```
+
+###  Extensiones recomendadas como utilidades para gestion de git y historia de cambios
 
 - xyz.local-history
-  - Permite visualizar cambios realizados cada vez que se guardó el archivo.
+  - Permite visualizar cambios realizados cada vez que se guardó el archivo en local. Se recomienda su instalación siempre.
+
+- mhutchie.git-graph
+  - Permite visualizar el repositorio como si fuera un grafo, permitiendo acciones de Git en el mismo.
+
+- eamodio.gitlens
+  - Permite realizar búsquedas en el log de git, visualizar el grafo, ver diferencias entre versiones de archivos, comprar versiones, ver el autor y a que comit pertenece cada línea en la barra de status o al hacer hover etc. En caso de tener instalada esta extensión, mhutchie.git-graph, donjayamanne.githistory y waderyan.gitblame pueden omitirse al proporcionar información redundante. Es necesario tener conocimientos avanzados de git para poder utilizar todas sus funcionalidades
+
+- pflannery.vscode-versionlens
+  - Permite visualizar en los archivos package.json cual es la última versión disponible de cada librería instalada. Es necesario pulsar el botón `V` que aparece en la esquina superior derecha de la pestaña del archivo
+
+- vivaxy.vscode-conventional-commits
+  - Fuerza el estilo de los commits al formato de  Conventional Commits <https://www.conventionalcommits.org/en/v1.0.0/>. Hace uso de la configuración del repositorio <https://commitlint.js.org/#/reference-configuration> `.commitlintrc.json`. Es necesario seguir las recomendaciones de mercadona en todo repositorio para el subject de los commits: <https://confluence.mercadona.com/display/GCCICDN/Referencia+para+desarrolladores+de+aplicaciones+CNA>.
+  En caso de hacer commit por bash la misma configuración será exigida por husky `.huskyrc`
 
 ## Documentación
 

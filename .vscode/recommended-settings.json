@@ -12,5 +12,13 @@
     "**/documentation": true,
     "**/node_modules": true,
     "**/coverage": true
-  }
+  },
+  "indentRainbow.includedLanguages": ["typescript", "html"],
+  "indentRainbow.excludedLanguages": ["plaintext"],
+  "indentRainbow.updateDelay": 100,
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.snippetSuggestions": "top",
+  "yaml.format.printWidth": 80,
+  "auto-rename-tag.activationOnLanguage": ["html", "xml"],
+  "html-css-class-completion.HTMLLanguages":["html"]
 }

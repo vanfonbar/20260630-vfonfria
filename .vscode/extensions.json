@@ -1,18 +1,29 @@
 {
   "recommendations": [
-    "angular.ng-template",
-    "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
-    "madhusuthanan.angular-unit-testing-snippets",
-    "mhutchie.git-graph",
-    "msjsdiag.debugger-for-chrome",
     "redhat.vscode-yaml",
     "shardulm94.trailing-spaces",
+    "coenraads.bracket-pair-colorizer",
+    "voldemortensen.rainbow-tags",
+    "oderwat.indent-rainbow",
+
     "vscode-icons-team.vscode-icons",
-    "waderyan.gitblame",
     "wayou.vscode-todo-highlight",
-    "xyz.local-history"
+    "42crunch.vscode-openapi",
+    "angular.ng-template",
+    "madhusuthanan.angular-unit-testing-snippets",
+    "mikael.angular-beastcode",
+    "msjsdiag.debugger-for-chrome",
+    "stringham.move-ts",
+    "formulahendry.auto-rename-tag",
+    "zignd.html-css-class-completion",
+
+    "xyz.local-history",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "pflannery.vscode-versionlens",
+    "vivaxy.vscode-conventional-commits"
   ]
 }
