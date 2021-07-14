@@ -7,6 +7,6 @@ export const APP_CONFIG: AppConfig = {
   appName: 'yourAppName',
   language: {
     availableLanguages: ['es'],
-    defaultLanguage: 'es',
-  },
+    defaultLanguage: 'es'
+  }
 };
