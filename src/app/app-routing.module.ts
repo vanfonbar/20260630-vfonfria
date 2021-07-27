@@ -1,20 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MPageNotFoundComponent } from '@mercadona/core-ui/page-not-found';
+import { WelcomeToFwkaComponent } from './pages/welcome-to-fwka/welcome-to-fwka.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./pages/welcome-to-fwka/welcome-to-fwka.module').then(
-        (m) => m.WelcomeToFwkaModule
-      )
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: WelcomeToFwkaComponent },
   {
     path: '**',
     component: MPageNotFoundComponent
