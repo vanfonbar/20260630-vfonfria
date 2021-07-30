@@ -9,5 +9,5 @@
 #   npx browserslist
 
 last 2 Safari versions
-chrome >= 83
 last 2 ios_saf versions
+chrome >= 83
