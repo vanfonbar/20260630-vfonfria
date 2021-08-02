@@ -3,3 +3,7 @@
 
 # API autogenerada
 /src/app/api
+
+# protractor config files
+/**/protractor.conf.js
+/**/protractor-mobile.conf.js

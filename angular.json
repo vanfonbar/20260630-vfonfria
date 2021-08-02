@@ -122,10 +122,11 @@
           "options": {
             "lintFilePatterns": [
               "src/**/*.ts",
+              "src/**/*.js",
               "src/**/*.html",
               "e2e/**/*.ts",
+              "e2e/**/*.js",
               "e2e/**/*.html",
-              "src/**/*.js",
               "scripts/**/*.js",
               "*.js",
               ".*.js"
