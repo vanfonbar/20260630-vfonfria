@@ -192,6 +192,129 @@ También es recomendable que todo desarrollador introduzca en su settings del re
 
 - ESLint (Dirk Baeumer - dbaeumer.vscode-eslint)
 
+## tsconfig
+
+TypeScript es el lenguaje primario para el desarrollo de aplicaciones Angular. Es un superconjunto de JavaScript con soporte en tiempo de diseño para herramientas y seguridad de tipos.
+
+Los navegadores no pueden ejecutar TypeScript directamente. TS debe "transpilarse" a JavaScript utilizando el compilador tsc, que requiere cierta configuración.
+
+Un espacio de trabajo de Angular determinado contiene varios archivos de configuración de TypeScript. En la raíz, el archivo tsconfig.json especifica las opciones básicas del compilador TypeScript y Angular que heredan todos los proyectos del espacio de trabajo.
+
+Por ejemplo, dado el tsconfig.json de raíz, el tsconfig.spec.json extenderá las opciones marcadas
+
+tsconfig.json
+
+```json
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "src",
+    "outDir": "dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@constants": ["app/app-config.constants.ts"],
+      "@interfaces": ["app/app-config.interface.ts"],
+      "@routings": ["app/app-routing.module"],
+      "@app/pages/*": [
+        "app/pages/welcome-to-fwka/*"
+      ],
+      "@app/*": ["app/*"],
+      "@environments": ["environments"],
+      "@environments/*": ["environments/*"],
+      "@e2e/*": ["../e2e/src/*"],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
+```
+
+tsconfig.app.json
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
+
+```
+
+tsconfig.spec.json
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine"
+    ]
+  },
+  "files": [
+    "src/test.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}
+```
+
+###  paths
+
+Dentro del tsconfig, uno de los parámetros principales que tendremos que mantener es el paths. Se recomienda el uso de módulos de la aplicación, y con esta propiedad podremos crear aliases para poder gestionar mejor los imports.
+
+```json
+{
+  "paths": {
+    "@constants": ["app/app-config.constants.ts"],
+    "@interfaces": ["app/app-config.interface.ts"],
+    "@routings": ["app/app-routing.module"],
+    "@app/pages/*": [
+      "app/pages/welcome-to-fwka/*"
+    ],
+    "@app/*": ["app/*"],
+    "@environments": ["environments"],
+    "@environments/*": ["environments/*"],
+    "@e2e/*": ["../e2e/src/*"],
+  }
+}
+```
+
+Por ejemplo, en caso de crear nuevas páginas o módulos deberemos de editar este objeto para añadir nuevas rutas.
+
 ## Construcción
 
 ````sh
