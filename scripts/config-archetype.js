@@ -30,12 +30,16 @@ const parseArguments = (...args) =>
 const YOUR_APP_NAME_FILES = [
   'package.json',
   'angular.json',
+  'README.md',
   'src/index.html',
   'src/app/app-config.constants.ts',
   'src/environments/environment.ts',
 ].map((rootPath) => getRelativePath('../' + rootPath));
 
-const FILES_TO_AUTODESTROY = ['scripts/config-archetype.js'].map((rootPath) =>
+const FILES_TO_AUTODESTROY = [
+  'scripts/config-archetype.js',
+  'CHANGELOG.md'
+].map((rootPath) =>
   getRelativePath('../' + rootPath)
 );
 
@@ -70,7 +74,7 @@ async function main(...args) {
   if (!appName) {
     errorAndClose('Mandatory argument --appName not provided');
   }
-
+  isValidAppName(appName);
   const scope = config.scope;
   const currentAppName = config.reset ? appName : 'yourAppName';
   const newAppName = config.reset ? 'yourAppName' : appName;
@@ -119,8 +123,16 @@ const getPackageName = (config, scope, appName) => {
 
 const autoDestroyConfArchetype = () => {
   try {
-    FILES_TO_AUTODESTROY.forEach((fileToDelete) => fs.unlinkSync(fileToDelete));
-    DIRS_TO_AUTODESTROY.forEach((dirToDelete) => fs.rmdirSync(dirToDelete));
+    FILES_TO_AUTODESTROY.forEach((fileToDelete) => {
+      if (fs.existsSync(fileToDelete)) {
+        fs.unlinkSync(fileToDelete);
+      }
+    });
+    DIRS_TO_AUTODESTROY.forEach((dirToDelete) => {
+      if (fs.existsSync(dirToDelete)) {
+        fs.rmdirSync(dirToDelete);
+      }
+    });
   } catch (error) {
     log(`Error when autodestroy scripts folder and content. Cause: ${error}`);
   }
@@ -129,6 +141,13 @@ const autoDestroyConfArchetype = () => {
 const sanitizeAppName = (appName) => {
   const regex = /-front$/gm;
   return regex.test(appName) ? appName.substr(0, appName.length - 6) : appName;
+};
+
+const isValidAppName = (appName) => {
+  const regExp = /\s|ñ|(\.){2}/im;
+  if (regExp.test(appName)) {
+    errorAndClose(`Invalid --appName '${appName}' must not contain spaces, ñ or dots`);
+  }  
 };
 
 if (module === require.main) {

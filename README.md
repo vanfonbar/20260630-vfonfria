@@ -1,4 +1,4 @@
-# FWK Angular
+# yourAppName
 
 ## Scripts
 
