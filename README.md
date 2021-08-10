@@ -121,7 +121,7 @@ mapa de árbol interactivo del contenido de nuestro paquete. Previamente ejecuta
 npm run analyze:webpack-bundle
 ````
 
-## Documentación
+## Documentación FWKA
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
-web de [documentación](https://mus.mercadona.com).
+[web](https://mus.mercadona.com).
