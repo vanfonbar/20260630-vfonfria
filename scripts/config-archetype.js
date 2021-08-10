@@ -109,7 +109,7 @@ const writeAppFile = async (filePath, fileContent) => {
 const setBasehref = async (appName, isCPDDeployed) => {
   const angularPath = getRelativePath('../angular.json');
   const angularContent = await getFileJson(angularPath);
-  const baseHref = isCPDDeployed ? `/${appName}/ang/` : '/';
+  const baseHref = isCPDDeployed ? `/${appName}/ang/` : `/${appName}`;
   angularContent.projects[appName].architect.build.options.baseHref = baseHref;
   await writeAppFile(angularPath, angularContent);
 };
