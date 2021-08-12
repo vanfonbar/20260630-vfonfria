@@ -18,6 +18,7 @@ img {
     display: block;
     position: absolute;
     top: 0;
+    z-index: -1;
     width: 100vw;
     height: 368px;
     background: linear-gradient(180deg, #50565B -81.64%, #FFFFFF 100%);
