@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "init:install": "npm install && npm run ng -- add @mercadona/schematics && npm run ng -- generate @mercadona/schematics:login",
+    "init:install": "npm install && ng add @mercadona/schematics && ng generate @mercadona/schematics:login",
     "start": "ng serve",
     "start:pro": "ng serve --configuration production",
     "start:hmr": "ng serve --hmr",
