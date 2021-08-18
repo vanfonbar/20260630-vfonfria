@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "description": "",
   "engines": {
-    "node": "12.16.3",
-    "npm": "6.14.4"
+    "node": "12.18.2",
+    "npm": "6.14.5"
   },
   "contributors": [
     {
