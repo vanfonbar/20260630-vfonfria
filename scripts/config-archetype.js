@@ -37,8 +37,7 @@ const YOUR_APP_NAME_FILES = [
 ].map((rootPath) => getRelativePath('../' + rootPath));
 
 const FILES_TO_AUTODESTROY = [
-  'scripts/config-archetype.js',
-  'CHANGELOG.md'
+  'scripts/config-archetype.js'
 ].map((rootPath) =>
   getRelativePath('../' + rootPath)
 );
@@ -147,7 +146,7 @@ const isValidAppName = (appName) => {
   const regExp = /\s|ñ|(\.){2}/im;
   if (regExp.test(appName)) {
     errorAndClose(`Invalid --appName '${appName}' must not contain spaces, ñ or dots`);
-  }  
+  }
 };
 
 if (module === require.main) {
