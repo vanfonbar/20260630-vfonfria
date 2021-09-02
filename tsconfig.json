@@ -21,6 +21,8 @@
     "strict": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "paths": {
       "@api/models": ["app/api/models.ts"],
       "@api/services": ["app/api/services.ts"],

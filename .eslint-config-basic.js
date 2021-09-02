@@ -48,6 +48,7 @@ module.exports = {
         '@typescript-eslint/no-shadow': 'error',
 
         // Best Practice
+        '@typescript-eslint/no-explicit-any': ['error', { 'ignoreRestArgs': true }],
         'complexity': ['error', { 'max': 3 }],
         'consistent-return': ['error', { 'treatUndefinedAsUnspecified': true }],
         'eqeqeq': 'error',
