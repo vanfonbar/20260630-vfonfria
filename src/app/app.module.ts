@@ -9,12 +9,14 @@ import { MPageErrorModule } from '@mercadona/core-ui/page-error';
 import { AppRoutingModule } from './app-routing.module';
 import { APP_CONFIG } from '@constants';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MErrorHandlerModule.forRoot(),
     MTranslateModule.forRoot(APP_CONFIG.language),
     MLoggerModule.forRoot(),
