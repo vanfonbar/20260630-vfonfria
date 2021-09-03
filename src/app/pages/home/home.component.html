@@ -1,3 +1,92 @@
+
+<style>
+
+  h4 {
+    margin: 0;
+  }
+  img {
+    max-width: 100%;
+  }
+  :host {
+    display: block;
+    position: relative;
+  }
+  :host::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 368px;
+    background: linear-gradient(180deg, #50565b -81.64%, #fff 100%);
+  }
+  footer {
+    width: 100vw;
+    height: 368px;
+    background: linear-gradient(360deg, #50565b -81.64%, #fff 100%);
+  }
+  .title-fwk {
+    font-weight: var(--fontWeightRegular);
+    font-size: var(--fontSizeHeading02);
+    line-height: var(--lineHeightHeading02);
+    color: var(--interactive02);
+  }
+  @media (max-width: 45em) {
+    .title-fwk {
+      font-size: 2.1em;
+    }
+  }
+  .img-principal {
+    max-height: 320px;
+  }
+  .img-secondary {
+    max-height: 150px;
+  }
+  .secondary-text {
+    color: var(--interactive01);
+    font-weight: var(--fontWeightSemibold);
+    font-size: var(--fontSizeHeading06);
+    line-height: var(--lineHeightHeading06);
+  }
+  .text-content {
+    color: var(--interactive02);
+    font-weight: var(--fontWeightRegular);
+    font-size: var(--fontSizeBody02);
+    line-height: var(--lineHeightBody02);
+  }
+  .box-img-secondary div.row > div {
+    border-top: 1px solid #b9bfc7;
+  }
+  @media (max-width: 45em) {
+    .box-img-secondary div.row > div {
+      border-top: none;
+    }
+    .box-img-secondary div.row > div:first-child {
+      border-top: 1px solid #b9bfc7;
+    }
+  }
+  .bg-tipos {
+    background-color: var(--supportBack02);
+  }
+  .title-tipos {
+    color: var(--interactive02);
+    font-weight: var(--fontWeightRegular);
+    font-size: var(--fontSizeHeading03);
+    line-height: var(--lineHeightHeading03);
+  }
+  .img-secondary-text {
+    color: var(--interactive01);
+    font-weight: var(--fontWeightSemibold);
+    font-size: var(--fontSizeHeading06);
+    line-height: var(--lineHeightHeading06);
+  }
+  .clickable {
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+</style>
+
 <div class="col-12 text-center py-5">
   <img [src]="images.IMAGE_TOP" class="img-fluid img-principal" />
   <h2 class="title-fwk">

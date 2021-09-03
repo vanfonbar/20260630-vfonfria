@@ -1,8 +1,7 @@
 /**
  * IMPORTANT:
  *
- * Please delete this file and all 'welcome-to-fwka' module
- * after you start your project.
+ * Please delete this file.
  *
  * Embedded images are a bad practice. We do this to show a welcome page to recently
  * created projects.

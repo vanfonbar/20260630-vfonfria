@@ -1,6 +1,8 @@
-// IMPORTANTE: Las constantes definidas en este fichero definen la configuración inmutable de la aplicación.
-// El valor de las mismas no cambia con el entorno.
-// Siempre tienen el mismo valor independientemente del entorno en el que se ejecute la aplicación.
+
+// IMPORTANT: Constants in this file are defining the immutable configuration of the application.
+// This values do not change with the environment.
+// They always have the same value regardless of the environment in which the application is running.
+
 import { AppConfig } from './app-config.interface';
 
 export const APP_CONFIG: AppConfig = {

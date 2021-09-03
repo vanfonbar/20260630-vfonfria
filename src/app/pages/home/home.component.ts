@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { IMAGES } from './embedded-images';
 
 @Component({
-  selector: 'app-welcome-to-fwka',
-  templateUrl: './welcome-to-fwka.component.html',
-  styleUrls: ['./welcome-to-fwka.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class WelcomeToFwkaComponent {
+export class HomeComponent {
   images = IMAGES;
 
   constructor() {}

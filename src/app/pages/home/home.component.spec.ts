@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WelcomeToFwkaComponent } from './welcome-to-fwka.component';
+import { HomeComponent } from './home.component';
 
-describe('WelcomeToFwkaComponent', () => {
-  let component: WelcomeToFwkaComponent;
-  let fixture: ComponentFixture<WelcomeToFwkaComponent>;
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WelcomeToFwkaComponent]
+      declarations: [HomeComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WelcomeToFwkaComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

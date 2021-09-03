@@ -1,5 +1,5 @@
-// Descomentar el siguiente código que se encuentra a continuación para su uso,
-// remplazándolo con la url necesaria del backend
+// Uncomment next lines to use the proxy configuration
+// and replace the backend URL.
 
 /*
 const PROXY_CONFIG = [
