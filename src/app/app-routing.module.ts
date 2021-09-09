@@ -6,7 +6,9 @@ import { MPageNotFoundComponent } from '@mercadona/core-ui/page-not-found';
 // https://mus.mercadona.com/39eafa15b/p/014302-page-error/b/44f1f3
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: '', redirectTo: 'home', pathMatch: 'full'
+  },
   {
     path: 'home',
     loadChildren: () =>
@@ -24,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

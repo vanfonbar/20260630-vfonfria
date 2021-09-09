@@ -16,6 +16,7 @@
   "scripts": {
     "ng": "ng",
     "init": "npm install && ng add @mercadona/schematics && ng generate @mercadona/schematics:login",
+    "postinstall": "husky install",
     "start": "ng serve",
     "start:pro": "ng serve --configuration production",
     "start:hmr": "ng serve --hmr",
@@ -34,7 +35,14 @@
     "lint:fix": "ng lint --fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json",
-    "postinstall": "husky install"
+    "add:language": "ng generate @mercadona/schematics:language",
+    "add:page": "ng generate @mercadona/schematics:page",
+    "add:component": "ng generate @mercadona/schematics:component",
+    "add:pipe": "ng generate @mercadona/schematics:pipe",
+    "add:directive": "ng generate @mercadona/schematics:directive",
+    "add:service": "ng generate @mercadona/schematics:service",
+    "add:model": "ng generate @mercadona/schematics:model",
+    "add:interface": "ng generate @mercadona/schematics:interface"
   },
   "dependencies": {
     "@angular/animations": "12.2.1",

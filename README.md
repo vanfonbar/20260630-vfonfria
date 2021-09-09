@@ -8,6 +8,13 @@ Comando para poder ejecutar los comando de angular cuando no está instalado ang
 npm run ng -- [parámetros del ng]
 ````
 
+Inicializa la aplicación: instala las dependencias y ejecuta los wizards de idiomas y autenticación. Este comando se
+recomienda usar solamente al inicio de la aplicación.
+
+````sh
+npm run init:install
+````
+
 Inicia la aplicación [http://localhost:4200](http://localhost:4200)
 
 ````sh
@@ -26,7 +33,8 @@ Inicia la aplicación en modo reemplazo de módulo caliente [http://localhost:42
 npm run start:hmr
 ````
 
-Visualiza la documentación generada previamente con `npm run build:doc`, levanta un servidor para su visualización [http://localhost:8080](http://localhost:8080)
+Visualiza la documentación generada previamente con `npm run build:doc`, levanta un servidor para su
+visualización [http://localhost:8080](http://localhost:8080)
 
 ````sh
 npm run start:doc
@@ -38,13 +46,15 @@ Compila la aplicación.
 npm run build
 ````
 
-Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle).
+Compila la aplicación en modo producción y genera información necesaria para las herramientas source map analyzer (npm
+run analyze:source-map) y webpack analyzer (npm run analyze:webpack-bundle).
 
 ````sh
 npm run build:pro
 ````
 
-Ejecuta la generación de la documentación. El fichero de configuración `tsconfig.doc.json` define qué ficheros se incluyen en la documentación.
+Ejecuta la generación de la documentación. El fichero de configuración `tsconfig.doc.json` define qué ficheros se
+incluyen en la documentación.
 
 ````sh
 npm run build:doc
@@ -86,9 +96,9 @@ Ejecuta los test end to end.
 npm run e2e
 ````
 
-Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores programáticos y
-estilísticos, verifica cualquier error potencial en su código, como errores de sintaxis, nombres de variables mal
-escritos etc.
+Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores
+programáticos y estilísticos, verifica cualquier error potencial en su código, como errores de sintaxis, nombres de
+variables mal escritos etc.
 
 ````sh
 npm run lint
@@ -119,6 +129,54 @@ mapa de árbol interactivo del contenido de nuestro paquete. Previamente ejecuta
 
 ````sh
 npm run analyze:webpack-bundle
+````
+
+Ejecuta el schematic para añadir los idiomas a soportar
+
+````sh
+npm run add:language
+````
+
+Ejecuta el schematic para añadir una nueva página
+
+````sh
+npm run add:page
+````
+
+Ejecuta el schematic para añadir un nuevo componente
+
+````sh
+npm run add:component
+````
+
+Ejecuta el schematic para añadir una nueva pipe
+
+````sh
+npm run add:pipe
+````
+
+Ejecuta el schematic para añadir una nueva directive
+
+````sh
+npm run add:directive
+````
+
+Ejecuta el schematic para añadir un nuevo servicio
+
+````sh
+npm run add:service
+````
+
+Ejecuta el schematic para añadir una nueva clase
+
+````sh
+npm run add:class
+````
+
+Ejecuta el schematic para añadir una nueva interfaz
+
+````sh
+npm run add:interface
 ````
 
 ## Documentación FWKA
