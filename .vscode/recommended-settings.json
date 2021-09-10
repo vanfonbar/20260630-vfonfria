@@ -19,6 +19,5 @@
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "top",
   "yaml.format.printWidth": 80,
-  "auto-rename-tag.activationOnLanguage": ["html", "xml"],
-  "html-css-class-completion.HTMLLanguages":["html"]
+  "auto-rename-tag.activationOnLanguage": ["html", "xml"]
 }
