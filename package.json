@@ -35,6 +35,7 @@
     "lint:fix": "ng lint --fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json",
+    "add:login": "ng generate @mercadona/schematics:login",
     "add:language": "ng generate @mercadona/schematics:language",
     "add:page": "ng generate @mercadona/schematics:page",
     "add:component": "ng generate @mercadona/schematics:component",

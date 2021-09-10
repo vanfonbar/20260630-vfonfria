@@ -131,6 +131,12 @@ mapa de árbol interactivo del contenido de nuestro paquete. Previamente ejecuta
 npm run analyze:webpack-bundle
 ````
 
+Ejecuta el schematic para añadir el módulo de autentificación
+
+````sh
+npm run add:login
+````
+
 Ejecuta el schematic para añadir los idiomas a soportar
 
 ````sh
@@ -167,10 +173,10 @@ Ejecuta el schematic para añadir un nuevo servicio
 npm run add:service
 ````
 
-Ejecuta el schematic para añadir una nueva clase
+Ejecuta el schematic para añadir un nuevo modelo
 
 ````sh
-npm run add:class
+npm run add:model
 ````
 
 Ejecuta el schematic para añadir una nueva interfaz
