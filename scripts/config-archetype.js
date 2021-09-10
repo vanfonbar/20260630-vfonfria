@@ -42,6 +42,8 @@ const FILES_TO_AUTODESTROY = [
   getRelativePath('../' + rootPath)
 );
 
+
+
 const DIRS_TO_AUTODESTROY = ['scripts'].map((rootPath) =>
   getRelativePath('../' + rootPath)
 );
@@ -96,6 +98,7 @@ async function main(...args) {
   packageContent.version = newVersion;
   await writeAppFile(packagePath, packageContent);
   await setBasehref(appName, isCPDDeployed);
+  await setNpmrcRegistry(isCPDDeployed);
   autoDestroyConfArchetype();
 }
 
@@ -147,6 +150,17 @@ const isValidAppName = (appName) => {
   if (regExp.test(appName)) {
     errorAndClose(`Invalid --appName '${appName}' must not contain spaces, ñ or dots`);
   }
+};
+
+const setNpmrcRegistry = async (isCPDDeployed) => {
+  if (!isCPDDeployed) {
+    return;
+  }
+  const regExpNexus = /#registry/m;
+  const npmrcPath = getRelativePath('../.npmrc');
+  await replaceFileContent(npmrcPath, regExpNexus, 'registry');
+  const regExpArtifactory = /^registry/m;
+  await replaceFileContent(npmrcPath, regExpArtifactory, '#registry');
 };
 
 if (module === require.main) {
