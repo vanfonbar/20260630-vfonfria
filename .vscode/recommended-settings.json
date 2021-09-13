@@ -19,5 +19,22 @@
   "emmet.showSuggestionsAsSnippets": true,
   "editor.snippetSuggestions": "top",
   "yaml.format.printWidth": 80,
-  "auto-rename-tag.activationOnLanguage": ["html", "xml"]
+  "auto-rename-tag.activationOnLanguage": ["html", "xml"],
+  "html-css-class-completion.HTMLLanguages":["html"],
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#229e6a",
+    "titleBar.activeBackground": "#229e6a",
+    "activityBar.activeBackground": "#8fe7c4",
+    "activityBar.activeBorder": "#b54a6c",
+    "activityBar.background": "#2cc98a",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#b54a6c",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#8fe7c4",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#18704d",
+    "titleBar.inactiveForeground": "#15202b99"
+  }
 }
