@@ -20,7 +20,6 @@
   "editor.snippetSuggestions": "top",
   "yaml.format.printWidth": 80,
   "auto-rename-tag.activationOnLanguage": ["html", "xml"],
-  "html-css-class-completion.HTMLLanguages":["html"],
   "workbench.colorCustomizations": {
     "statusBar.background": "#229e6a",
     "titleBar.activeBackground": "#229e6a",

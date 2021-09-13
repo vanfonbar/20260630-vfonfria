@@ -26,7 +26,7 @@
     "paths": {
       "@api/models": ["app/api/models.ts"],
       "@api/services": ["app/api/services.ts"],
-      "@classes/*": ["app/classes/*"],
+      "@models/*": ["app/models/*"],
       "@components/*": ["app/components/*"],
       "@constants": ["app/app-config.constants.ts"],
       "@directives/*": ["app/directives/*"],
