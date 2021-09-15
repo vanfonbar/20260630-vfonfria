@@ -12,7 +12,7 @@ Inicializa la aplicación: instala las dependencias y ejecuta los wizards de idi
 recomienda usar solamente al inicio de la aplicación.
 
 ````sh
-npm run init:install
+npm run init
 ````
 
 Inicia la aplicación [http://localhost:4200](http://localhost:4200)

@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "ng": "ng",
-    "init": "npm install && ng add @mercadona/schematics && ng generate @mercadona/schematics:login",
+    "init": "npm install && ng generate @mercadona/schematics:language && ng generate @mercadona/schematics:login",
     "postinstall": "husky install",
     "start": "ng serve",
     "start:pro": "ng serve --configuration production",
