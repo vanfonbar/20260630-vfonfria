@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { APP_CONFIG } from '@constants';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '@environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MErrorHandlerModule.forRoot(),
     MTranslateModule.forRoot(APP_CONFIG.language),
-    MLoggerModule.forRoot(),
+    MLoggerModule.forRoot({
+      logLevel: environment.logLevel
+    }),
     MPlatformModule.forRoot({
       appName: APP_CONFIG.appName
     }),
