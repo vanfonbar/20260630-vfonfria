@@ -71,7 +71,6 @@ async function replaceFiles(filepaths, oldText, newText) {
 async function main(...args) {
   const config = parseArguments(...args);
   const appName = sanitizeAppName(config.appName);
-  const isCPDDeployed = 'isCPDDeployed' in config;
   if (!appName) {
     errorAndClose('Mandatory argument --appName not provided');
   }
@@ -97,8 +96,7 @@ async function main(...args) {
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
   await writeAppFile(packagePath, packageContent);
-  await setBasehref(appName, isCPDDeployed);
-  await setNpmrcRegistry(isCPDDeployed);
+  await setBasehref(appName);
   autoDestroyConfArchetype();
 }
 
@@ -108,10 +106,10 @@ const writeAppFile = async (filePath, fileContent) => {
   });
 };
 
-const setBasehref = async (appName, isCPDDeployed) => {
+const setBasehref = async (appName) => {
   const angularPath = getRelativePath('../angular.json');
   const angularContent = await getFileJson(angularPath);
-  const baseHref = isCPDDeployed ? `/${appName}/ang/` : `/${appName}`;
+  const baseHref = `/${appName}`;
   angularContent.projects[appName].architect.build.options.baseHref = baseHref;
   await writeAppFile(angularPath, angularContent);
 };
@@ -152,16 +150,6 @@ const isValidAppName = (appName) => {
   }
 };
 
-const setNpmrcRegistry = async (isCPDDeployed) => {
-  if (!isCPDDeployed) {
-    return;
-  }
-  const regExpNexus = /#registry/m;
-  const npmrcPath = getRelativePath('../.npmrc');
-  await replaceFileContent(npmrcPath, regExpNexus, 'registry');
-  const regExpArtifactory = /^registry/m;
-  await replaceFileContent(npmrcPath, regExpArtifactory, '#registry');
-};
 
 if (module === require.main) {
   main(...process.argv.slice(2))
