@@ -116,6 +116,3 @@ Checkmarx/
 **/requirements.lock
 **/charts/*.tgz
 **/charts/**/*.tgz
-
-# Scripts
-scripts/config-archetype.js
