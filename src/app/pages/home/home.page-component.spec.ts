@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { environment } from '@environment';
+import { MLoggerModule } from '@mercadona/core/logger';
 import { HomePageComponent } from './home.page-component';
 
 describe('HomePageComponent', () => {
@@ -8,6 +9,9 @@ describe('HomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [MLoggerModule.forRoot({
+        logLevel: environment.logLevel
+      })],
       declarations: [HomePageComponent]
     }).compileComponents();
   });
