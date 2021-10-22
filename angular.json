@@ -42,7 +42,7 @@
               "node_modules/@mercadona/styles/sass/reset.scss",
               "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",
               "node_modules/@mercadona/styles/sass/fonts/font-face.scss",
-              "node_modules/@mercadona/styles/sass/themes/menta.scss",
+              "node_modules/@mercadona/styles/sass/themes/base-theme.scss",
               "node_modules/@mercadona/styles/sass/elements.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
@@ -109,7 +109,7 @@
               "node_modules/@mercadona/styles/sass/reset.scss",
               "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",
               "node_modules/@mercadona/styles/sass/fonts/font-face.scss",
-              "node_modules/@mercadona/styles/sass/themes/menta.scss",
+              "node_modules/@mercadona/styles/sass/themes/base-theme.scss",
               "node_modules/@mercadona/styles/sass/elements.scss",
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
