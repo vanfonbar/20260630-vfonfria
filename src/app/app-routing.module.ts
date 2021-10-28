@@ -1,27 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MPageNotFoundComponent } from '@mercadona/core-ui/page-not-found';
 
-// IMPORTANT: Do not use the "error" route as it will be overwritten by the Core module. More info:
-// https://mus.mercadona.com/39eafa15b/p/014302-page-error/b/44f1f3
+// IMPORTANT: Do not use the "/error" route as it will be overwritten by the Core module. More info:
+// https://mus.mercadona.com/39eafa15b/v/0/p/014302-page-error
+// IMPORTANT: Do not use the "/monitoring_nginx" route as it will be overwritten by Nginx Configuration
+// IMPORTANT: Do nout user the "/callback" as it will be overwritten by the Token module. More info:
+// https://mus.mercadona.com/39eafa15b/v/0/p/043ae9-rutas-no-permitidas
 
-const routes: Routes = [
-  {
-    path: '', redirectTo: 'home', pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./pages/home/home.page-module').then(
-        (m) => m.HomePageModule
-      )
-  },
-  {
-    path: '**',
-    component: MPageNotFoundComponent
-  }
-];
 
+const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
