@@ -1,11 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { environment } from '@environment';
+import { MLoggerModule } from '@mercadona/core/logger';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MLoggerModule.forRoot({
+          logLevel: environment.logLevel
+        })
+      ],
       declarations: [AppComponent]
     }).compileComponents();
   });
