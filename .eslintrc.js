@@ -1,50 +1,56 @@
+const tsPattern = '*.ts';
+const specPattern = '*.spec.ts';
+const e2ePattern = '*.e2e-spec.ts';
+const htmlPattern = '*.html';
+const inlineHtmlPattern = '*inline-template-*.component.html';
+const jsPattern = '*.js';
+
 module.exports = {
-  'root': true,
-  'plugins': ['deprecation', 'prefer-arrow'],
-  'overrides': [
+  root: true,
+  plugins: ['@mercadona/eslint-plugin'],
+  overrides: [
     {
-      'files': ['*.ts'],
-      'parserOptions': {
-        'ecmaVersion': 2020,
-        'sourceType': 'module',
-        'project': [
-          'tsconfig.json',
-          'e2e/tsconfig.json'
-        ],
-        'createDefaultProgram': true
+      files: [tsPattern],
+      excludedFiles: [specPattern, e2ePattern],
+      extends: ['plugin:@mercadona/eslint-plugin/ts'],
+      parserOptions: {
+        ecmaVersion: 2020,
+        project: ['tsconfig.app.json']
       },
-      'extends': [
-        './.eslint-config-basic.js'
-      ],
-      'rules': {}
+      rules: {}
     },
     {
-      'files': ['*.spec.ts', '*.e2e-spec.ts'],
-      'extends': [
-        './.eslint-config-basic.js'
-      ],
-      'rules': {}
+      files: [specPattern],
+      extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/spec'],
+      parserOptions: {
+        ecmaVersion: 2020,
+        project: ['tsconfig.spec.json']
+      },
+      rules: {}
     },
     {
-      'files': ['*.html'],
-      'extends': [
-        './.eslint-config-basic.js'
-      ],
-      'rules': {}
+      files: [e2ePattern],
+      extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/e2e'],
+      parserOptions: {
+        ecmaVersion: 2018,
+        project: ['e2e/tsconfig.json']
+      },
+      rules: {}
     },
     {
-      'files': ['*.js'],
-      'extends': [
-        './.eslint-config-basic.js'
-      ],
-      'parserOptions': {
-        'ecmaVersion': 9
-      },
-      'env': {
-        'node': true,
-        'es6': true
-      },
-      'rules': {}
+      files: [htmlPattern],
+      extends: ['plugin:@mercadona/eslint-plugin/html'],
+      rules: {}
+    },
+    {
+      files: [inlineHtmlPattern],
+      extends: ['plugin:@mercadona/eslint-plugin/inline-html'],
+      rules: {}
+    },
+    {
+      files: [jsPattern],
+      extends: ['plugin:@mercadona/eslint-plugin/js'],
+      rules: {}
     }
   ]
 };

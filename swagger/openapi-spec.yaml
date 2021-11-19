@@ -37,7 +37,7 @@ paths:
           in: query
           description: Name for the product
           required: false
-          default: ""
+          default: ''
           type: string
       responses:
         '200':

@@ -101,10 +101,7 @@
             "karmaConfig": "karma.conf.js",
             "codeCoverage": true,
             "watch": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/@mercadona/styles/sass/reset.scss",
               "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",

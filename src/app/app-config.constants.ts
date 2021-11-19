@@ -1,4 +1,3 @@
-
 // IMPORTANT: Constants in this file are defining the immutable configuration of the application.
 // This values do not change with the environment.
 // They always have the same value regardless of the environment in which the application is running.

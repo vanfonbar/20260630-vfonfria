@@ -1,17 +1,24 @@
 {
   "editor.rulers": [120],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.markdownlint": true
-  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint", "source.fixAll.markdownlint"],
   "eslint.alwaysShowStatus": true,
-  "eslint.validate": [ "typescript", "javascript", "html" ],
+  "eslint.validate": ["typescript", "javascript", "html"],
   "yaml.validate": true,
   "search.exclude": {
     "**/.history": true,
     "**/documentation": true,
     "**/node_modules": true,
     "**/coverage": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "indentRainbow.includedLanguages": ["typescript", "html"],
   "indentRainbow.excludedLanguages": ["plaintext"],

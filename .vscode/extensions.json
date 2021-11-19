@@ -21,6 +21,7 @@
     "mhutchie.git-graph",
     "eamodio.gitlens",
     "pflannery.vscode-versionlens",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "esbenp.prettier-vscode"
   ]
 }

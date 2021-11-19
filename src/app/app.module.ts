@@ -32,4 +32,4 @@ import { environment } from '@environment';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
