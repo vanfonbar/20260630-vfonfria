@@ -24,7 +24,8 @@ import { environment } from '@environment';
       logLevel: environment.logLevel
     }),
     MPlatformModule.forRoot({
-      appName: APP_CONFIG.appName
+      appName: APP_CONFIG.appName,
+      environment: environment.env
     }),
     MPageNotFoundModule,
     MPageErrorModule.forRoot()
