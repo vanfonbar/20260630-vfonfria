@@ -66,6 +66,7 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
+    "@aduh95/viz.js": "3.3.2",
     "@angular-devkit/build-angular": "12.2.12",
     "@angular-eslint/builder": "12.6.1",
     "@angular-eslint/eslint-plugin": "12.6.1",
