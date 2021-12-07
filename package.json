@@ -24,7 +24,7 @@
     "build": "ng build",
     "build:pro": "ng build --source-map=true --stats-json",
     "build:doc": "compodoc -p tsconfig.doc.json",
-    "build:api": "ng-swagger-gen --config swagger/swagger.config.json && npm run lint:fix",
+    "build:api": "ng-swagger-gen --config swagger/swagger.config.json",
     "test": "ng test --browsers Chrome",
     "test:safari": "ng test --browsers Safari",
     "test:coverage": "ng test --watch=false --browsers Chrome",
