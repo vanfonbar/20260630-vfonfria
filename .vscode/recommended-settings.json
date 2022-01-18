@@ -1,7 +1,7 @@
 {
   "editor.rulers": [120],
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint", "source.fixAll.markdownlint"],
+  "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.fixAll.markdownlint"],
   "eslint.alwaysShowStatus": true,
   "eslint.validate": ["typescript", "javascript", "html"],
   "yaml.validate": true,
