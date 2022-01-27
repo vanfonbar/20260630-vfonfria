@@ -1,36 +1,44 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { environment } from '@environment';
-import { MLoggerModule } from '@mercadona/core/logger';
+import { MLoggerService } from '@mercadona/core/logger';
+import { MLoggerTestingModule } from '@mercadona/core/logger/testing';
 import { AppComponent } from './app.component';
-import { MPlatformEnvironment } from '@mercadona/core/platform';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+  let mLoggerService: MLoggerService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        MLoggerModule.forRoot({
-          logLevel: environment.logLevel
-        })
-      ],
+      imports: [RouterTestingModule, MLoggerTestingModule],
       declarations: [AppComponent]
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+    mLoggerService = TestBed.inject(MLoggerService);
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('environment env must exist', () => {
-    const env: MPlatformEnvironment = environment.env;
-    expect(env).toBeDefined();
+  it('when ngOnInit() is called it should log "Welcome to FWK Front Angular Responsive"', () => {
+    const logText = 'Welcome to FWK Front Angular Responsive';
+    const logSpy = spyOn(mLoggerService, 'log');
+
+    app.ngOnInit();
+
+    expect(logSpy).toHaveBeenCalledWith(logText);
   });
 
-  it('environment production must exist', () => {
-    const production = environment.production;
-    expect(production).toBeDefined();
+  it('when goToUrl() is called it should open new tab in browser', () => {
+    const url = 'http://localhost/test';
+    const openTabSpy = spyOn(window, 'open');
+
+    app.goToUrl(url);
+
+    expect(openTabSpy).toHaveBeenCalledWith(url, '_blank');
   });
 });
