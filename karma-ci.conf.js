@@ -33,21 +33,14 @@ module.exports = function (config) {
         { type: 'text', subdir: '.', file: 'text.txt' },
         { type: 'text-summary' },
         { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
-        { type: 'cobertura', subdir: 'report-xml' } // (xml format supported by Jenkins)
+        { type: 'cobertura', subdir: 'report-xml' },
+        { type: 'lcov', file: 'lcov.info' }
       ],
-      check: {
-        global: {
-          statements: 0,
-          functions: 0,
-          branches: 0,
-          lines: 0
-        }
-      },
       watermarks: {
-        statements: [75, 90],
-        functions: [75, 90],
-        branches: [75, 90],
-        lines: [75, 90]
+        statements: [70, 80],
+        functions: [70, 80],
+        branches: [70, 80],
+        lines: [70, 80]
       }
     },
     specReporter: {
