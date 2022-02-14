@@ -2,6 +2,8 @@
   "editor.rulers": [120],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.fixAll.markdownlint"],
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
   "eslint.alwaysShowStatus": true,
   "eslint.validate": ["typescript", "javascript", "html"],
   "yaml.validate": true,
