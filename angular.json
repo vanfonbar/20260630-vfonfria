@@ -110,7 +110,13 @@
               "node_modules/@angular/cdk/overlay-prebuilt.css",
               "src/styles.scss"
             ],
-            "codeCoverageExclude": ["src/test.ts", "src/main.ts", "src/polyfills.ts", "src/app/api/swagger/**/*"],
+            "codeCoverageExclude": [
+              "src/test.ts",
+              "src/main.ts",
+              "src/polyfills.ts",
+              "src/app/api/swagger/**/*",
+              "src/app/mocks/**/*"
+            ],
             "scripts": []
           }
         },
