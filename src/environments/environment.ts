@@ -1,9 +1,14 @@
 import { MLoggerLevel } from '@mercadona/core/logger';
-import { MEnviroment } from '@mercadona/core/utils/environment';
 import { MPlatformEnvironment } from '@mercadona/core/platform';
+import { MEnviroment } from '@mercadona/core/utils/environment';
+
 /**
- * Define here localhost environment variables.
- * Remember to copy these variables to the chart files for the environment (dev,itg,pre,pro)
+ * Do not duplicate this file into environment.dev.ts, environment.itg.ts, ...
+ * Define here ONLY localhost environment variables.
+ */
+/**
+ * For dev,itg,pre,pro environments copy this content to the chart files
+ * charts/env/values-<env>.yaml
  */
 const localEnvironment = {
   production: false,
