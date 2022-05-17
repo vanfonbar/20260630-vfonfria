@@ -1,28 +1,11 @@
 {
   "recommendations": [
-    "davidanson.vscode-markdownlint",
     "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
     "redhat.vscode-yaml",
-    "shardulm94.trailing-spaces",
-    "voldemortensen.rainbow-tags",
-    "oderwat.indent-rainbow",
-    "vscode-icons-team.vscode-icons",
-    "wayou.vscode-todo-highlight",
-    "42crunch.vscode-openapi",
     "angular.ng-template",
-    "madhusuthanan.angular-unit-testing-snippets",
-    "mikael.angular-beastcode",
-    "stringham.move-ts",
-    "formulahendry.auto-rename-tag",
     "zignd.html-css-class-completion",
-    "wix.vscode-import-cost",
-    "mark-fobert.stackfinder",
-    "xyz.local-history",
-    "mhutchie.git-graph",
-    "eamodio.gitlens",
-    "pflannery.vscode-versionlens",
-    "vivaxy.vscode-conventional-commits",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "usernamehw.errorlens",
+    "editorconfig.editorconfig"
   ]
 }
