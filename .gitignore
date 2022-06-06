@@ -28,6 +28,7 @@ speed-measure-plugin*.json
 !.vscode/recommended-settings.json
 !.vscode/recommended-launch.json
 .history
+.angular
 
 # documentation
 documentation
@@ -42,6 +43,7 @@ testem.log
 System Files
 Thumbs.db
 !.npmrc
+.angular
 
 # CICD ###
 .DS_STORE
