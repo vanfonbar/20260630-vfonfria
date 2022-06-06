@@ -3,6 +3,7 @@
 
 # Build
 /dist
+/.angular
 
 # API autogenerada
 /src/app/api
