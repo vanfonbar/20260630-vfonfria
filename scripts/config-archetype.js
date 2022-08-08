@@ -78,7 +78,11 @@ async function main(...args) {
   const packagePath = getRelativePath('../package.json');
   const packageContent = await getFileJson(packagePath);
   const newPackageName = getPackageName(config, scope, appName);
-  const newVersion = config.reset ? packageContent.dependencies['@mercadona/core'] : '0.0.0';
+  const newVersion = config.reset
+    ? packageContent.dependencies['@mercadona/core']
+    : config.version
+    ? config.version
+    : '0.0.0';
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
   await writeAppFile(packagePath, packageContent);
