@@ -27,6 +27,7 @@ speed-measure-plugin*.json
 !.vscode/extensions.json
 !.vscode/recommended-settings.json
 !.vscode/recommended-launch.json
+.vscode/settings.json
 .history
 .angular
 

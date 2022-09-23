@@ -42,6 +42,12 @@ const FILES_TO_AUTODESTROY = ['scripts/config-archetype.js'].map((rootPath) => g
 
 const DIRS_TO_AUTODESTROY = ['scripts'].map((rootPath) => getRelativePath('../' + rootPath));
 
+/**
+ *
+ * @param filepaths
+ * @param oldText
+ * @param newText
+ */
 async function replaceFiles(filepaths, oldText, newText) {
   let filesReplaced = [];
   let filesError = [];
@@ -60,6 +66,10 @@ async function replaceFiles(filepaths, oldText, newText) {
 
 // TODO: put complexity to 3. 2 better
 // eslint-disable-next-line complexity
+/**
+ *
+ * @param {...any} args
+ */
 async function main(...args) {
   const config = parseArguments(...args);
   const appName = sanitizeAppName(config.appName);

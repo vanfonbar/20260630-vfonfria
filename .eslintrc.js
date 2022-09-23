@@ -12,7 +12,7 @@ module.exports = {
     {
       files: [tsPattern],
       excludedFiles: [specPattern, e2ePattern],
-      extends: ['plugin:@mercadona/eslint-plugin/ts'],
+      extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/jsdoc'],
       parserOptions: {
         ecmaVersion: 2020,
         project: ['tsconfig.app.json']
@@ -49,7 +49,7 @@ module.exports = {
     },
     {
       files: [jsPattern],
-      extends: ['plugin:@mercadona/eslint-plugin/js'],
+      extends: ['plugin:@mercadona/eslint-plugin/js', 'plugin:@mercadona/eslint-plugin/jsdoc'],
       rules: {}
     }
   ]

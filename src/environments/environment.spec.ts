@@ -1,4 +1,5 @@
 import { environment } from '@environment';
+
 import { MPlatformEnvironment } from '@mercadona/core/platform';
 
 describe('AppComponent', () => {
