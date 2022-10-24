@@ -9,8 +9,8 @@
   },
   "contributors": [
     {
-      "name": "Mercadona Angular Framework (FWKA), based on Archetype 1.0.X",
-      "url": "https://confluence.mercadona.com/pages/viewpage.action?pageId=906283684"
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.X.X",
+      "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
     }
   ],
   "scripts": {
@@ -28,8 +28,7 @@
     "test": "ng test --browsers Chrome",
     "test:safari": "ng test --browsers Safari",
     "test:coverage": "ng test --watch=false --browsers Chrome",
-    "test:ci:local": "node --version && ng test --karma-config=karma-ci.conf.js --no-progress --watch=false --browsers ChromeHeadlessCI",
-    "test:ci": "node --version && ng test --karma-config=karma-ci.conf.js --no-progress --watch=false --browsers GridChrome",
+    "test:ci": "node --version && ng test --karma-config=karma-ci.conf.js --no-progress --watch=false --browsers ChromeHeadlessCI",
     "e2e": "ng e2e",
     "audit": "npm audit",
     "lint": "ng lint",
