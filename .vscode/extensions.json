@@ -1,11 +1,21 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "redhat.vscode-yaml",
     "angular.ng-template",
-    "zignd.html-css-class-completion",
+    "johnpapa.angular2",
+    "aaron-bond.better-comments",
+    "alefragnani.bookmarks",
+    "pranaygp.vscode-css-peek",
+    "sporiley.css-auto-prefix",
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "thibault-vanderseypen.i18n-json-editor",
     "esbenp.prettier-vscode",
+    "rangav.vscode-thunder-client",
+    "gruntfuggly.todo-tree",
+    "redhat.vscode-yaml",
     "usernamehw.errorlens",
-    "editorconfig.editorconfig"
+    "editorconfig.editorconfig",
+    "zignd.html-css-class-completion"
   ]
 }
