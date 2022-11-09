@@ -17,7 +17,8 @@ module.exports = function (config) {
       require('karma-jasmine-html-reporter'),
       require('karma-spec-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-sonarqube-unit-reporter')
     ],
     client: {
       jasmine: {
@@ -63,7 +64,17 @@ module.exports = function (config) {
         skipped: 'SKIPPED: ' // override prefix for skipped tests, default is '- '
       }
     },
-    reporters: ['kjhtml', 'spec', 'coverage'],
+    sonarQubeUnitReporter: {
+      sonarQubeVersion: 'LATEST',
+      outputDir: 'coverage',
+      outputFile: 'reports/ut_report.xml',
+      useBrowserName: false,
+      overrideTestDescription: true,
+      testPath: './src',
+      testPaths: ['./src'],
+      testFilePattern: '.spec.ts'
+    },
+    reporters: ['kjhtml', 'spec', 'coverage', 'sonarqubeUnit'],
     hostname: process.env.MY_POD_IP,
     port: 9876,
     colors: true,
