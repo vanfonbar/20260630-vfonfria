@@ -1,5 +1,6 @@
 import { MLoggerLevel } from '@mercadona/core/logger';
 import { MPlatformEnvironment } from '@mercadona/core/platform';
+import { MTelemetryConfig, MTraces } from '@mercadona/core/telemetry';
 import { MEnviroment } from '@mercadona/core/utils/environment';
 
 /**
@@ -13,7 +14,11 @@ import { MEnviroment } from '@mercadona/core/utils/environment';
 const localEnvironment = {
   production: false,
   logLevel: MLoggerLevel.TRACE,
-  env: 'local' as MPlatformEnvironment
+  env: 'local' as MPlatformEnvironment,
+  telemetryConfig: {
+    url: 'https://otelcol-front.dev.gcp.mercadona.com/v1/traces',
+    traces: MTraces.DEFAULT
+  } as MTelemetryConfig
 };
 
 const envInstance = new MEnviroment('yourAppName', localEnvironment);

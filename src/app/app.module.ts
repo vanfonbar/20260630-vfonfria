@@ -10,6 +10,7 @@ import { MPageErrorModule } from '@mercadona/core-ui/page-error';
 import { MPageNotFoundModule } from '@mercadona/core-ui/page-not-found';
 import { MLoggerModule } from '@mercadona/core/logger';
 import { MPlatformModule } from '@mercadona/core/platform';
+import { MTelemetryModule } from '@mercadona/core/telemetry';
 import { MTranslateModule } from '@mercadona/core/translate';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +32,11 @@ import { AppComponent } from './app.component';
       environment: environment.env
     }),
     MPageNotFoundModule,
-    MPageErrorModule.forRoot()
+    MPageErrorModule.forRoot(),
+    MTelemetryModule.forRoot({
+      url: environment.telemetryConfig.url,
+      traces: environment.telemetryConfig.traces
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
