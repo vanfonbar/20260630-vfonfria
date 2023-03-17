@@ -4,6 +4,7 @@
 
 import { AppConfig } from './app-config.interface';
 
+// appName and appVersion will be replaced during CI execution
 export const APP_CONFIG: AppConfig = {
   appName: 'yourAppName',
   language: {
