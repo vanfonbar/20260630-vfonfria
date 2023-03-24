@@ -49,7 +49,9 @@
     "add:directive": "ng generate @mercadona/schematics:directive",
     "add:service": "ng generate @mercadona/schematics:service",
     "add:model": "ng generate @mercadona/schematics:model",
-    "add:interface": "ng generate @mercadona/schematics:interface"
+    "add:interface": "ng generate @mercadona/schematics:interface",
+    "add:icons": "ng generate @mercadona/schematics:icons",
+    "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth"
   },
   "dependencies": {
     "@angular/animations": "14.2.12",
