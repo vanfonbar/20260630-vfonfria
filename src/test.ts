@@ -6,6 +6,8 @@ import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
+document.body.classList.add('base-theme');
+
 declare const require: {
   context(
     path: string,
