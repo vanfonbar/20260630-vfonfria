@@ -1,5 +1,7 @@
 # yourAppName
 
+Version 2.10.0
+
 ## Scripts
 
 Comando para poder ejecutar los comando de angular cuando no está instalado angular-cli en global.

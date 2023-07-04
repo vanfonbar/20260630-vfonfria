@@ -1,4 +1,3 @@
-
 [[_TOC_]]
 
 # Descripción
@@ -29,7 +28,7 @@ Si el cambio es considerado rupturista, el título de la MR debe contener una ex
 
 Describe los test que has ejecutado para verificar los cambios.
 Es posible aportar las instrucciones necesarias para reproducirlo.
-Si alguno no aplica se puede tachar. 
+Si alguno no aplica se puede tachar.
 
 ## Tipos de test realizados
 
