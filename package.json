@@ -3,15 +3,17 @@
   "author": "Mercadona",
   "version": "2.11.0",
   "description": "",
-  "engines":   {
+  "engines": {
     "node": "16.17.0",
     "npm": "8.15.0"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.11.0",
-    "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.11.0",
+      "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -52,7 +54,7 @@
     "add:icons": "ng generate @mercadona/schematics:icons",
     "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth"
   },
-  "dependencies":   {
+  "dependencies": {
     "@angular/animations": "14.2.12",
     "@angular/cdk": "14.2.7",
     "@angular/common": "14.2.12",
@@ -72,7 +74,7 @@
     "tslib": "2.4.1",
     "zone.js": "0.12.0"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@aduh95/viz.js": "3.7.0",
     "@angular-devkit/build-angular": "14.2.10",
     "@angular/cli": "14.2.10",
@@ -107,5 +109,9 @@
     "typescript": "4.8.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {"@opentelemetry/context-zone-peer-dep": {"zone.js": "0.12.0"}}
+  "overrides": {
+    "@opentelemetry/context-zone-peer-dep": {
+      "zone.js": "0.12.0"
+    }
+  }
 }
