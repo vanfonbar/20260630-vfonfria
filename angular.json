@@ -29,7 +29,14 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "allowedCommonJsDependencies": ["opentracing/lib/span", "opentracing/lib/tracer"],
+            "allowedCommonJsDependencies": [
+              "opentracing/lib/span",
+              "opentracing/lib/tracer",
+              "opentracing/lib/constants",
+              "error-stack-parser",
+              "flat",
+              "shimmer"
+            ],
             "assets": [
               {
                 "glob": "**/*",
