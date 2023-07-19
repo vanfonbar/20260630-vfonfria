@@ -1,19 +1,17 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "2.11.0",
+  "version": "2.12.0",
   "description": "",
-  "engines": {
+  "engines":   {
     "node": "16.17.0",
     "npm": "8.15.0"
   },
-  "contributors": [
-    {
-      "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.11.0",
-      "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
-    }
-  ],
-  "scripts": {
+  "contributors": [  {
+    "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.12.0",
+    "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
+  }],
+  "scripts":   {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -54,7 +52,7 @@
     "add:icons": "ng generate @mercadona/schematics:icons",
     "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth"
   },
-  "dependencies": {
+  "dependencies":   {
     "@angular/animations": "14.2.12",
     "@angular/cdk": "14.2.7",
     "@angular/common": "14.2.12",
@@ -64,17 +62,17 @@
     "@angular/platform-browser": "14.2.12",
     "@angular/platform-browser-dynamic": "14.2.12",
     "@angular/router": "14.2.12",
-    "@mercadona/components": "2.11.0",
-    "@mercadona/common": "2.11.0",
-    "@mercadona/core": "2.11.0",
-    "@mercadona/core-ui": "2.11.0",
-    "@mercadona/icons": "2.11.0",
-    "@mercadona/styles": "2.11.0",
+    "@mercadona/components": "2.12.0",
+    "@mercadona/common": "2.12.0",
+    "@mercadona/core": "2.12.0",
+    "@mercadona/core-ui": "2.12.0",
+    "@mercadona/icons": "2.12.0",
+    "@mercadona/styles": "2.12.0",
     "rxjs": "7.8.0",
     "tslib": "2.4.1",
     "zone.js": "0.12.0"
   },
-  "devDependencies": {
+  "devDependencies":   {
     "@aduh95/viz.js": "3.7.0",
     "@angular-devkit/build-angular": "14.2.10",
     "@angular/cli": "14.2.10",
@@ -82,8 +80,8 @@
     "@commitlint/cli": "17.4.0",
     "@commitlint/config-conventional": "17.4.0",
     "@compodoc/compodoc": "1.1.19",
-    "@mercadona/eslint-plugin": "2.11.0",
-    "@mercadona/schematics": "2.11.0",
+    "@mercadona/eslint-plugin": "2.12.0",
+    "@mercadona/schematics": "2.12.0",
     "@types/jasmine": "4.3.1",
     "@types/jasminewd2": "2.0.10",
     "@types/node": "16.18.11",
@@ -109,9 +107,5 @@
     "typescript": "4.8.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {
-    "@opentelemetry/context-zone-peer-dep": {
-      "zone.js": "0.12.0"
-    }
-  }
+  "overrides": {"@opentelemetry/context-zone-peer-dep": {"zone.js": "0.12.0"}}
 }
