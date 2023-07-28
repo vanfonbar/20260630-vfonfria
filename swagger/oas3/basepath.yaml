@@ -1,0 +1,3198 @@
+openapi: 3.0.1
+info:
+  title: Quickstart service Demo
+  description: Example API definition for quickstart project
+  version: 4.19.0-no-tags
+servers:
+  - url: https://demotest-back.dev.srv.mercadona/
+tags:
+  - name: examples
+    description: Example Controller
+paths:
+  /oas3/adfs-og-auth/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: getExampleCollection
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+        - name: sort
+          in: query
+          description: 'Sort of the query. [sort=+id] will order asc by id, or [sort=+id] desc by id). Default unsorted.'
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: createExample
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_POST_AProductos
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-og-auth/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: getExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_idProducto
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: updateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: deleteExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_DEL_idDeleteProducto
+    patch:
+      tags:
+        - examples
+      summary: Method to partially update a example
+      description: This method updates partially a example defined by its id
+      operationId: updatePartialExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-og-auth/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: getExamplePageByCursor
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+  /oas3/without-auth/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: noAuthgetExampleCollection
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: noAuthcreateExample
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      x-codegen-request-body-name: exampleRequest
+  /oas3/without-auth/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: noAuthgetExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: noAuthupdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: noAuthdeleteExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+    patch:
+      tags:
+        - examples
+      summary: Method to partialy update a example
+      description: This method updates partialy a example defined by its id
+      operationId: noAuthPartialUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      x-codegen-request-body-name: exampleRequest
+  /oas3/without-auth/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: noAuthgetExamplePageByCursor
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+  /oas3/adfs-auth/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: authGetExampleCollection
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: authCreateExample
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-auth/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: authGetExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: authUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: authDeleteExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+    patch:
+      tags:
+        - examples
+      summary: Method to partialy update a example
+      description: This method updates partialy a example defined by its id
+      operationId: authPartialUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-auth/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: authGetExamplePageByCursor
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+  /oas3/adfs-obo/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: adfsOboGetExampleCollection
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: adfsOboCreateExample
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_POST_AProductos
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-obo/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: adfsOboGetExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_idProducto
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: adfsOboUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: adfsOboDeleteExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_DEL_idDeleteProducto
+    patch:
+      tags:
+        - examples
+      summary: Method to partialy update a example
+      description: This method updates partialy a example defined by its id
+      operationId: adfsOboPartialUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+  /oas3/adfs-obo/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: adfsOboGetExamplePageByCursor
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - adfs: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+  /oas3/azure-og-auth/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: getExampleCollectionAzure
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: createExampleAzure
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_POST_AProductos
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-og-auth/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: getExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_idProducto
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: updateExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: deleteExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_DEL_idDeleteProducto
+    patch:
+      tags:
+        - examples
+      summary: Method to update partialy a example
+      description: This method updates partialy a example defined by its id
+      operationId: partialUpdateExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-og-auth/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: getExamplePageByCursorAzure
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+  /oas3/azure-auth/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: authGetExampleCollectionAzure
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: authCreateExampleAzure
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-auth/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: authGetExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: authUpdateExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: authDeleteExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+    patch:
+      tags:
+        - examples
+      summary: Method to partialy update a example
+      description: This method updates partialy a example defined by its id
+      operationId: authPartialUpdateExampleAzure
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-auth/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: authGetExamplePageByCursorAzure
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+  /oas3/azure-obo/examples:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a collection of examples
+      description: This method retrieves a collection of examples
+      operationId: azureOboGetExampleCollection
+      parameters:
+        - name: firstPage
+          in: query
+          description: Requested page (first page is page 1). If not specified 1 is
+            used. [Cannot be negative or zero]
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of retrieved elements per page. if not specified 10 is
+            used. [Cannot be less than 1]
+          schema:
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+    post:
+      tags:
+        - examples
+      summary: Method to add one example to the data storage
+      description: This method creates a new example with the given body information
+      operationId: azureOboCreateExample
+      requestBody:
+        description: exampleRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_POST_AProductos
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-obo/examples/{id}:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve one example
+      description: This method retrieves a example defined by a specific id
+      operationId: azureOboGetExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_idProducto
+    put:
+      tags:
+        - examples
+      summary: Method to update a example
+      description: This method updates a example defined by its id
+      operationId: azureOboUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+    delete:
+      tags:
+        - examples
+      summary: Method to delete a example
+      description: This method delete a example by its id
+      operationId: azureOboDeleteExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        202:
+          description: No content
+          content: {}
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_DEL_idDeleteProducto
+    patch:
+      tags:
+        - examples
+      summary: Method to update partialy a example
+      description: This method updates partialy a example defined by its id
+      operationId: azureOboPartialUpdateExample
+      parameters:
+        - name: id
+          in: path
+          description: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: exampleRequest
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ExampleRequest'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_PUT_idEditarProducto
+      x-codegen-request-body-name: exampleRequest
+  /oas3/azure-obo/examples-cursor:
+    get:
+      tags:
+        - examples
+      summary: Method to retrieve a page of examples by a logical cursor
+      description: This method retrieves a page of examples specified by a logical
+        cursor
+      operationId: azureOboGetExamplePageByCursor
+      parameters:
+        - name: cursorEncoded
+          in: query
+          description: cursor
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: filter
+          in: query
+          schema:
+            type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleResourceCollectionCursorResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      security:
+        - aad: []
+      x-mercadona-security:
+        operationgroups:
+          - DCNA_GET_ObtenerProductos
+  /oas3/list/improvements/CE00000916:
+    post:
+      tags:
+        - legacy
+      summary: Method to get data of legacy api
+      description: This method retrieves a list of improvements
+      operationId: adfsCcGetData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyObject'
+        required: false
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegacyResourceResponse'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+      x-codegen-request-body-name: body
+  /oas3/test:
+    get:
+      tags:
+        - ocp
+      summary: Method to get data of ocp cloud
+      description: This method retrieves a test text
+      operationId: ocpTest
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        400:
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        401:
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        403:
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        404:
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+        500:
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResourceResponse'
+
+components:
+  schemas:
+    LegacyResource:
+      title: LegacyResource
+      type: object
+      properties:
+        publicId:
+          type: string
+        thirdPartyId:
+          type: string
+        siteId:
+          type: string
+        companyId:
+          type: string
+        typeId:
+          type: string
+        name:
+          type: string
+        location:
+          type: string
+        province:
+          type: string
+        groupingName:
+          type: string
+        activationDate:
+          type: string
+        deactivationDate:
+          type: string
+    LegacyResourceResponse:
+      title: LegacyResourceResponse
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LegacyResource'
+    EmptyObject:
+      title: EmptyObject
+      type: object
+    ExampleRequest:
+      title: ExampleRequest
+      required:
+        - creationTime
+        - description
+        - identification
+        - identificationType
+        - name
+        - numberOfDaysInWeek
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          maxLength: 30
+          minLength: 5
+          type: string
+        creationTime:
+          type: string
+          format: date-time
+        identificationType:
+          $ref: '#/components/schemas/IdentificationTypesRequestEnum'
+        identification:
+          pattern: (?:(?=^[0-9])[0-9]{8}[A-Z]{1}$|(?!^[0-9])[A-Z]{1}[0-9]{7}[A-Z]{1}$)
+          type: string
+        numberOfDaysInWeek:
+          maximum: 7
+          minimum: 1
+          type: integer
+          format: int32
+    ExampleResource:
+      title: ExampleResource
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        creationTime:
+          type: string
+          format: date-time
+        identificationType:
+          $ref: '#/components/schemas/IdentificationTypesRequestEnum'
+        identification:
+          type: string
+        numberOfDaysInWeek:
+          type: integer
+          format: int32
+    ExampleResourceResponse:
+      title: ExampleResourceResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExampleResource'
+    ExampleResourceCollection:
+      title: ExampleResourceCollection
+      type: object
+      properties:
+        examples:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExampleResource'
+    ExampleResourceCollectionResponse:
+      title: ExampleResourceCollectionResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExampleResourceCollection'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ExampleResourceCollectionCursorResponse:
+      title: ExampleResourceCollectionCursorResponse
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ExampleResourceCollection'
+        cursorPagination:
+          $ref: '#/components/schemas/CursorPagination'
+    ErrorResource:
+      title: ErrorResource
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        details:
+          type: array
+          items:
+            type: string
+    ErrorResourceResponse:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/ErrorResource'
+    IdentificationTypesRequestEnum:
+      type: string
+      enum:
+        - DNI
+        - NIE
+    Pagination:
+      type: object
+      properties:
+        requestedPage:
+          type: integer
+          format: int32
+        requestedSize:
+          type: integer
+          format: int32
+        retrievedResults:
+          type: integer
+          format: int32
+        totalResults:
+          type: integer
+          format: int64
+        nextPage:
+          type: string
+        previousPage:
+          type: string
+    CursorPagination:
+      type: object
+      properties:
+        requestedSize:
+          type: integer
+        retrievedResults:
+          type: integer
+        nextPage:
+          type: string
+        previousPage:
+          type: string
+  securitySchemes:
+    adfs:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: ''
+          scopes: {}
+    aad:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: ''
+          scopes: {}

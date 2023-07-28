@@ -23,7 +23,7 @@
     "build:pro": "ng build --source-map=true --stats-json",
     "build:preview": "npm run build --configuration=development-preview",
     "build:doc": "compodoc -p tsconfig.doc.json",
-    "build:api": "ng-swagger-gen --config swagger/swagger.config.json",
+    "build:api": "npm run add:api:oas2",
     "test": "ng test --browsers Chrome",
     "test:safari": "ng test --browsers Safari",
     "test:coverage": "ng test --watch=false --browsers Chrome",
@@ -50,7 +50,9 @@
     "add:model": "ng generate @mercadona/schematics:model",
     "add:interface": "ng generate @mercadona/schematics:interface",
     "add:icons": "ng generate @mercadona/schematics:icons",
-    "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth"
+    "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth",
+    "add:api:oas2": "ng-swagger-gen --config swagger/swagger-oas2-config.json",
+    "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json"
   },
   "dependencies":   {
     "@angular/animations": "14.2.12",
@@ -100,6 +102,7 @@
     "karma-webdriver-launcher": "1.0.8",
     "lint-staged": "13.1.0",
     "ng-swagger-gen": "2.3.1",
+    "ng-openapi-gen": "0.25.1",
     "prettier": "2.8.1",
     "protractor": "7.0.0",
     "source-map-explorer": "2.5.3",
