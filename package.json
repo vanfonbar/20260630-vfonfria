@@ -1,17 +1,19 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "2.19.1",
+  "version": "2.11.0",
   "description": "",
-  "engines":   {
+  "engines": {
     "node": "16.17.0",
     "npm": "8.15.0"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.19.1",
-    "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.20.0",
+      "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -54,61 +56,66 @@
     "add:api:oas2": "ng-swagger-gen --config swagger/swagger-oas2-config.json",
     "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json"
   },
-  "dependencies":   {
-    "@angular/animations": "14.2.12",
+  "dependencies": {
+    "@angular/animations": "14.3.0",
     "@angular/cdk": "14.2.7",
-    "@angular/common": "14.2.12",
-    "@angular/compiler": "14.2.12",
-    "@angular/core": "14.2.12",
-    "@angular/forms": "14.2.12",
-    "@angular/platform-browser": "14.2.12",
-    "@angular/platform-browser-dynamic": "14.2.12",
-    "@angular/router": "14.2.12",
-    "@mercadona/components": "2.19.1",
-    "@mercadona/common": "2.19.1",
-    "@mercadona/core": "2.19.1",
-    "@mercadona/core-ui": "2.19.1",
-    "@mercadona/icons": "2.19.1",
-    "@mercadona/styles": "2.19.1",
+    "@angular/common": "14.3.0",
+    "@angular/compiler": "14.3.0",
+    "@angular/core": "14.3.0",
+    "@angular/forms": "14.3.0",
+    "@angular/platform-browser": "14.3.0",
+    "@angular/platform-browser-dynamic": "14.3.0",
+    "@angular/router": "14.3.0",
+    "@mercadona/components": "2.20.0",
+    "@mercadona/common": "2.20.0",
+    "@mercadona/core": "2.20.0",
+    "@mercadona/core-ui": "2.20.0",
+    "@mercadona/icons": "2.20.0",
+    "@mercadona/styles": "2.20.0",
     "rxjs": "7.8.0",
-    "tslib": "2.4.1",
+    "tslib": "2.6.2",
     "zone.js": "0.12.0"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@aduh95/viz.js": "3.7.0",
-    "@angular-devkit/build-angular": "14.2.10",
-    "@angular/cli": "14.2.10",
-    "@angular/compiler-cli": "14.2.12",
-    "@commitlint/cli": "17.4.0",
-    "@commitlint/config-conventional": "17.4.0",
-    "@compodoc/compodoc": "1.1.19",
-    "@mercadona/eslint-plugin": "2.19.1",
-    "@mercadona/schematics": "2.19.1",
-    "@types/jasmine": "4.3.1",
-    "@types/jasminewd2": "2.0.10",
-    "@types/node": "16.18.11",
+    "@angular-devkit/build-angular": "14.2.12",
+    "@angular/cli": "14.2.13",
+    "@angular/compiler-cli": "14.3.0",
+    "@commitlint/cli": "17.8.1",
+    "@commitlint/config-conventional": "17.8.1",
+    "@compodoc/compodoc": "1.1.23",
+    "@mercadona/eslint-plugin": "2.20.0",
+    "@mercadona/schematics": "2.20.0",
+    "@types/jasmine": "4.6.4",
+    "@types/jasminewd2": "2.0.13",
+    "@types/node": "16.18.65",
+    "@types/lodash": "4.14.202",
     "husky": "8.0.3",
-    "jasmine-core": "4.5.0",
+    "jasmine-core": "4.6.0",
     "jasmine-spec-reporter": "7.0.0",
     "jasminewd2": "2.2.0",
-    "karma": "6.4.1",
-    "karma-chrome-launcher": "3.1.1",
-    "karma-coverage": "2.2.0",
+    "karma": "6.4.2",
+    "karma-chrome-launcher": "3.2.0",
+    "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
-    "karma-jasmine-html-reporter": "2.0.0",
+    "karma-jasmine-html-reporter": "2.1.0",
     "karma-safari-launcher": "1.0.0",
     "karma-sonarqube-unit-reporter": "0.0.23",
     "karma-spec-reporter": "0.0.36",
     "karma-webdriver-launcher": "1.0.8",
-    "lint-staged": "13.1.0",
+    "lint-staged": "13.3.0",
     "ng-swagger-gen": "2.3.1",
     "ng-openapi-gen": "0.25.1",
-    "prettier": "2.8.1",
+    "prettier": "2.8.8",
     "protractor": "7.0.0",
     "source-map-explorer": "2.5.3",
     "ts-node": "10.9.1",
     "typescript": "4.8.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {"@opentelemetry/context-zone-peer-dep": {"zone.js": "0.12.0"}}
+  "overrides": {
+    "@opentelemetry/context-zone-peer-dep": {
+      "zone.js": "0.12.0"
+    }
+  }
 }
