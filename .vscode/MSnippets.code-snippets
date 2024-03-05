@@ -1,0 +1,386 @@
+{
+  "MAlert": {
+    "scope": "html",
+    "prefix": ["m-alert"],
+    "body": ["<m-alert color=\"info\" shape=\"default\" description=\"$0\"></m-alert>"],
+    "description": ["Mdona FWK Alert"]
+  },
+  "MBadget": {
+    "scope": "html",
+    "prefix": ["m-badge"],
+    "body": [" [m-badge]=\"$0\" badgePosition=\"top-right\" badgeType=\"number\" "],
+    "description": ["Mdona FWK Badget"]
+  },
+  "MButton": {
+    "scope": "html",
+    "prefix": ["m-button"],
+    "body": ["<button m-button>$0</button>"],
+    "description": ["Mdona FWK Button"]
+  },
+  "MButtonToggle": {
+    "scope": "html",
+    "prefix": ["m-button-toggle"],
+    "body": [
+      "<m-button-toggle-group [(value)]=\"controlValue\">\n\t<m-button-toggle value=\"new\">Crear</m-button-toggle>\n\t<m-button-toggle value=\"update\">Actualizar</m-button-toggle>\n\t<m-button-toggle value=\"remove\">Eliminar</m-button-toggle>\n</m-button-toggle-group>"
+    ],
+    "description": ["Mdona FWK ButtonToggle"]
+  },
+  "MCalendar": {
+    "scope": "html",
+    "prefix": ["m-calendar"],
+    "body": [
+      "<m-calendar \n\t[data]=\"data\" \n\t[visibleDate]=\"visibleDate\" \n\t(eventDeleted)=\"log('event deleted', \\$event)\" \n\t(eventUpdated)=\"log('event updated', \\$event)\" \n\t(eventCreated)=\"log('event created', \\$event)\" \n\t(categoryDeleted)=\"log('category deleted', \\$event)\" \n\t(categoryUpdated)=\"log('category updated', \\$event)\" \n\t(categoryCreated)=\"log('category created', \\$event)\"></m-calendar>"
+    ]
+  },
+  "MCard": {
+    "scope": "html",
+    "prefix": ["m-card"],
+    "body": ["<m-card titleLabel=\"$0\" description=\"$0\"></m-card>"]
+  },
+  "MCarousel": {
+    "scope": "html",
+    "prefix": ["m-carousel"],
+    "body": [
+      "<m-carousel \n\t[infinite]=\"true\" \n\t[data]=\"slides\"> \n\t\t<ng-container *ngFor=\"let slide of slides; let i = index\"> \n\t\t\t<ng-template [m-carousel-slide]=\"slide\" > \n\t\t\t\t<img src=\"{{ slide.item }}\" alt=\"\" /> \n\t\t\t</ng-template> \n\t\t</ng-container> \n</m-carousel>"
+    ]
+  },
+  "MChartColumn": {
+    "scope": "html",
+    "prefix": ["m-chart-column"],
+    "body": ["<m-chart m-chart-column [data]=\"$0\"></m-chart>"]
+  },
+  "MChartPie": {
+    "scope": "html",
+    "prefix": ["m-chart-pie"],
+    "body": ["<m-chart m-chart-pie [data]=\"$0\"></m-chart>"]
+  },
+  "MChartDonut": {
+    "scope": "html",
+    "prefix": ["m-chart-donut"],
+    "body": ["<m-chart m-chart-donut [data]=\"$0\"></m-chart>"]
+  },
+  "MChartScatter": {
+    "scope": "html",
+    "prefix": ["m-chart-scatter"],
+    "body": ["<m-chart m-chart-scatter [data]=\"$0\"></m-chart>"]
+  },
+  "MChartLine": {
+    "scope": "html",
+    "prefix": ["m-chart-line"],
+    "body": ["<m-chart m-chart-line [data]=\"$0\"></m-chart>"]
+  },
+  "MChartNetwork": {
+    "scope": "html",
+    "prefix": ["m-chart-network"],
+    "body": ["<m-chart m-chart-network [data]=\"$0\"></m-chart>"]
+  },
+  "MCheckbox": {
+    "scope": "html",
+    "prefix": ["m-checkbox"],
+    "body": ["<m-checkbox formControlName=\"$0\">${1:checkboxText}</m-checkbox>"]
+  },
+  "MChip": {
+    "scope": "html",
+    "prefix": ["m-chip"],
+    "body": ["<m-chip mode=\"choice\" chipType=\"flat\">$0</m-chip>"]
+  },
+  "MColorPicker": {
+    "scope": "html",
+    "prefix": ["m-colorpicker"],
+    "body": ["<m-colorpicker [(value)]=\"$0\"></m-colorpicker>"]
+  },
+  "MClickDirective": {
+    "scope": "html",
+    "prefix": ["m-click", "click"],
+    "body": [" (m-click)=\"$0\" "]
+  },
+  "MClickOutsideDirective": {
+    "scope": "html",
+    "prefix": ["m-click-outside", "outside"],
+    "body": [" (m-click-outside)=\"$0\" "]
+  },
+  "MDisplayTooltipEllipsisDirective": {
+    "scope": "html",
+    "prefix": ["m-display-tooltip-ellipsis", "ellipsis"],
+    "body": [" m-display-tooltip-ellipsis "]
+  },
+  "MContextMenu": {
+    "scope": "html",
+    "prefix": ["m-context-menu"],
+    "body": ["<m-context-menu #$0></m-context-menu>"]
+  },
+  "MContextMenuItem": {
+    "scope": "html",
+    "prefix": ["m-context-menu-item"],
+    "body": ["<m-context-menu-item>$0</m-context-menu-item>"]
+  },
+  "MDatepicker": {
+    "scope": "html",
+    "prefix": ["m-datepicker"],
+    "body": [
+      "<m-datepicker \n\t[visibleDate]=\"visibleDate\" \n\t[showToday]=\"showToday\" \n\t[(ngModel)]=\"selectedDate\" \n\t[disabled]=\"disabled\" \n\t[hideNavigation]=\"hideNavigation\" \n\t(ngModelChange)=\"dateChange(\\$event)\"></m-datepicker>"
+    ]
+  },
+  "MFormField": {
+    "scope": "html",
+    "prefix": ["m-form-field"],
+    "body": ["<m-form-field label=\"{{ 'i18n.label.key' | mTranslate }}\">\n\t$0\n</m-form-field>"]
+  },
+  "MHeader": {
+    "scope": "html",
+    "prefix": ["m-header"],
+    "body": [
+      "<m-header showLogo>\n\t<span m-header-title>{{ 'i18n.label.key' | mTranslate }}</span>\n\t<m-header-actions>\n\t\t$0\n\t</m-header-actions>\n</m-header>"
+    ]
+  },
+  "MHtmlEditor": {
+    "scope": "html",
+    "prefix": ["m-html-editor"],
+    "body": ["<m-html-editor [(value)]=\"$0\"></m-html-editor>"]
+  },
+  "MImageGroup": {
+    "scope": "html",
+    "prefix": ["m-image-group"],
+    "body": ["<m-image-group [transitionMode]=\"circular\">\n\t$0\n</m-image-group>"]
+  },
+  "MImage": {
+    "scope": "html",
+    "prefix": ["image", "m-image"],
+    "body": ["<img m-image src=\"$0\" width=\"100\" height=\"100\" />"]
+  },
+  "MInfiniteLoader": {
+    "scope": "html",
+    "prefix": ["m-infinite-loader"],
+    "body": [
+      "<m-infinite-loader \n\t[loadData]=\"loadData\" \n\t[template]=\"template\" \n\titemHeight=\"100\" \n\t[itemsCount]=\"itemsCount\" \n\tclass=\"viewport\" \n\t> \n\t</m-infinite-loader>"
+    ]
+  },
+  "MInput": {
+    "scope": "html",
+    "prefix": ["input", "m-input"],
+    "body": ["<input type=\"text\" placeholder=\"{{ 'i18n.input' | mTranslate }}\" m-input formControlName=\"$0\" />"]
+  },
+  "MLink": {
+    "scope": "html",
+    "prefix": ["m-link"],
+    "body": ["<a m-link routerLink=\"./your_router_link\">$0</a>"]
+  },
+  "MList": {
+    "scope": "html",
+    "prefix": ["m-list"],
+    "body": [
+      "<m-list titleLabel=\"{{ 'i18n.title' | mTranslate }}\" subtitle=\"{{ 'i18n.subTitle' | mTranslate }}\">\n\t$0\n</m-list>"
+    ]
+  },
+  "MListItem": {
+    "scope": "html",
+    "prefix": ["m-list-item"],
+    "body": ["<m-list-item>$0</m-list-item>"]
+  },
+  "MListCategoryItem": {
+    "scope": "html",
+    "prefix": ["m-list-category-item"],
+    "body": ["<m-list-category-item category=\"{{ 'i18n.item.category' | mTranslate }}\">$0</m-list-category-item>"]
+  },
+  "MListTextItemComponent": {
+    "scope": "html",
+    "prefix": ["m-list-text-item"],
+    "body": [
+      "<m-list-text-item titleLabel=\"{{ 'i18n.title' | mTranslate }}\" subtitle=\"{{ 'i18n.subTitle' | mTranslate }}\">\n\t$0\n</m-list-text-item>"
+    ]
+  },
+  "MListCustomItemComponent": {
+    "scope": "html",
+    "prefix": ["m-list-custom-item"],
+    "body": ["<m-list-custom-item>\n\t$0\n</m-list-custom-item>"]
+  },
+  "MMap": {
+    "scope": "html",
+    "prefix": ["m-map"],
+    "body": [
+      "<m-map \n\t[data]=\"dataMap\" \n\t[center]=\"center\" \n\t[zoom]=\"zoom\" \n\t[controls]=\"allowControls\" \n\t[interactions]=\"allowInteractions\" \n\t[baseLayer]=\"baseLayer\" \n\tdataProjection=\"EPSG:4326\"></m-map>"
+    ]
+  },
+  "MMenu": {
+    "scope": "html",
+    "prefix": ["m-menu"],
+    "body": ["<m-menu>\n\t$0\n</m-menu>"]
+  },
+  "MMenuDivider": {
+    "scope": "html",
+    "prefix": ["m-menu-divider"],
+    "body": ["<m-menu-divider></m-menu-divider>"]
+  },
+  "MMenuGroup": {
+    "scope": "html",
+    "prefix": ["m-menu-group"],
+    "body": ["<m-menu-group>\n\t$0\n</m-menu-group>"]
+  },
+  "MMenuItem": {
+    "scope": "html",
+    "prefix": ["m-menu-item"],
+    "body": ["<m-menu-item>\n\t$0\n</m-menu-item>"]
+  },
+  "MMenuLabel": {
+    "scope": "html",
+    "prefix": ["m-menu-label"],
+    "body": ["<m-menu-label>{{ '$0' | mTranslate }}</m-menu-label>"]
+  },
+  "MPaginator": {
+    "scope": "html",
+    "prefix": ["m-paginator"],
+    "body": [
+      "<m-paginator \n\t[(pageIndex)]=\"pageIndex\" \n\t[itemsLength]=\"20\" \n\t[(pageSize)]=\"pageSize\" \n\t[pageSizeOptions]=\"[5, 10, 20, 50]\" \n\t[paginatorType]=\"complete\" \n\t[hidePageSize]=\"false\" \n\t[hideFirstLastButtons]=\"false\" \n\t(page)=\"paginateCustomPaginator(\\$event)\"></m-paginator>"
+    ]
+  },
+  "MProgressBar": {
+    "scope": "html",
+    "prefix": ["m-progress-bar"],
+    "body": ["<m-progress-bar [value]=\"$0\"></m-progress-bar>"]
+  },
+  "MRadioGroup": {
+    "scope": "html",
+    "prefix": ["m-radio-group"],
+    "body": [
+      "<m-radio-group formControlName=\"radioSelect\" size=\"normal\" labelPosition=\"before\" alignment=\"vertical\" [disabled]=\"false\">\n\t$0\n</m-radio-group>"
+    ]
+  },
+  "MRadioButton": {
+    "scope": "html",
+    "prefix": ["m-radio-button"],
+    "body": ["<m-radio-button [value]=\"'$0'\">{{ 'i18n.radio' | mTranslate }}</m-radio-button>"]
+  },
+  "MSearch": {
+    "scope": "html",
+    "prefix": ["m-search"],
+    "body": [
+      "<m-search \n\t#auto=\"mSearch\" \n\t(closed)=\"changePanel('closed')\" \n\t(opened)=\"changePanel('opened')\" \n\t(valueChange)=\"valueChange(\\$event)\" \n\t[options]=\"(filteredSimpleOptions | async) || []\" \n\t[isOpenPanelAuto]=\"isOpenPanelAuto\"></m-search>"
+    ]
+  },
+  "MSelect": {
+    "scope": "html",
+    "prefix": ["m-select"],
+    "body": [
+      "<m-select \n\t[options]=\"simpleOptions\" \n\t[search]=\"true\" \n\t[placeholder]=\"'{{ 'i18n.placeholder' | mTranslate }}'\" \n\tformControlName=\"simpleStringSelect\"></m-select>"
+    ]
+  },
+  "MSidenavContainer": {
+    "scope": "html",
+    "prefix": ["m-sidenav-container"],
+    "body": [
+      "<m-sidenav-container [hasBackdrop]=\"true\" (backdropClick)=\"onBackdropClick()\">\n\t$0\n</m-sidenav-container>"
+    ]
+  },
+  "MSidenav": {
+    "scope": "html",
+    "prefix": ["m-sidenav"],
+    "body": [
+      "<m-sidenav \t\n#ref1 \t\n(positionChanged)=\"onPositionChanged()\" \t\n(openedChange)=\"onOpenedChange()\" \t\n(opened)=\"onOpened()\" \t\n(openedStart)=\"onOpenedStart()\" \t\n(closed)=\"onClosed()\" \t\n(closedStart)=\"onClosedStart()\"> \t\n\n<ng-container [ngTemplateOutlet]=\"leftPanelRef\" [ngTemplateOutletContext]=\"{ \\$implicit: ref1 }\"></ng-container> \t</m-sidenav>"
+    ]
+  },
+  "MSlider": {
+    "scope": "html",
+    "prefix": ["m-slider"],
+    "body": ["<m-slider visibleLimits min=\"0\" max=\"50\" formControlName=\"$0\"></m-slider>"]
+  },
+  "MSkeleton": {
+    "scope": "html",
+    "prefix": ["m-skeleton"],
+    "body": ["<m-skeleton [hasAnimation]=\"true\"></m-skeleton>"]
+  },
+  "MSkeletonItem": {
+    "scope": "html",
+    "prefix": ["m-skeleton-item"],
+    "body": [
+      "<m-skeleton-item [config]=\"{ type: 'basic', options: { shape: 'square', width: '100rem', height: '6rem' } }\"></m-skeleton-item>"
+    ]
+  },
+  "MSortHeader": {
+    "scope": "html",
+    "prefix": ["m-sort-header"],
+    "body": ["<m-sort-header sortId=\"$0\" [sortStartDirection]=\"$0\">$0</m-sort-header>"]
+  },
+  "MSpinner": {
+    "scope": "html",
+    "prefix": ["m-spinner"],
+    "body": ["<m-spinner size=\"default\" color=\"main\" message=\"{{ '$0' | mTranslate }}\"></m-spinner>"]
+  },
+  "MStepper": {
+    "scope": "html",
+    "prefix": ["m-stepper"],
+    "body": ["<m-stepper [selected]=\"selectedStep\" orientation=\"'horizontal'\">\n\t$0\n</m-stepper>"]
+  },
+  "MStepperHeader": {
+    "scope": "html",
+    "prefix": ["m-stepper-header"],
+    "body": ["<m-stepper-header>\n\t$0\n</m-stepper-header>"]
+  },
+  "MStepperHeaderTitle": {
+    "scope": "html",
+    "prefix": ["m-stepper-header-title"],
+    "body": ["<m-stepper-header-title>{{ '$0' | mTranslate }}</m-stepper-header-title>"]
+  },
+  "MStepperHeaderSubtitle": {
+    "scope": "html",
+    "prefix": ["m-stepper-header-subtitle"],
+    "body": ["<m-stepper-header-subtitle>{{ '$0' | mTranslate }}</m-stepper-header-subtitle>"]
+  },
+  "MStepperStep": {
+    "scope": "html",
+    "prefix": ["m-stepper-step"],
+    "body": ["<m-stepper-step label=\"{{ 'i18n.stepLabel' | mTranslate }}\">\n\t$0\n</m-stepper-step>"]
+  },
+  "MSwitch": {
+    "scope": "html",
+    "prefix": ["m-switch"],
+    "body": ["<m-switch formControlName=\"$0\">$0</m-switch>"]
+  },
+  "MTable": {
+    "scope": "html",
+    "prefix": ["m-table"],
+    "body": [
+      "<table m-table [dataSource]=\"dataSource\"> \n\t<tr m-header-row *m-header-row-def=\"displayedColumns\"></tr> \n\t<tr m-row *m-row-def=\"let element; columns: displayedColumns\"></tr> \n\t \n\t<!-- Example Column --> \n\t<ng-container m-column-def=\"example\"> \n\t\t<th m-header-cell *m-header-cell-def>Nº</th> \n\t\t<td m-cell *m-cell-def=\"let element\">{{ element.example }}</td> \n\t</ng-container> \n\t \n\t<!-- No data --> \n\t<ng-container *m-no-data-row> \n\t\t<p class=\"table-no-data\">{{ 'i18n.noResults' | mTranslate }}</p> \n\t</ng-container> \n</table>"
+    ]
+  },
+  "MTabGroup": {
+    "scope": "html",
+    "prefix": ["m-tab-group"],
+    "body": ["<m-tab-group color=\"main\" [borderless]=\"borderless\">\n\t$0\n</m-tab-group>"]
+  },
+  "MTab": {
+    "scope": "html",
+    "prefix": ["m-tab"],
+    "body": ["<m-tab titleLabel=\"{{ 'i18n.mTabTitle' | mTranslate }}\">\n\t$0\n</m-tab>"]
+  },
+  "MTextarea": {
+    "scope": "html",
+    "prefix": ["m-textarea"],
+    "body": ["<textarea m-input formControlName=\"$0\"></textarea>"]
+  },
+  "MTile": {
+    "scope": "html",
+    "prefix": ["m-tile"],
+    "body": [
+      "<m-tile titleLabel=\"{{ 'i18n.mTileTitle' | mTranslate }}\" subtitle=\"{{ 'i18n.mTileSubtitle' | mTranslate }}\">\n\t$0\n</m-tile>"
+    ]
+  },
+  "MTimePicker": {
+    "scope": "html",
+    "prefix": ["m-timepicker"],
+    "body": ["<m-timepicker \n\tmode=\"carousel\" \n\thideDayPeriod \n\tformControlName=\"$0\" \n\t></m-timepicker>"]
+  },
+  "MTree": {
+    "scope": "html",
+    "prefix": ["m-tree"],
+    "body": [
+      "<m-tree \n\t#treeComponent \n\t[(nodesConfig)]=\"nodesConfig\" \n\t[type]=\"treeType\" \n\t(expandedTreeNodesChange)=\"expandedTreeNodesChange(\\$event)\" \n\t(selectedTreeNodesChange)=\"selectedTreeNodesChange(\\$event)\" \n\t(checkedTreeNodesChange)=\"checkedTreeNodesChange(\\$event)\" \n\t(disabledTreeNodesChange)=\"disabledTreeNodesChange(\\$event)\" \n\t(clickedTreeNodeChange)=\"lastSelectedTreeNodeChange(\\$event)\"> \n\t\t<ng-template let-node> \n\t\t\t  <div [m-tree-node-selection]=\"node\"> \n\t\t\t\t    <m-tree-node-title [treeNode]=\"node\"></m-tree-node-title> \n\t\t\t  </div> \n\t\t</ng-template> \n</m-tree>"
+    ]
+  },
+  "MUploader": {
+    "scope": "html",
+    "prefix": ["m-uploader"],
+    "body": [
+      "<m-uploader \n\ttitleLabel=\"{{ 'i18n.mUploaderTitle' | mTranslate }}\" \n\tmaxSizeNumber=\"1\" \n\tmaxSizeUnit=\"mb\"></m-uploader>"
+    ]
+  }
+}
