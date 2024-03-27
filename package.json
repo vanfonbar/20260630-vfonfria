@@ -7,11 +7,13 @@
     "node": "16.17.0",
     "npm": "8.15.0"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.22.0",
-    "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.22.0",
+      "url": "https://mus-angular.mercadona.com/39eafa15b/n/88f9e1"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
