@@ -2,7 +2,7 @@
 
 ## Version
 
-2.21.2
+2.23.0
 
 ## Scripts
 
