@@ -1,5 +1,3 @@
-[[_TOC_]]
-
 # Descripción
 
 Describe el motivo y la solución. Incluye un resumen de los cambios y de la tarea relacionada, además del resultado.
