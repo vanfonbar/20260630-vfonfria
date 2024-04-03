@@ -34,7 +34,7 @@ export const ICONS_LIST: (MIconType | string)[] = [];
  * This constant is the one that allows us to differentiate whether the icons will be read locally or through the bucket.
  * By default, they will be read from the bucket (false) to read locally it must be changed to true.
  */
-export const ICONS_LOCAL_MODE: boolean = true;
+export const ICONS_LOCAL_MODE: boolean = false;
 
 /**
  * IMPORTANT: Do not change the name of this constant because it is used to run the
@@ -48,4 +48,4 @@ export const ICONS_LOCAL_MODE: boolean = true;
  *
  * The icons will appear in the folder `/dist/assets/mercadona`.
  */
-export const ICONS_REGISTRY: (MIconType | string)[][] = [ICONS_LIST];
+export const ICONS_REGISTRY: (MIconType | string)[][] = [];

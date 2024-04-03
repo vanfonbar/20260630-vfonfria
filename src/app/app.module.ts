@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { APP_CONFIG, ICONS_LIST, ICONS_LOCAL_MODE } from '@constants';
+import { APP_CONFIG } from '@constants';
 import { environment } from '@environment';
 
 import { MLoggerModule } from '@mercadona/core/logger';
@@ -12,7 +12,6 @@ import { MTranslateModule } from '@mercadona/core/translate';
 import { MErrorHandlerModule } from '@mercadona/core-ui/error-handler';
 import { MPageErrorModule } from '@mercadona/core-ui/page-error';
 import { MPageNotFoundModule } from '@mercadona/core-ui/page-not-found';
-import { MIconModule } from '@mercadona/icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,11 +36,6 @@ import { AppComponent } from './app.component';
     MTelemetryModule.forRoot({
       url: environment.telemetryConfig.url,
       traces: environment.telemetryConfig.traces
-    }),
-    MIconModule.forRoot({
-      registry: 'folder',
-      icons: ICONS_LIST,
-      prodMode: ICONS_LOCAL_MODE
     })
   ],
   providers: [],
