@@ -35,5 +35,6 @@
   },
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
-  "i18nJsonEditor.forceKeyUPPERCASE": false
+  "i18nJsonEditor.forceKeyUPPERCASE": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
