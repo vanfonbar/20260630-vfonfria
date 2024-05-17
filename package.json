@@ -55,7 +55,8 @@
     "add:icons": "ng generate @mercadona/schematics:icons",
     "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth",
     "add:api:oas2": "ng-swagger-gen --config swagger/swagger-oas2-config.json",
-    "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json"
+    "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json",
+    "test:stryker": "stryker run"
   },
   "dependencies": {
     "@angular/animations": "14.3.0",
@@ -87,6 +88,9 @@
     "@compodoc/compodoc": "1.1.23",
     "@mercadona/eslint-plugin": "2.22.0",
     "@mercadona/schematics": "2.22.0",
+    "@stryker-mutator/core": "7.3.0",
+    "@stryker-mutator/karma-runner": "7.3.0",
+    "@stryker-mutator/typescript-checker": "7.3.0",
     "@types/jasmine": "4.6.4",
     "@types/jasminewd2": "2.0.13",
     "@types/node": "16.18.65",

@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "This config was generated using 'stryker init'. Please see the guide for more information: https://stryker-mutator.io/docs/stryker-js/guides/angular",
+  "mutate": [
+    "src/app/**/*.ts",
+    "!src/app/**/models/*.*",
+    "!src/app/api/**/*.ts",
+    "!src/app/mocks/**/*.ts",
+    "!src/app/**/*.spec.ts",
+    "!src/app/**/*.module.ts",
+    "!src/app/**/*.constants.ts"
+  ],
+  "testRunner": "karma",
+  "karma": {
+    "configFile": "karma-ci.conf.js",
+    "projectType": "angular-cli",
+    "config": {
+      "browsers": ["GridChrome"]
+    }
+  },
+  "mutator": {
+    "excludedMutations": [
+      "BlockStatement",
+      "MethodExpression",
+      "ObjectLiteral",
+      "Regex",
+      "ArrowFunction",
+      "EqualityOperator",
+      "OptionalChaining"
+    ]
+  },
+  "logLevel": "trace",
+  "reporters": ["progress", "clear-text", "html", "json"],
+  "concurrency": 1,
+  "coverageAnalysis": "perTest",
+  "ignoreStatic": true,
+  "incremental": true,
+  "timeoutMS": 60000,
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "typescriptChecker": {
+    "prioritizePerformanceOverAccuracy": true
+  }
+}
