@@ -35,6 +35,7 @@
   "coverageAnalysis": "perTest",
   "ignoreStatic": true,
   "incremental": true,
+  "incrementalFile": "stryker-incremental.json",
   "timeoutMS": 60000,
   "checkers": ["typescript"],
   "tsconfigFile": "tsconfig.json",

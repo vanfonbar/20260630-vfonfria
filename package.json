@@ -54,7 +54,7 @@
     "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth",
     "add:api:oas2": "ng-swagger-gen --config swagger/swagger-oas2-config.json",
     "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json",
-    "test:stryker": "stryker run"
+    "stryker:ci": "stryker run"
   },
   "dependencies":   {
     "@angular/animations": "14.3.0",
