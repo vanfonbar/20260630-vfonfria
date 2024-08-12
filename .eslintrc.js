@@ -4,6 +4,8 @@ const e2ePattern = '*.e2e-spec.ts';
 const htmlPattern = '*.html';
 const inlineHtmlPattern = '*inline-template-*.component.html';
 const jsPattern = '*.js';
+const mocksPattern = '*.mocks.ts';
+const mockPattern = '*.mock.ts';
 
 module.exports = {
   root: true,
@@ -50,6 +52,11 @@ module.exports = {
     {
       files: [jsPattern],
       extends: ['plugin:@mercadona/eslint-plugin/js', 'plugin:@mercadona/eslint-plugin/jsdoc'],
+      rules: {}
+    },
+    {
+      files: [mocksPattern, mockPattern],
+      extends: ['plugin:@mercadona/eslint-plugin/mocks'],
       rules: {}
     }
   ]
