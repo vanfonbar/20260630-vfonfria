@@ -8,6 +8,7 @@ v2.23.0
 
 Comando para poder ejecutar los comando de angular cuando no está instalado angular-cli en global.
 
+
 ```sh
 npm run ng -- [parámetros del ng]
 ```
