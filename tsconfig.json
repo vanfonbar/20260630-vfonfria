@@ -12,16 +12,45 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "target": "es2022",
+    "module": "es2022",
+    "lib": ["es2022", "dom"],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
+    "useDefineForClassFields": false,
     "paths": {
+      /* V3 Clean Scaffolding */
+      /* presentation */
+      "@/animations/*": ["app/presentation/animations/*"],
+      "@/components/*": ["app/presentation/components/*"],
+      "@/directives/*": ["app/presentation/directives/*"],
+      "@/pages/*": ["app/presentation/pages/*"],
+      "@/pipes/*": ["app/presentation/pipes/*"],
+      "@/presentation/*": ["app/presentation/*"],
+      /* entities */
+      "@/enums/*": ["app/entities/enums/*"],
+      "@/interfaces/*": ["app/entities/interfaces/*"],
+      "@/models/*": ["app/entities/models/*"],
+      "@/types/*": ["app/entities/types/*"],
+      "@/entities/*": ["app/entities/*"],
+      /* domain */
+      "@/guards/*": ["app/domain/guards/*"],
+      "@/interceptors/*": ["app/domain/interceptors/*"],
+      "@/use-cases/*": ["app/domain/use-cases/*"],
+      "@/domain/*": ["app/domain/*"],
+      /* data */
+      "@/dtos/*": ["app/data/dtos/*"],
+      "@/mappers/*": ["app/data/mappers/*"],
+      "@/repositories/*": ["app/data/repositories/*"],
+      "@/swagger/*": ["app/data/swagger/*"],
+      "@/data/*": ["app/data/*"],
+      /* dependency injection */
+      "@/di/*": ["app/di/*"],
+      /* V2 path configurations */
       "@api/models": ["app/api/models.ts"],
       "@api/services": ["app/api/services.ts"],
       "@models/*": ["app/models/*"],

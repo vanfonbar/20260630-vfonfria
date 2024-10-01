@@ -16,6 +16,7 @@
     "redhat.vscode-yaml",
     "usernamehw.errorlens",
     "editorconfig.editorconfig",
-    "zignd.html-css-class-completion"
+    "zignd.html-css-class-completion",
+    "stylelint.vscode-stylelint"
   ]
 }

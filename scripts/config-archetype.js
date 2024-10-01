@@ -85,8 +85,8 @@ async function main(...args) {
   const newVersion = config.reset
     ? packageContent.dependencies['@mercadona/core']
     : config.version
-    ? config.version
-    : '0.0.0';
+      ? config.version
+      : '0.0.0';
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
   await writeAppFile(packagePath, packageContent);

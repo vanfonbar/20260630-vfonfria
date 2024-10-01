@@ -1,6 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { APP_CONFIG } from '@constants';
 import { environment } from '@environment';
@@ -21,7 +22,6 @@ import { AppComponent } from './app.component';
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     MErrorHandlerModule.forRoot(),
     MTranslateModule.forRoot(APP_CONFIG.language),
     MLoggerModule.forRoot({
@@ -36,9 +36,10 @@ import { AppComponent } from './app.component';
     MTelemetryModule.forRoot({
       url: environment.telemetryConfig.url,
       traces: environment.telemetryConfig.traces
-    })
+    }),
+    RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

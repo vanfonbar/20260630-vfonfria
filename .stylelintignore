@@ -1,0 +1,16 @@
+# See https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file
+# for more about ignoring files and paths on eslint
+
+# Build
+/dist
+/.angular
+
+# API autogenerada
+/src/app/api
+
+# VS Code plugins
+/.history
+
+# Tools
+/documentation
+/coverage

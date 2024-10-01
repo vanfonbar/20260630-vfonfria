@@ -1,0 +1,1 @@
+{ "input": "swagger/swagger_oas3_example.yaml", "output": "src/app/data/swagger/api-oas3.example" }

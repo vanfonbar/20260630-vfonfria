@@ -1,17 +1,19 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "2.28.0",
+  "version": "3.0.0",
   "description": "",
-  "engines":   {
-    "node": "16.17.0",
-    "npm": "8.15.0"
+  "engines": {
+    "node": "22.9.0",
+    "npm": "10.8.3"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 2.28.0",
-    "url": "https://angular.srv.mercadona.com"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.0.0",
+      "url": "https://angular.srv.mercadona.com/"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -27,17 +29,20 @@
     "test": "ng test --browsers Chrome",
     "test:safari": "ng test --browsers Safari",
     "test:coverage": "ng test --watch=false --browsers Chrome",
-    "test:local": "node --version && ng test --karma-config=karma-ci.conf.js --no-progress --watch=false --browsers ChromeHeadlessCI",
+    "test:local": "node --version && ng test --karma-config=karma.conf.js --no-progress --watch=false --browsers ChromeHeadlessCI",
     "test:ci": "node --version && ng test --karma-config=karma-ci.conf.js --no-progress --watch=false --browsers GridChrome",
-    "e2e": "ng e2e",
     "audit": "npm audit",
     "lint": "ng lint",
+    "stylelint": "stylelint '**/*.{css,scss}'",
     "lint:errors": "ng lint --quiet",
     "lint:prettier": "prettier --check --ignore-unknown .",
     "lint:fix": "prettier --write --ignore-unknown . && ng lint --fix",
+    "stylelint:fix": "npm run stylelint -- --fix",
+    "stylelint:errors": "npm run stylelint -- --quiet",
     "lint:staged": "lint-staged",
     "lint:staged:prettier:fix": "lint-staged --config .lintstagedrc-prettier-fix.json",
     "lint:staged:eslint:fix": "lint-staged --config .lintstagedrc-eslint-fix.json",
+    "lint:staged:stylelint:fix": "lint-staged --config .lintstagedrc-stylelint-fix.json",
     "lint:staged:fix": "npm run lint:staged:prettier:fix && npm run lint:staged:eslint:fix",
     "analyze:source-map": "source-map-explorer ./dist/*.js",
     "analyze:webpack-bundle": "webpack-bundle-analyzer ./dist/stats.json",
@@ -51,52 +56,53 @@
     "add:model": "ng generate @mercadona/schematics:model",
     "add:interface": "ng generate @mercadona/schematics:interface",
     "add:icons": "ng generate @mercadona/schematics:icons",
-    "add:hybrid": "ng generate @mercadona/schematics:hybrid-auth",
-    "add:api:oas2": "ng-swagger-gen --config swagger/swagger-oas2-config.json",
-    "add:api:oas3": "ng-openapi-gen --config swagger/swagger-oas3-config.json",
-    "stryker:ci": "stryker run"
+    "add:pwa": "ng generate @mercadona/schematics:pwa",
+    "add:swagger": "ng generate @mercadona/schematics:swagger --config swagger/config.json",
+    "test:stryker": "stryker run"
   },
-  "dependencies":   {
-    "@angular/animations": "14.3.0",
-    "@angular/cdk": "14.2.7",
-    "@angular/common": "14.3.0",
-    "@angular/compiler": "14.3.0",
-    "@angular/core": "14.3.0",
-    "@angular/forms": "14.3.0",
-    "@angular/platform-browser": "14.3.0",
-    "@angular/platform-browser-dynamic": "14.3.0",
-    "@angular/router": "14.3.0",
-    "@mercadona/components": "2.28.0",
-    "@mercadona/common": "2.28.0",
-    "@mercadona/core": "2.28.0",
-    "@mercadona/core-ui": "2.28.0",
-    "@mercadona/icons": "2.28.0",
-    "@mercadona/styles": "2.28.0",
-    "rxjs": "7.8.0",
-    "tslib": "2.6.2",
-    "zone.js": "0.12.0"
+  "dependencies": {
+    "@angular/animations": "18.2.5",
+    "@angular/cdk": "18.2.5",
+    "@angular/common": "18.2.5",
+    "@angular/compiler": "18.2.5",
+    "@angular/core": "18.2.5",
+    "@angular/forms": "18.2.5",
+    "@angular/platform-browser": "18.2.5",
+    "@angular/platform-browser-dynamic": "18.2.5",
+    "@angular/router": "18.2.5",
+    "@mercadona/common": "3.0.0",
+    "@mercadona/components": "3.0.0",
+    "@mercadona/core": "3.0.0",
+    "@mercadona/core-ui": "3.0.0",
+    "@mercadona/icons": "3.0.0",
+    "@mercadona/styles": "3.0.0",
+    "rxjs": "7.8.1",
+    "tslib": "2.7.0",
+    "zone.js": "0.14.10"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@aduh95/viz.js": "3.7.0",
-    "@angular-devkit/build-angular": "14.2.12",
-    "@angular/cli": "14.2.13",
-    "@angular/compiler-cli": "14.3.0",
-    "@commitlint/cli": "17.8.1",
-    "@commitlint/config-conventional": "17.8.1",
-    "@compodoc/compodoc": "1.1.23",
-    "@mercadona/eslint-plugin": "2.28.0",
-    "@mercadona/schematics": "2.28.0",
+    "@angular-devkit/build-angular": "18.2.5",
+    "@angular/cli": "18.2.5",
+    "@angular/compiler-cli": "18.2.5",
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
+    "@compodoc/compodoc": "1.1.25",
+    "@mercadona/eslint-plugin": "3.0.0",
+    "@mercadona/schematics": "3.0.0",
     "@stryker-mutator/core": "7.3.0",
     "@stryker-mutator/karma-runner": "7.3.0",
     "@stryker-mutator/typescript-checker": "7.3.0",
-    "@types/jasmine": "4.6.4",
+    "@types/jasmine": "5.1.4",
     "@types/jasminewd2": "2.0.13",
-    "@types/node": "16.18.65",
+    "@types/lodash": "4.14.202",
+    "@types/node": "22.5.5",
+    "chromedriver": "124.0.3",
     "husky": "8.0.3",
-    "jasmine-core": "4.6.0",
+    "jasmine-core": "5.3.0",
     "jasmine-spec-reporter": "7.0.0",
     "jasminewd2": "2.2.0",
-    "karma": "6.4.2",
+    "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
@@ -105,15 +111,26 @@
     "karma-sonarqube-unit-reporter": "0.0.23",
     "karma-spec-reporter": "0.0.36",
     "karma-webdriver-launcher": "1.0.8",
-    "lint-staged": "13.3.0",
+    "lint-staged": "15.2.10",
     "ng-openapi-gen": "0.25.1",
     "ng-swagger-gen": "2.3.1",
-    "prettier": "2.8.8",
+    "postcss": "8.4.47",
+    "postcss-scss": "4.0.9",
+    "prettier": "3.3.3",
     "protractor": "7.0.0",
     "source-map-explorer": "2.5.3",
-    "ts-node": "10.9.1",
-    "typescript": "4.8.4",
+    "ts-node": "10.9.2",
+    "typescript": "5.5.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {"@opentelemetry/context-zone-peer-dep": {"zone.js": "0.12.0"}}
+  "overrides": {
+    "@nx/eslint-plugin": {
+      "@typescript-eslint/parser": "7.16.1",
+      "@typescript-eslint/utils": "7.16.1",
+      "@typescript-eslint/type-utils": "7.16.1"
+    },
+    "eslint-plugin-sonar@0.14.1": {
+      "@typescript-eslint/parser": "7.16.1"
+    }
+  }
 }

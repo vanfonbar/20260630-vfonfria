@@ -1,23 +1,26 @@
 const tsPattern = '*.ts';
 const specPattern = '*.spec.ts';
-const e2ePattern = '*.e2e-spec.ts';
 const htmlPattern = '*.html';
 const inlineHtmlPattern = '*inline-template-*.component.html';
-const jsPattern = '*.js';
-const mocksPattern = '*.mocks.ts';
-const mockPattern = '*.mock.ts';
+const jsPattern = 'src/**/*.js';
+const jsFilesPattern = '**/*.js';
+const mockPatterns = ['*.mocks.ts', '*.mock.ts'];
 
 module.exports = {
   root: true,
   plugins: ['@mercadona/eslint-plugin'],
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module'
+  },
   overrides: [
     {
       files: [tsPattern],
-      excludedFiles: [specPattern, e2ePattern],
+      excludedFiles: [specPattern, jsFilesPattern],
       extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/jsdoc'],
       parserOptions: {
-        ecmaVersion: 2020,
-        project: ['tsconfig.app.json']
+        ecmaVersion: 2022,
+        project: ['tsconfig.eslint.json']
       },
       rules: {}
     },
@@ -25,17 +28,8 @@ module.exports = {
       files: [specPattern],
       extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/spec'],
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: 2022,
         project: ['tsconfig.spec.json']
-      },
-      rules: {}
-    },
-    {
-      files: [e2ePattern],
-      extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/e2e'],
-      parserOptions: {
-        ecmaVersion: 2018,
-        project: ['e2e/tsconfig.json']
       },
       rules: {}
     },
@@ -55,7 +49,7 @@ module.exports = {
       rules: {}
     },
     {
-      files: [mocksPattern, mockPattern],
+      files: mockPatterns,
       extends: ['plugin:@mercadona/eslint-plugin/mocks'],
       rules: {}
     }

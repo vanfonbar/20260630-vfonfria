@@ -2,7 +2,7 @@
 
 ## Version
 
-v2.23.0
+v3.0.0
 
 ## Scripts
 
@@ -12,6 +12,7 @@ Comando para poder ejecutar los comando de angular cuando no está instalado ang
 ```sh
 npm run ng -- [parámetros del ng]
 ```
+
 
 Inicializa la aplicación: instala las dependencias y ejecuta los wizards de idiomas y autenticación. Este comando se
 recomienda usar solamente al inicio de la aplicación.
@@ -92,13 +93,7 @@ npm run test:coverage
 Ejecuta los unit test específico para el entorno CI/CD en modo ChromeHeadlessCI.
 
 ```sh
-npm run test:ci
-```
-
-Ejecuta los test end to end.
-
-```sh
-npm run e2e
+npm run test:local
 ```
 
 Ejecuta la revisión de lint, es el proceso de ejecutar un programa que analiza su código en busca de errores
@@ -113,6 +108,20 @@ Ejecuta la revisión de ESLint y trata de solucionar de forma automática todo p
 
 ```sh
 npm run lint:fix
+```
+
+Ejecuta la revisión de Stylelint, es el proceso de ejecutar un programa que analiza su código en busca de errores 
+estilísticos en sus hojas de estilo, verifica cualquier error potencial en su código, como errores de sintaxis, 
+nombres de clases mal escritos, etc.
+
+```sh
+npm run stylelint
+```
+
+Ejecuta la revisión de Stylelint y trata de solucionar de forma automática todo problema detectado.
+
+```sh
+npm run stylelint:fix
 ```
 
 Comprueba que tu código no tenga vulnerabilidades.
@@ -193,4 +202,4 @@ npm run add:interface
 ## Documentación FWKA
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
-[web](https://mus.mercadona.com).
+[web](https://angular.srv.mercadona.com/).

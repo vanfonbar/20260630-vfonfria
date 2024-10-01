@@ -46,6 +46,7 @@ System Files
 Thumbs.db
 !.npmrc
 .angular
+.nx
 
 # CICD ###
 .DS_STORE

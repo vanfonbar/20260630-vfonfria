@@ -63,7 +63,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome', 'Safari'],
+    browsers: ['Chrome', 'Safari', 'ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-search-engine-choice-screen']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });

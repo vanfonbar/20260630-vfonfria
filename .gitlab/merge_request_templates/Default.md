@@ -31,7 +31,6 @@ Si alguno no aplica se puede tachar.
 ## Tipos de test realizados
 
 - [ ] Test unitarios
-- [ ] ~~Test E2E~~
 
 ## Validación
 
