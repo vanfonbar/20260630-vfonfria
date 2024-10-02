@@ -8,11 +8,9 @@ v3.0.0
 
 Comando para poder ejecutar los comando de angular cuando no está instalado angular-cli en global.
 
-
 ```sh
 npm run ng -- [parámetros del ng]
 ```
-
 
 Inicializa la aplicación: instala las dependencias y ejecuta los wizards de idiomas y autenticación. Este comando se
 recomienda usar solamente al inicio de la aplicación.
@@ -110,8 +108,8 @@ Ejecuta la revisión de ESLint y trata de solucionar de forma automática todo p
 npm run lint:fix
 ```
 
-Ejecuta la revisión de Stylelint, es el proceso de ejecutar un programa que analiza su código en busca de errores 
-estilísticos en sus hojas de estilo, verifica cualquier error potencial en su código, como errores de sintaxis, 
+Ejecuta la revisión de Stylelint, es el proceso de ejecutar un programa que analiza su código en busca de errores
+estilísticos en sus hojas de estilo, verifica cualquier error potencial en su código, como errores de sintaxis,
 nombres de clases mal escritos, etc.
 
 ```sh

@@ -162,6 +162,7 @@
           "options": {
             "polyfills": ["src/polyfills.ts", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
+            "main": "src/test.ts",
             "karmaConfig": "karma.conf.js",
             "codeCoverage": true,
             "watch": true,
