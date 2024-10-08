@@ -80,7 +80,7 @@
     "tslib": "2.7.0",
     "zone.js": "0.14.10"
   },
-  "devDependencies": {
+  "devDependencies":   {
     "@aduh95/viz.js": "3.7.0",
     "@angular-devkit/build-angular": "18.2.5",
     "@angular/cli": "18.2.5",
@@ -122,5 +122,10 @@
     "ts-node": "10.9.2",
     "typescript": "5.5.4",
     "webpack-bundle-analyzer": "4.7.0"
+  },
+  "overrides": {
+    "eslint-plugin-sonar@0.14.1": {
+      "@typescript-eslint/parser": "7.16.1"
+    }
   }
 }

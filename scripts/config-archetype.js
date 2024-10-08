@@ -90,7 +90,6 @@ async function main(...args) {
   packageContent.name = newPackageName;
   packageContent.version = newVersion;
   await writeAppFile(packagePath, packageContent);
-  await setBaseHref(appName);
   autoDestroyConfArchetype();
 }
 
@@ -98,13 +97,6 @@ const writeAppFile = async (filePath, fileContent) => {
   await writeFile(filePath, JSON.stringify(fileContent, null, 2) + '\n', {
     encoding: 'utf-8'
   });
-};
-
-const setBaseHref = async (appName) => {
-  const angularPath = getRelativePath('../angular.json');
-  const angularContent = await getFileJson(angularPath);
-  angularContent.projects[appName].architect.build.options.baseHref = `/${appName}`;
-  await writeAppFile(angularPath, angularContent);
 };
 
 const getPackageName = (config, scope, appName) => {

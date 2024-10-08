@@ -37,11 +37,4 @@ describe('AppComponent', () => {
   it('should create the AppComponent', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should open a new window with the specified URL', () => {
-    spyOn(window, 'open');
-    const testUrl = 'https://example.com';
-    component.goToUrl(testUrl);
-    expect(window.open).toHaveBeenCalledWith(testUrl, '_blank');
-  });
 });

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { MLoggerService } from '@mercadona/core/logger';
+import { WINDOW } from '@mercadona/core/utils/tokens';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,10 @@ import { MLoggerService } from '@mercadona/core/logger';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  protected _window = inject(WINDOW);
   constructor(private mLoggerService: MLoggerService) {}
 
   ngOnInit(): void {
     this.mLoggerService.log('Welcome to FWK Front Angular Responsive');
-  }
-
-  goToUrl(url: string): void {
-    window.open(url, '_blank');
   }
 }

@@ -41,8 +41,8 @@ export const ICONS_LOCAL_MODE: boolean = false;
  * `npm run build:pro && npm run add:icons` schematic. This constant should only be
  * used in case you have your icons grouped in arrays of strings, example:
  *
- * const icons1 = (MIconType | string) = ['bold/interface-essential/remove-add/remove']
- * const icons2 = (MIconType | string) = ['bold/interface-essential/delete/delete-2']
+ * const icons1 = (MIconType | string) = ['removeBold']
+ * const icons2 = (MIconType | string) = ['delete2Bold']
  *
  * export const ... = [icons1, icons2]
  *
