@@ -56,7 +56,7 @@
     "add:icons": "ng generate @mercadona/schematics:icons",
     "add:pwa": "ng generate @mercadona/schematics:pwa",
     "add:swagger": "ng generate @mercadona/schematics:swagger --config swagger/config.json",
-    "test:stryker": "stryker run"
+    "stryker:ci": "stryker run"
   },
   "dependencies":   {
     "@angular/animations": "18.2.5",
