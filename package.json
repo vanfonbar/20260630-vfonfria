@@ -1,17 +1,19 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "3.0.1",
+  "version": "3.0.0",
   "description": "",
-  "engines":   {
+  "engines": {
     "node": "22.9.0",
     "npm": "10.8.3"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.0.1",
-    "url": "https://angular.srv.mercadona.com/"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.1.0",
+      "url": "https://angular.srv.mercadona.com/"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -58,46 +60,46 @@
     "add:swagger": "ng generate @mercadona/schematics:swagger --config swagger/config.json",
     "stryker:ci": "stryker run"
   },
-  "dependencies":   {
-    "@angular/animations": "18.2.5",
-    "@angular/cdk": "18.2.5",
-    "@angular/common": "18.2.5",
-    "@angular/compiler": "18.2.5",
-    "@angular/core": "18.2.5",
-    "@angular/forms": "18.2.5",
-    "@angular/platform-browser": "18.2.5",
-    "@angular/platform-browser-dynamic": "18.2.5",
-    "@angular/router": "18.2.5",
-    "@mercadona/common": "3.0.1",
-    "@mercadona/components": "3.0.1",
-    "@mercadona/core": "3.0.1",
-    "@mercadona/core-ui": "3.0.1",
-    "@mercadona/icons": "3.0.1",
-    "@mercadona/styles": "3.0.1",
+  "dependencies": {
+    "@angular/animations": "18.2.11",
+    "@angular/cdk": "18.2.12",
+    "@angular/common": "18.2.11",
+    "@angular/compiler": "18.2.11",
+    "@angular/core": "18.2.11",
+    "@angular/forms": "18.2.11",
+    "@angular/platform-browser": "18.2.11",
+    "@angular/platform-browser-dynamic": "18.2.11",
+    "@angular/router": "18.2.11",
+    "@mercadona/common": "3.1.0",
+    "@mercadona/components": "3.1.0",
+    "@mercadona/core": "3.1.0",
+    "@mercadona/core-ui": "3.1.0",
+    "@mercadona/icons": "3.1.0",
+    "@mercadona/styles": "3.1.0",
     "rxjs": "7.8.1",
     "tslib": "2.7.0",
     "zone.js": "0.14.10"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@aduh95/viz.js": "3.7.0",
-    "@angular-devkit/build-angular": "18.2.5",
-    "@angular/cli": "18.2.5",
-    "@angular/compiler-cli": "18.2.5",
+    "@angular-devkit/build-angular": "18.2.11",
+    "@angular/cli": "18.2.11",
+    "@angular/compiler-cli": "18.2.11",
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@compodoc/compodoc": "1.1.25",
-    "@mercadona/eslint-plugin": "3.0.1",
-    "@mercadona/schematics": "3.0.1",
+    "@mercadona/eslint-plugin": "3.1.0",
+    "@mercadona/schematics": "3.1.0",
     "@stryker-mutator/core": "7.3.0",
     "@stryker-mutator/karma-runner": "7.3.0",
     "@stryker-mutator/typescript-checker": "7.3.0",
     "@types/jasmine": "5.1.4",
     "@types/jasminewd2": "2.0.13",
     "@types/lodash": "4.14.202",
-    "@types/node": "22.5.5",
+    "@types/node": "22.9.0",
     "chromedriver": "124.0.3",
     "husky": "8.0.3",
-    "jasmine-core": "5.3.0",
+    "jasmine-core": "5.4.0",
     "jasmine-spec-reporter": "7.0.0",
     "jasminewd2": "2.2.0",
     "karma": "6.4.4",
@@ -121,5 +123,9 @@
     "typescript": "5.5.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {"eslint-plugin-sonar@0.14.1": {"@typescript-eslint/parser": "7.16.1"}}
+  "overrides": {
+    "eslint-plugin-sonar@0.14.1": {
+      "@typescript-eslint/parser": "7.16.1"
+    }
+  }
 }

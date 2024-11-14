@@ -36,5 +36,33 @@
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "i18nJsonEditor.forceKeyUPPERCASE": false,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "folder-path-color.folders": [
+    { "path": "src/app/data", "tooltip": "Capa de datos", "color": "custom1" },
+    { "path": "src/app/di", "tooltip": "Inyección de dependencias", "color": "custom2" },
+    { "path": "src/app/domain", "tooltip": "Capa de dominio", "color": "custom3" },
+    { "path": "src/app/entities", "tooltip": "Entidades", "color": "custom4" },
+    { "path": "src/app/presentation", "tooltip": "Capa de presentación", "color": "custom5" }
+  ],
+  "workbench.colorCustomizations": {
+    "folderPathColor.custom1": "#b98ed8",
+    "folderPathColor.custom2": "#fae6cb",
+    "folderPathColor.custom3": "#fbacb3",
+    "folderPathColor.custom4": "#9d9fa0",
+    "folderPathColor.custom5": "#5F9EA0"
+  },
+  "material-icon-theme.folders.associations": {
+    "data": "Global",
+    "dtos": "Less",
+    "mappers": "Mappings",
+    "data/repositories": "Server",
+    "di": "Resource",
+    "domain": "Class",
+    "domain/interceptors": "Ci",
+    "domain/repositories": "Less",
+    "domain/use-cases": "Other",
+    "entities": "Constant",
+    "presentation": "Layout",
+    "swagger": "Middleware"
+  }
 }
