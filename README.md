@@ -201,4 +201,3 @@ npm run add:interface
 
 Empiece a utilizar el FWK Front Angular Responsive, aprenda los fundamentos y explore temas avanzados en nuestro sitio
 [web](https://angular.srv.mercadona.com/).
-

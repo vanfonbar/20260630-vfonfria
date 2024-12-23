@@ -3,15 +3,17 @@
   "author": "Mercadona",
   "version": "3.2.0",
   "description": "",
-  "engines":   {
+  "engines": {
     "node": "22.9.0",
     "npm": "10.8.3"
   },
-  "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.2.0",
-    "url": "https://angular.srv.mercadona.com/"
-  }],
-  "scripts":   {
+  "contributors": [
+    {
+      "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.2.0",
+      "url": "https://angular.srv.mercadona.com/"
+    }
+  ],
+  "scripts": {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -58,7 +60,7 @@
     "add:swagger": "ng generate @mercadona/schematics:swagger --config swagger/config.json",
     "stryker:ci": "stryker run"
   },
-  "dependencies":   {
+  "dependencies": {
     "@angular/animations": "18.2.11",
     "@angular/cdk": "18.2.12",
     "@angular/common": "18.2.11",
@@ -78,7 +80,7 @@
     "tslib": "2.7.0",
     "zone.js": "0.14.10"
   },
-  "devDependencies":   {
+  "devDependencies": {
     "@aduh95/viz.js": "3.7.0",
     "@angular-devkit/build-angular": "18.2.11",
     "@angular/cli": "18.2.11",
@@ -121,5 +123,10 @@
     "typescript": "5.5.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {"eslint-plugin-sonar@0.14.1": {"@typescript-eslint/parser": "7.16.1"}}
+  "overrides": {
+    "eslint-plugin-sonar@0.14.1": {
+      "@typescript-eslint/parser": "7.16.1"
+    },
+    "chokidar": "3.6.0"
+  }
 }

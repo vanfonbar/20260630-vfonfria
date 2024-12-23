@@ -54,9 +54,7 @@
             "browser": "src/main.ts",
             "outputPath": "dist/",
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
             "allowedCommonJsDependencies": [
               "opentracing/lib/span",
@@ -92,11 +90,7 @@
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "",
-                "src",
-                "src/styles"
-              ]
+              "includePaths": ["", "src", "src/styles"]
             },
             "scripts": []
           },
@@ -165,19 +159,13 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "src/polyfills.ts",
-              "zone.js/testing"
-            ],
+            "polyfills": ["src/polyfills.ts", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "main": "src/test.ts",
             "karmaConfig": "karma.conf.js",
             "codeCoverage": true,
             "watch": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "node_modules/@mercadona/styles/sass/reset.scss",
               "node_modules/@mercadona/styles/sass/bootstrap-grid.scss",
@@ -200,12 +188,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.js",
-              "src/**/*.html",
-              "scripts/**/*.js"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.js", "src/**/*.html", "scripts/**/*.js"]
           }
         }
       }
