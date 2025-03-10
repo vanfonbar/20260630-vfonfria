@@ -1,14 +1,14 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "",
   "engines":   {
     "node": "22.9.0",
     "npm": "10.8.3"
   },
   "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.4.0",
+    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.5.0",
     "url": "https://angular.srv.mercadona.com/"
   }],
   "scripts":   {
@@ -68,12 +68,12 @@
     "@angular/platform-browser": "18.2.11",
     "@angular/platform-browser-dynamic": "18.2.11",
     "@angular/router": "18.2.11",
-    "@mercadona/common": "3.4.0",
-    "@mercadona/components": "3.4.0",
-    "@mercadona/core": "3.4.0",
-    "@mercadona/core-ui": "3.4.0",
-    "@mercadona/icons": "3.4.0",
-    "@mercadona/styles": "3.4.0",
+    "@mercadona/common": "3.5.0",
+    "@mercadona/components": "3.5.0",
+    "@mercadona/core": "3.5.0",
+    "@mercadona/core-ui": "3.5.0",
+    "@mercadona/icons": "3.5.0",
+    "@mercadona/styles": "3.5.0",
     "rxjs": "7.8.1",
     "tslib": "2.7.0",
     "zone.js": "0.14.10"
@@ -86,8 +86,8 @@
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@compodoc/compodoc": "1.1.25",
-    "@mercadona/eslint-plugin": "3.4.0",
-    "@mercadona/schematics": "3.4.0",
+    "@mercadona/eslint-plugin": "3.5.0",
+    "@mercadona/schematics": "3.5.0",
     "@stryker-mutator/core": "7.3.0",
     "@stryker-mutator/karma-runner": "7.3.0",
     "@stryker-mutator/typescript-checker": "7.3.0",
