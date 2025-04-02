@@ -32,7 +32,6 @@ const YOUR_APP_NAME_FILES = [
   'src/environments/environment.ts'
 ].map((rootPath) => getRelativePath('../' + rootPath));
 const FILES_TO_AUTO_DESTROY = ['scripts/config-archetype.js'].map((rootPath) => getRelativePath('../' + rootPath));
-const DIRS_TO_AUTO_DESTROY = ['scripts'].map((rootPath) => getRelativePath('../' + rootPath));
 
 /**
  *  Replace the appName in the files with the new appName
@@ -111,11 +110,6 @@ const autoDestroyConfArchetype = () => {
     FILES_TO_AUTO_DESTROY.forEach((fileToDelete) => {
       if (fs.existsSync(fileToDelete)) {
         fs.unlinkSync(fileToDelete);
-      }
-    });
-    DIRS_TO_AUTO_DESTROY.forEach((dirToDelete) => {
-      if (fs.existsSync(dirToDelete)) {
-        fs.rmdirSync(dirToDelete);
       }
     });
   } catch (error) {
