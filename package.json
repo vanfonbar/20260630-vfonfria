@@ -57,7 +57,7 @@
     "add:pwa": "ng generate @mercadona/schematics:pwa",
     "add:swagger": "ng generate @mercadona/schematics:swagger --config swagger/config.json",
     "stryker:local": "node scripts/mutant-tests-changes-handler.js && stryker run",
-    "stryker:ci": "node scripts/mutant-tests-changes-handler.js ci && stryker run --config stryker-ci.conf.js"
+    "stryker:ci": "node scripts/mutant-tests-changes-handler.js ci && stryker run stryker-ci.conf.js"
   },
   "dependencies":   {
     "@angular/animations": "18.2.11",

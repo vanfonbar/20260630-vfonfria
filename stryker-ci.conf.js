@@ -67,8 +67,7 @@ module.exports = {
     '/reports',
     '/scripts',
     '/swagger',
-    '/.stryker-incremental-local-files',
-    '/stryker-incremental'
+    '/.stryker'
   ],
   dryRunTimeoutMinutes: 15,
   cleanTempDir: 'always'
