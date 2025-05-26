@@ -1,14 +1,14 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "3.7.0",
+  "version": "3.8.0",
   "description": "",
   "engines":   {
     "node": "22.9.0",
     "npm": "10.8.3"
   },
   "contributors": [  {
-    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.7.0",
+    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.8.0",
     "url": "https://angular.srv.mercadona.com/"
   }],
   "scripts":   {
