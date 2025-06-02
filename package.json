@@ -23,7 +23,6 @@
     "build:pro": "ng build --source-map=true --stats-json",
     "build:preview": "npm run build --configuration=development-preview",
     "build:doc": "compodoc -p tsconfig.doc.json",
-    "build:api": "npm run add:api:oas2",
     "test": "ng test --browsers Chrome",
     "test:safari": "ng test --browsers Safari",
     "test:coverage": "ng test --watch=false --browsers Chrome",
