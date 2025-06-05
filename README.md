@@ -2,7 +2,7 @@
 
 ## Version
 
-v3.7.0
+v3.8.0
 
 ## Scripts
 
@@ -19,7 +19,7 @@ recomienda usar solamente al inicio de la aplicación.
 npm run init
 ```
 
-Inicia la aplicación  [http://localhost:4200](http://localhost:4200)
+Inicia la aplicación [http://localhost:4200](http://localhost:4200)
 
 ```sh
 npm run start

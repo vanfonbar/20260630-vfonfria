@@ -7,7 +7,7 @@ import { environment } from '@environment';
 
 import { provideMLogger } from '@mercadona/core/logger';
 import { MPlatformModule } from '@mercadona/core/platform';
-import { MTelemetryModule } from '@mercadona/core/telemetry';
+import { provideMTelemetry } from '@mercadona/core/telemetry';
 import { MTranslateModule } from '@mercadona/core/translate';
 import { provideMErrorHandler } from '@mercadona/core-ui/error-handler';
 import { provideMPageError } from '@mercadona/core-ui/page-error';
@@ -24,17 +24,14 @@ import { AppComponent } from './app.component';
     MPlatformModule.forRoot({
       appName: APP_CONFIG.appName,
       environment: environment.env
-    }),
-    MTelemetryModule.forRoot({
-      url: environment.telemetryConfig.url,
-      traces: environment.telemetryConfig.traces
     })
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideMLogger(environment.logLevel),
     provideMErrorHandler(),
-    provideMPageError()
+    provideMPageError(),
+    provideMTelemetry()
   ],
   bootstrap: [AppComponent]
 })
