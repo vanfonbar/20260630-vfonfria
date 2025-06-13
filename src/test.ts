@@ -6,6 +6,10 @@ import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
+import { setupDefaultTestProviders, setupPreventStandalone } from '@mercadona/components/common';
+
+setupDefaultTestProviders();
+setupPreventStandalone();
 document.body.classList.add('base-theme');
 
 // First, initialize the Angular testing environment.
