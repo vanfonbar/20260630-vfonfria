@@ -1,18 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
-
-import { MLoggerService } from '@mercadona/core/logger';
-import { WINDOW } from '@mercadona/core/utils/tokens';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [RouterOutlet]
 })
-export class AppComponent implements OnInit {
-  protected _window = inject(WINDOW);
-  constructor(private mLoggerService: MLoggerService) {}
-
-  ngOnInit(): void {
-    this.mLoggerService.log('Welcome to FWK Front Angular Responsive');
-  }
-}
+export class AppComponent {}

@@ -4,14 +4,17 @@
  * They always have the same value regardless of the environment in which the application is running.
  */
 
-import { MIconType } from '@mercadona/icons';
+import { MTranslateConfig } from '@mercadona/core/translate';
 
-import { AppConfig } from './app-config.interface';
+export type AppMetadataConfig = {
+  appName: string;
+  language: MTranslateConfig;
+};
 
 /**
  * appName and appVersion will be replaced during CI execution
  */
-export const APP_CONFIG: AppConfig = {
+export const APP_METADATA: AppMetadataConfig = {
   appName: 'yourAppName',
   language: {
     availableLanguages: ['es'],
@@ -28,24 +31,4 @@ export const APP_CONFIG: AppConfig = {
  * `npm run build:pro && npm run add:icons` after this in the `/dist/assets/mercadona` folder,
  * the icons will be downloaded.
  */
-export const ICONS_LIST: (MIconType | string)[] = [];
-
-/**
- * This constant is the one that allows us to differentiate whether the icons will be read locally or through the bucket.
- * By default, they will be read from the bucket (false) to read locally it must be changed to true.
- */
-export const ICONS_LOCAL_MODE: boolean = false;
-
-/**
- * IMPORTANT: Do not change the name of this constant because it is used to run the
- * `npm run build:pro && npm run add:icons` schematic. This constant should only be
- * used in case you have your icons grouped in arrays of strings, example:
- *
- * const icons1 = (MIconType | string) = ['removeBold']
- * const icons2 = (MIconType | string) = ['delete2Bold']
- *
- * export const ... = [icons1, icons2]
- *
- * The icons will appear in the folder `/dist/assets/mercadona`.
- */
-export const ICONS_REGISTRY: (MIconType | string)[][] = [];
+export const ICONS_LIST: string[] = [];

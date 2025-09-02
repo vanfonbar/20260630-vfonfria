@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 // IMPORTANT: Do not use the "/error" route as it will be overwritten by the Core module. More info:
 // https://angular.srv.mercadona.com/latest/core-ui/page-error/info/
@@ -7,10 +6,4 @@ import { RouterModule, Routes } from '@angular/router';
 // IMPORTANT: Do nout user the "/callback" as it will be overwritten by the Token module. More info:
 // https://angular.srv.mercadona.com/latest/development-prescription/routes/routes-not-permitted/
 
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
+export const appRoutes: Routes = [];
