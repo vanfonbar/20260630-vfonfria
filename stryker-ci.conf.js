@@ -54,7 +54,8 @@ module.exports = {
   typescriptChecker: {
     prioritizePerformanceOverAccuracy: true
   },
-  ignorers: ['angular'],
+  plugins: ['@stryker-mutator/*', '@mercadona/schematics/mutants/ignorers'],
+  ignorers: ['angular', 'console', 'const-literal', 'readonly-literal'],
   ignorePatterns: [
     '/coverage',
     '/dist',
