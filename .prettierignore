@@ -1,13 +1,39 @@
-# Build
+# Dependencies (ignored by default, but explicit is better)
+node_modules/
+
+# Build outputs
 /dist
 /.angular
+/out-tsc
 
-# API autogenerada
+# Generated API code
 /src/app/api
 
-# VS Code plugins
-/.history
-
-# Tools
-/documentation
+# Test coverage reports
 /coverage
+
+# Documentation (generated)
+/documentation
+
+# IDE and Editor files
+/.history
+/.vscode
+/.idea
+
+# CI/CD configuration
+/.gitlab
+
+# AI tools
+/.claude
+
+# Lock files (should not be formatted)
+package-lock.json
+yarn.lock
+
+# Minified files
+*.min.js
+*.min.css
+
+# Temporary files
+*.tmp
+*.log

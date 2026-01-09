@@ -8,6 +8,7 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 
 import { setupDefaultTestProviders, setupPreventStandalone } from '@mercadona/components/common';
 
+//This setups will be removed in futres major versions of the framework
 setupDefaultTestProviders();
 setupPreventStandalone();
 document.body.classList.add('base-theme');

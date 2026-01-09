@@ -1,16 +1,37 @@
-# See https://eslint.org/docs/user-guide/configuring/ignoring-code#the-eslintignore-file
-# for more about ignoring files and paths on eslint
+# See https://stylelint.io/user-guide/ignore-code
+# for more about ignoring files and paths with Stylelint
 
-# Build
+# Dependencies
+node_modules/
+
+# Build outputs
 /dist
 /.angular
+/out-tsc
 
-# API autogenerada
+# Generated API code
 /src/app/api
 
-# VS Code plugins
-/.history
-
-# Tools
-/documentation
+# Test coverage reports
 /coverage
+
+# Documentation (generated)
+/documentation
+
+# IDE and Editor files
+/.history
+/.vscode
+/.idea
+
+# CI/CD configuration
+/.gitlab
+
+# AI tools
+/.claude
+
+# Minified files (no need to lint)
+*.min.css
+
+# Temporary files
+*.tmp
+*.log

@@ -1,3 +1,4 @@
+// File patterns for different types of files
 const tsPattern = '*.ts';
 const specPattern = '*.spec.ts';
 const htmlPattern = '*.html';
@@ -14,6 +15,7 @@ module.exports = {
     sourceType: 'module'
   },
   overrides: [
+    // TypeScript source files (excluding tests and JavaScript files)
     {
       files: [tsPattern],
       excludedFiles: [specPattern, jsFilesPattern],
@@ -24,6 +26,7 @@ module.exports = {
       },
       rules: {}
     },
+    // TypeScript test files (*.spec.ts)
     {
       files: [specPattern],
       extends: ['plugin:@mercadona/eslint-plugin/ts', 'plugin:@mercadona/eslint-plugin/spec'],
@@ -33,21 +36,25 @@ module.exports = {
       },
       rules: {}
     },
+    // HTML template files
     {
       files: [htmlPattern],
       extends: ['plugin:@mercadona/eslint-plugin/html'],
       rules: {}
     },
+    // Inline HTML templates (component inline templates)
     {
       files: [inlineHtmlPattern],
       extends: ['plugin:@mercadona/eslint-plugin/inline-html'],
       rules: {}
     },
+    // JavaScript files in src directory
     {
       files: [jsPattern],
       extends: ['plugin:@mercadona/eslint-plugin/js', 'plugin:@mercadona/eslint-plugin/jsdoc'],
       rules: {}
     },
+    // Mock files (*.mocks.ts, *.mock.ts)
     {
       files: mockPatterns,
       extends: ['plugin:@mercadona/eslint-plugin/mocks'],

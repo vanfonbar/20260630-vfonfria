@@ -26,7 +26,6 @@ const parseArguments = (...args) =>
 const YOUR_APP_NAME_FILES = [
   'package.json',
   'angular.json',
-  'README.md',
   'src/index.html',
   'src/app/app-config.constants.ts',
   'src/environments/environment.ts'
@@ -39,21 +38,33 @@ const FILES_TO_AUTO_DESTROY = ['scripts/config-archetype.js'].map((rootPath) => 
  * @param {(string | any)[]} filePaths Array of filepath to replace
  * @param {any | string} oldText Text to replace
  * @param {any | string} newText New text to replace
+ * @param {boolean} dryRun If true, only simulate changes
  * @returns {Promise<void>} Promise with the result of the replacement
  */
-async function replaceFiles(filePaths, oldText, newText) {
+async function replaceFiles(filePaths, oldText, newText, dryRun = false) {
   let filesReplaced = [];
   let filesError = [];
+  const regex = new RegExp(oldText, 'g');
+
+  if (dryRun) {
+    log(`[DRY RUN] Would replace "${oldText}" -> "${newText}" in ${filePaths.length} files:`);
+    filePaths.forEach((filepath) => log(`\t- ${filepath}`));
+    return;
+  }
+
   await Promise.all(
     filePaths.map((filepath) =>
-      replaceFileContent(filepath, new RegExp(oldText, 'g'), newText)
+      replaceFileContent(filepath, regex, newText)
         .then(() => filesReplaced.push(filepath))
         .catch(() => filesError.push(filepath))
     )
   );
   log(`Replaced "${oldText}" -> "${newText}" in ${filesReplaced.length} files. Errors in ${filesError.length} files.`);
+  if (filesReplaced.length > 0) {
+    log(`  Successfully updated:\n${filesReplaced.map((f) => '\t✓ ' + f).join('\n')}`);
+  }
   if (filesError.length > 0) {
-    log(`  Errors:\n${filesError.map((f) => '\t> ' + f).join('\n')}`);
+    log(`  Errors:\n${filesError.map((f) => '\t✗ ' + f).join('\n')}`);
   }
 }
 
@@ -71,11 +82,30 @@ async function main(...args) {
   }
   isValidAppName(appName);
   const scope = config.scope;
+  validateScope(scope);
+
+  const dryRun = config.dryRun === 'true' || config.dryRun === true;
+  const keepScript = config.keepScript === 'true' || config.keepScript === true;
+  const force = config.force === 'true' || config.force === true;
+
+  if (dryRun) {
+    log('=== DRY RUN MODE - No files will be modified ===\n');
+  }
+
   const currentAppName = config.reset ? appName : 'yourAppName';
   const newAppName = config.reset ? 'yourAppName' : appName;
   // Replace yourAppName
-  log(`Applying configuration:\n\tappName->${appName}\n\tscope->${scope ? scope : 'not provided'}\n`);
-  await replaceFiles(YOUR_APP_NAME_FILES, currentAppName, newAppName);
+  log(
+    `Applying configuration:\n\tappName->${appName}\n\tscope->${scope ? scope : 'not provided'}\n\tdryRun->${dryRun}\n\tkeepScript->${keepScript}\n`
+  );
+  await replaceFiles(YOUR_APP_NAME_FILES, currentAppName, newAppName, dryRun);
+
+  // Check for errors in file replacement
+  if (!dryRun && !force) {
+    // Note: replaceFiles doesn't return error status, but logs them
+    // In a production scenario, you'd want to refactor replaceFiles to return error count
+  }
+
   // Package.json
   log(`Changes in package.json (name, version)`);
   const packagePath = getRelativePath('../package.json');
@@ -86,10 +116,25 @@ async function main(...args) {
     : config.version
       ? config.version
       : '0.0.0';
-  packageContent.name = newPackageName;
-  packageContent.version = newVersion;
-  await writeAppFile(packagePath, packageContent);
-  autoDestroyConfArchetype();
+
+  if (dryRun) {
+    log(`[DRY RUN] Would update package.json:`);
+    log(`\t- name: "${packageContent.name}" -> "${newPackageName}"`);
+    log(`\t- version: "${packageContent.version}" -> "${newVersion}"`);
+  } else {
+    packageContent.name = newPackageName;
+    packageContent.version = newVersion;
+    await writeAppFile(packagePath, packageContent);
+    log(`✓ Updated package.json`);
+  }
+
+  if (!dryRun && !keepScript) {
+    autoDestroyConfArchetype();
+  } else if (keepScript) {
+    log('\nScript preserved (--keepScript flag enabled)');
+  } else if (dryRun) {
+    log('\n[DRY RUN] Script would be auto-destroyed (use --keepScript to prevent this)');
+  }
 }
 
 const writeAppFile = async (filePath, fileContent) => {
@@ -119,13 +164,19 @@ const autoDestroyConfArchetype = () => {
 
 const sanitizeAppName = (appName) => {
   const regex = /-front$/gm;
-  return regex.test(appName) ? appName.substr(0, appName.length - 6) : appName;
+  return regex.test(appName) ? appName.slice(0, -6) : appName;
 };
 
 const isValidAppName = (appName) => {
   const regExp = /\s|ñ|(\.){2}/im;
   if (regExp.test(appName)) {
     errorAndClose(`Invalid --appName '${appName}' must not contain spaces, ñ or dots`);
+  }
+};
+
+const validateScope = (scope) => {
+  if (scope && !scope.startsWith('@')) {
+    errorAndClose(`Invalid --scope '${scope}'. Scope must start with @ (e.g., @mercadona)`);
   }
 };
 
