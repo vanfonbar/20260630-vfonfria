@@ -1,19 +1,17 @@
 {
   "name": "@mercadona/archetype",
   "author": "Mercadona",
-  "version": "3.18.0",
+  "version": "3.19.0",
   "description": "",
-  "engines": {
+  "engines":   {
     "node": "22.9.0",
     "npm": "10.8.3"
   },
-  "contributors": [
-    {
-      "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.18.0",
-      "url": "https://angular.srv.mercadona.com/"
-    }
-  ],
-  "scripts": {
+  "contributors": [  {
+    "name": "Mercadona Angular Framework (FWKA), based on Archetype 3.19.0",
+    "url": "https://angular.srv.mercadona.com/"
+  }],
+  "scripts":   {
     "ng": "ng",
     "init": "npm ci && npm run add:language && npm run add:login",
     "postinstall": "husky install",
@@ -67,7 +65,7 @@
     "check:versions": "node --version && npm --version && ng version",
     "check:outdated": "npm outdated"
   },
-  "dependencies": {
+  "dependencies":   {
     "@angular/animations": "18.2.13",
     "@angular/cdk": "18.2.14",
     "@angular/common": "18.2.13",
@@ -77,17 +75,17 @@
     "@angular/platform-browser": "18.2.13",
     "@angular/platform-browser-dynamic": "18.2.13",
     "@angular/router": "18.2.13",
-    "@mercadona/common": "3.18.0",
-    "@mercadona/components": "3.18.0",
-    "@mercadona/core": "3.18.0",
-    "@mercadona/core-ui": "3.18.0",
-    "@mercadona/icons": "3.18.0",
-    "@mercadona/styles": "3.18.0",
+    "@mercadona/common": "3.19.0",
+    "@mercadona/components": "3.19.0",
+    "@mercadona/core": "3.19.0",
+    "@mercadona/core-ui": "3.19.0",
+    "@mercadona/icons": "3.19.0",
+    "@mercadona/styles": "3.19.0",
     "rxjs": "7.8.1",
     "tslib": "2.7.0",
     "zone.js": "0.14.10"
   },
-  "devDependencies": {
+  "devDependencies":   {
     "@aduh95/viz.js": "3.7.0",
     "@angular-devkit/build-angular": "18.2.18",
     "@angular/cli": "18.2.18",
@@ -95,8 +93,8 @@
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
     "@compodoc/compodoc": "1.1.25",
-    "@mercadona/eslint-plugin": "3.18.0",
-    "@mercadona/schematics": "3.18.0",
+    "@mercadona/eslint-plugin": "3.19.0",
+    "@mercadona/schematics": "3.19.0",
     "@types/jasmine": "5.1.4",
     "@types/jasminewd2": "2.0.13",
     "@types/lodash-es": "4.17.12",
@@ -127,10 +125,8 @@
     "typescript": "5.5.4",
     "webpack-bundle-analyzer": "4.7.0"
   },
-  "overrides": {
-    "eslint-plugin-sonar@0.14.1": {
-      "@typescript-eslint/parser": "7.16.1"
-    },
+  "overrides":   {
+    "eslint-plugin-sonar@0.14.1": {"@typescript-eslint/parser": "7.16.1"},
     "chokidar": "3.6.0"
   }
 }
