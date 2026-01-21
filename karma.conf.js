@@ -1,6 +1,10 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+const { chromium, webkit } = require('playwright');
+process.env.CHROME_BIN = chromium.executablePath();
+process.env.SAFARI_BIN = webkit.executablePath();
+
 module.exports = function (config) {
   config.set({
     basePath: '',

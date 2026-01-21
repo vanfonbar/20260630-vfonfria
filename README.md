@@ -117,7 +117,7 @@ La aplicación estará disponible en [http://localhost:4200](http://localhost:42
 | `npm run test:coverage`      | Ejecuta tests sin watch (sin code coverage)    |
 | `npm run test:with-coverage` | Ejecuta tests con code coverage                |
 | `npm run test:local`         | Ejecuta tests en modo headless (para CI local) |
-| `npm run test:ci`            | Ejecuta tests para CI/CD con GridChrome        |
+| `npm run test:ci`            | Ejecuta tests para CI/CD                       |
 
 ### Análisis de Calidad
 

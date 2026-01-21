@@ -2,17 +2,11 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-  const webdriverConfig = {
-    hostname: 'selenium-hub.cloudbees-agents.svc.cluster.local',
-    port: 4444
-  };
-
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-webdriver-launcher'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-spec-reporter'),
@@ -80,7 +74,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['ChromeHeadlessCI', 'GridChrome'],
+    browsers: ['ChromeHeadlessCI'],
     singleRun: true,
     browserNoActivityTimeout: 40000,
     restartOnFileChange: false,
@@ -91,12 +85,6 @@ module.exports = function (config) {
           '--no-sandbox' // required to run without privileges in docker
           // '--disable-web-security', // remove comment if we have CORS problems with local files (karma reports)
         ]
-      },
-      GridChrome: {
-        base: 'WebDriver',
-        config: webdriverConfig,
-        browserName: 'chrome',
-        pseudoActivityInterval: 30000
       }
     }
   });

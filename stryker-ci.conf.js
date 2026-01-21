@@ -27,7 +27,7 @@ module.exports = {
     configFile: `karma-ci.conf.js`,
     projectType: 'angular-cli',
     config: {
-      browsers: ['GridChrome']
+      browsers: ['ChromeHeadlessCI']
     }
   },
   mutator: {
