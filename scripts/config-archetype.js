@@ -32,6 +32,44 @@ const YOUR_APP_NAME_FILES = [
 ].map((rootPath) => getRelativePath('../' + rootPath));
 const FILES_TO_AUTO_DESTROY = ['scripts/config-archetype.js'].map((rootPath) => getRelativePath('../' + rootPath));
 
+const NPMRC_EXPECTED_CONTENT = `registry=https://artifactory.gcp.mercadona.com/artifactory/api/npm/virtual-npm/
+strict-ssl=false`;
+
+/**
+ * Check if .npmrc file exists and has the expected content
+ * If it doesn't exist, create it
+ * @param {boolean} dryRun If true, only simulate changes
+ * @returns {Promise<void>}
+ */
+async function ensureNpmrcFile(dryRun = false) {
+  const npmrcPath = getRelativePath('../.npmrc');
+
+  try {
+    if (fs.existsSync(npmrcPath)) {
+      const currentContent = await getFileText(npmrcPath);
+      if (currentContent === NPMRC_EXPECTED_CONTENT) {
+        log('✓ .npmrc file already exists with correct content');
+        return;
+      }
+      if (dryRun) {
+        log('[DRY RUN] Would update .npmrc file with expected content');
+      } else {
+        await writeFile(npmrcPath, NPMRC_EXPECTED_CONTENT, { encoding: 'utf-8' });
+        log('✓ Updated .npmrc file with expected content');
+      }
+    } else {
+      if (dryRun) {
+        log('[DRY RUN] Would create .npmrc file');
+      } else {
+        await writeFile(npmrcPath, NPMRC_EXPECTED_CONTENT, { encoding: 'utf-8' });
+        log('✓ Created .npmrc file');
+      }
+    }
+  } catch (error) {
+    log(`Error handling .npmrc file: ${error}`);
+  }
+}
+
 /**
  *  Replace the appName in the files with the new appName
  *
@@ -98,6 +136,10 @@ async function main(...args) {
   log(
     `Applying configuration:\n\tappName->${appName}\n\tscope->${scope ? scope : 'not provided'}\n\tdryRun->${dryRun}\n\tkeepScript->${keepScript}\n`
   );
+
+  // Ensure .npmrc file exists
+  await ensureNpmrcFile(dryRun);
+
   await replaceFiles(YOUR_APP_NAME_FILES, currentAppName, newAppName, dryRun);
 
   // Check for errors in file replacement
