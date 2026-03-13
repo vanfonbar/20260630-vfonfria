@@ -1,5 +1,5 @@
 /** @type {import('@stryker-mutator/api/core').PartialStrykerOptions} */
-module.exports = {
+export default {
   $schema: './node_modules/@stryker-mutator/core/schema/stryker-schema.json',
   _comment:
     "This config was generated using 'stryker init'. Please see the guide for more information: https://stryker-mutator.io/docs/stryker-js/guides/angular",
@@ -7,9 +7,9 @@ module.exports = {
     'src/app/**/*.ts',
     '!src/app/**/models/**/*.ts',
     '!src/app/**/mocks/**/*.ts',
-    `!src/app/**/swagger/**/*.ts`,
+    '!src/app/**/swagger/**/*.ts',
     '!src/app/**/*.spec.ts',
-    `!src/app/**/*.dto.ts`,
+    '!src/app/**/*.dto.ts',
     '!src/app/**/*.+(enum|enums).ts',
     '!src/app/**/*.+(interface|interfaces).ts',
     '!src/app/**/*.+(mock|mocks).ts',
@@ -20,11 +20,11 @@ module.exports = {
     '!src/app/**/*.module.ts',
     '!src/app/**/*.routes.ts',
     '!src/app/app.config.ts',
-    `!src/app/di/**/*.provider.ts`
+    '!src/app/di/**/*.provider.ts'
   ],
   testRunner: 'karma',
   karma: {
-    configFile: `karma-ci.conf.js`,
+    configFile: 'karma-ci.conf.js',
     projectType: 'angular-cli',
     config: {
       browsers: ['ChromeHeadlessCI']
@@ -46,16 +46,15 @@ module.exports = {
   coverageAnalysis: 'perTest',
   ignoreStatic: true,
   incremental: true,
-  incrementalFile: `.stryker/stryker-incremental.json`,
+  incrementalFile: '.stryker/stryker-incremental.json',
   concurrency: 1,
   timeoutMS: 60000,
   checkers: ['typescript'],
-  tsconfigFile: `tsconfig.json`,
+  tsconfigFile: 'tsconfig.json',
   typescriptChecker: {
     prioritizePerformanceOverAccuracy: true
   },
-  plugins: ['@stryker-mutator/*', '@mercadona/schematics/mutants/ignorers'],
-  ignorers: ['angular', 'console', 'const-literal', 'readonly-literal'],
+  ignorers: ['angular'],
   ignorePatterns: [
     '/coverage',
     '/dist',

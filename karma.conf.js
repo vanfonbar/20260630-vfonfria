@@ -1,22 +1,33 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-const { chromium, webkit } = require('playwright');
+import { chromium, webkit } from 'playwright';
+
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 process.env.CHROME_BIN = chromium.executablePath();
 process.env.SAFARI_BIN = webkit.executablePath();
 
-module.exports = function (config) {
+/**
+ *
+ * @param config
+ */
+export default function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-safari-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-spec-reporter'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-safari-launcher',
+      'karma-jasmine-html-reporter',
+      'karma-spec-reporter',
+      'karma-coverage',
+      '@angular-devkit/build-angular/plugins/karma'
     ],
     client: {
       jasmine: {
@@ -31,7 +42,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage'),
+      dir: join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
         { type: 'html', subdir: 'report-html' },
@@ -77,4 +88,4 @@ module.exports = function (config) {
     singleRun: false,
     restartOnFileChange: true
   });
-};
+}

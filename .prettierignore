@@ -37,3 +37,8 @@ yarn.lock
 # Temporary files
 *.tmp
 *.log
+
+# DevOps and Helm Charts
+devops/
+charts/
+

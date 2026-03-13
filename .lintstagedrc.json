@@ -1,5 +1,0 @@
-{
-  "*": ["prettier --check --ignore-unknown"],
-  "**/*.{html,js,ts}": ["eslint"],
-  "**/*.{css,scss}": ["stylelint --allow-empty-input"]
-}

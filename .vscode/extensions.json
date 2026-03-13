@@ -1,22 +1,59 @@
 {
   "recommendations": [
+    // Core Angular
     "angular.ng-template",
-    "johnpapa.angular2",
-    "aaron-bond.better-comments",
-    "alefragnani.bookmarks",
-    "pranaygp.vscode-css-peek",
-    "sporiley.css-auto-prefix",
-    "ms-azuretools.vscode-docker",
+    "nrwl.angular-console",
+
+    // Code quality
     "dbaeumer.vscode-eslint",
-    "mhutchie.git-graph",
-    "thibault-vanderseypen.i18n-json-editor",
     "esbenp.prettier-vscode",
-    "rangav.vscode-thunder-client",
-    "gruntfuggly.todo-tree",
-    "redhat.vscode-yaml",
-    "usernamehw.errorlens",
+    "stylelint.vscode-stylelint",
     "editorconfig.editorconfig",
-    "zignd.html-css-class-completion",
-    "stylelint.vscode-stylelint"
+    "usernamehw.errorlens",
+    "sonarsource.sonarlint-vscode",
+    "yoavbls.pretty-ts-errors",
+
+    // Git
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "vivaxy.vscode-conventional-commits",
+
+    // Testing
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "ryanluker.vscode-coverage-gutters",
+
+    // CSS / Styles
+    "pranaygp.vscode-css-peek",
+    "naumovs.color-highlight",
+
+    // Productivity
+    "gruntfuggly.todo-tree",
+    "wallabyjs.console-ninja",
+    "christian-kohler.path-intellisense",
+    "chakrounanas.turbo-console-log",
+    "rangav.vscode-thunder-client",
+
+    // Infrastructure
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-yaml",
+    "mikestead.dotenv",
+
+    // i18n
+    "thibault-vanderseypen.i18n-json-editor",
+
+    // Figma (Code Connect)
+    "figma.figma-vscode-extension",
+
+    // PostCSS / SCSS
+    "csstools.postcss",
+
+    // Commit lint
+    "joshbolduc.commitlint",
+
+    // AI
+    "anthropic.claude-code",
+    "github.copilot",
+    "github.copilot-chat"
   ]
 }

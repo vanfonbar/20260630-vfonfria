@@ -3,6 +3,7 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": ["source.fixAll.eslint", "source.fixAll.markdownlint"],
   "eslint.alwaysShowStatus": true,
+  "eslint.useFlatConfig": true,
   "eslint.validate": ["typescript", "javascript", "html"],
   "yaml.validate": true,
   "search.exclude": {
@@ -31,7 +32,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "files.associations": {
-    "*.json": "jsonc"
+    "*.json": "jsonc",
+    "eslint.config.js": "javascript"
   },
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,

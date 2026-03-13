@@ -1,10 +1,10 @@
-const strykerBaseConfig = require('./stryker-ci.conf');
+import strykerBaseConfig from './stryker-ci.conf.js';
 
 /** @type {import('@stryker-mutator/api/core').PartialStrykerOptions} */
-module.exports = {
+export default {
   ...strykerBaseConfig,
   karma: {
-    configFile: `karma.conf.js`,
+    configFile: 'karma.conf.js',
     projectType: 'angular-cli',
     config: {
       browsers: ['ChromeHeadlessCI']

@@ -177,11 +177,6 @@
     "prefix": ["m-list-item"],
     "body": ["<m-list-item>$0</m-list-item>"]
   },
-  "MListCategoryItem": {
-    "scope": "html",
-    "prefix": ["m-list-category-item"],
-    "body": ["<m-list-category-item category=\"{{ 'i18n.item.category' | mTranslate }}\">$0</m-list-category-item>"]
-  },
   "MListTextItemComponent": {
     "scope": "html",
     "prefix": ["m-list-text-item"],

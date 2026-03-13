@@ -1,18 +1,28 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function (config) {
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+/**
+ *
+ * @param config
+ */
+export default function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-spec-reporter'),
-      require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-sonarqube-unit-reporter')
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-jasmine-html-reporter',
+      'karma-spec-reporter',
+      'karma-coverage',
+      '@angular-devkit/build-angular/plugins/karma',
+      'karma-sonarqube-unit-reporter'
     ],
     client: {
       jasmine: {
@@ -27,7 +37,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage'),
+      dir: join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
         { type: 'html', subdir: 'report-html' },
@@ -88,4 +98,4 @@ module.exports = function (config) {
       }
     }
   });
-};
+}

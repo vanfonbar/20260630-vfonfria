@@ -28,6 +28,7 @@ speed-measure-plugin*.json
 !.vscode/recommended-settings.json
 !.vscode/recommended-launch.json
 !.vscode/MSnippets.code-snippets
+!.vscode/mcp.json
 .vscode/settings.json
 .history
 .angular
@@ -134,3 +135,5 @@ Checkmarx/
 # Updater
 fwkupdater-cli.xml
 
+# IA Context
+context

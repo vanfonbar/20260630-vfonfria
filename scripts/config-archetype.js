@@ -1,6 +1,12 @@
-const { join } = require('path');
-const fs = require('fs');
-const { readFile, writeFile } = require('fs').promises;
+import { join } from 'node:path';
+import fs from 'node:fs';
+import { readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // eslint-disable-next-line no-console
 const log = (...m) => console.log(...m);
 const errorAndClose = (...m) => {
@@ -222,7 +228,8 @@ const validateScope = (scope) => {
   }
 };
 
-if (module === require.main) {
+// ESM entry point detection
+if (import.meta.url === `file://${process.argv[1]}`) {
   main(...process.argv.slice(2))
     // eslint-disable-next-line no-console
     .then(() => console.log())
