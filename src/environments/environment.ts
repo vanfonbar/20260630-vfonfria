@@ -1,6 +1,6 @@
 import { MLoggerLevel } from '@mercadona/core/logger';
 import { MPlatformEnvironment } from '@mercadona/core/platform';
-import { MEnviroment } from '@mercadona/core/utils/environment';
+import { MEnvironment } from '@mercadona/core/utils/environment';
 
 /**
  * Do not duplicate this file into environment.dev.ts, environment.itg.ts, ...
@@ -14,6 +14,6 @@ const localEnvironment = {
   env: 'local' as MPlatformEnvironment
 };
 
-const envInstance = new MEnviroment('yourAppName', localEnvironment);
+const envInstance = new MEnvironment('yourAppName', localEnvironment);
 
 export const environment = envInstance.environment;

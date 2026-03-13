@@ -1,19 +1,18 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
-// IMPORTANT: 'zone.js/testing' MUST be the first import.
+import { provideZonelessChangeDetection } from '@angular/core';
+import { getTestBed, TestBed } from '@angular/core/testing';
+import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
 
-import 'zone.js/testing';
-import { getTestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-
-import { setupDefaultTestProviders, setupPreventStandalone } from '@mercadona/components/common';
-
-//This setups will be removed in futres major versions of the framework
-setupDefaultTestProviders();
-setupPreventStandalone();
 document.body.classList.add('base-theme');
 
 // First, initialize the Angular testing environment.
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting(), {
+getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting(), {
   teardown: { destroyAfterEach: true }
+});
+
+beforeEach(() => {
+  TestBed.configureTestingModule({
+    providers: [provideZonelessChangeDetection()]
+  });
 });

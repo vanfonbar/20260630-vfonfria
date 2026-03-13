@@ -1,4 +1,4 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+/* To learn more about this file see: https://angular.dev/reference/configs/typescript-compiler-options */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -7,9 +7,8 @@
     "outDir": "dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "importHelpers": true,
     "target": "es2022",
@@ -22,6 +21,7 @@
     "strictNullChecks": true,
     "skipLibCheck": true,
     "useDefineForClassFields": false,
+    "esModuleInterop": true,
     "paths": {
       /* V3 Clean Scaffolding */
       /* presentation */
@@ -70,5 +70,14 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
