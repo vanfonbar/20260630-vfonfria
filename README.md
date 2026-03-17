@@ -1,4 +1,4 @@
-# Mercadona Angular Framework - Archetype v3.18.0
+# Mercadona Angular Framework - Archetype v3.22.0
 
 Aplicación base del Framework Angular de Mercadona. Este arquetipo proporciona una estructura completa y optimizada para desarrollar aplicaciones frontend siguiendo las mejores prácticas y estándares corporativos.
 
