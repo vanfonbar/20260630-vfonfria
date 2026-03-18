@@ -1,6 +1,10 @@
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
-import { provideZonelessChangeDetection } from '@angular/core';
+// IMPORTANT: 'zone.js' and 'zone.js/testing' MUST be the first imports.
+
+import 'zone.js';
+import 'zone.js/testing';
+import { provideZoneChangeDetection } from '@angular/core';
 import { getTestBed, TestBed } from '@angular/core/testing';
 import { BrowserTestingModule, platformBrowserTesting } from '@angular/platform-browser/testing';
 
@@ -13,6 +17,6 @@ getTestBed().initTestEnvironment(BrowserTestingModule, platformBrowserTesting(),
 
 beforeEach(() => {
   TestBed.configureTestingModule({
-    providers: [provideZonelessChangeDetection()]
+    providers: [provideZoneChangeDetection()]
   });
 });
