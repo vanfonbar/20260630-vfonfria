@@ -54,21 +54,9 @@ export default {
   typescriptChecker: {
     prioritizePerformanceOverAccuracy: true
   },
-  ignorers: ['angular'],
-  ignorePatterns: [
-    '/coverage',
-    '/dist',
-    '/.gitlab',
-    '/.angular',
-    '/.vscode',
-    '/.idea',
-    '/.husky',
-    '/.history',
-    '/reports',
-    '/scripts',
-    '/swagger',
-    '/.stryker'
-  ],
+  plugins: ['@stryker-mutator/*', '@mercadona/schematics/mutants/ignorers'],
+  ignorers: ['angular', 'console', 'const-literal', 'readonly-literal'],
+  ignorePatterns: ['/**/.*', '/coverage', '/dist', '/reports', '/scripts', '/swagger'],
   dryRunTimeoutMinutes: 15,
   cleanTempDir: 'always'
 };
