@@ -1,5 +1,5 @@
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
@@ -29,6 +29,7 @@ export const appConfig: ApplicationConfig = {
       environment: environment.env
     }),
     provideMTranslate(APP_METADATA.language),
-    provideMLogger(environment.logLevel)
+    provideMLogger(environment.logLevel),
+    provideBrowserGlobalErrorListeners()
   ]
 };

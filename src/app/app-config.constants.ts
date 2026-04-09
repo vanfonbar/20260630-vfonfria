@@ -31,4 +31,4 @@ export const APP_METADATA: AppMetadataConfig = {
  * `npm run build:pro && npm run add:icons` after this in the `/dist/assets/mercadona` folder,
  * the icons will be downloaded.
  */
-export const ICONS_LIST: string[] = [];
+export const ICONS_LIST: readonly string[] = [];

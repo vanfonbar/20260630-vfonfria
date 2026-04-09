@@ -35,10 +35,9 @@
     "*.json": "jsonc",
     "eslint.config.js": "javascript"
   },
-  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
   "i18nJsonEditor.forceKeyUPPERCASE": false,
   "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "folder-path-color.folders": [
     { "path": "src/app/data", "tooltip": "Capa de datos", "color": "custom1" },
     { "path": "src/app/di", "tooltip": "Inyección de dependencias", "color": "custom2" },

@@ -1,4 +1,4 @@
-# Mercadona Angular Framework - Archetype v3.22.0
+# Mercadona Angular Framework - Archetype v4.1.0
 
 Aplicación base del Framework Angular de Mercadona. Este arquetipo proporciona una estructura completa y optimizada para desarrollar aplicaciones frontend siguiendo las mejores prácticas y estándares corporativos.
 
@@ -6,8 +6,8 @@ Aplicación base del Framework Angular de Mercadona. Este arquetipo proporciona 
 
 Antes de comenzar, asegúrate de tener instalado:
 
-- **Node.js**: v22.9.0 (recomendado usar [nvm](https://github.com/nvm-sh/nvm))
-- **npm**: v10.8.3
+- **Node.js**: v24.14.1 (recomendado usar [nvm](https://github.com/nvm-sh/nvm))
+- **npm**: v11.11.0
 - **Git**: Configurado con tu nombre y email
 
 ```bash
@@ -20,15 +20,7 @@ nvm use
 
 ## 🚀 Primeros Pasos
 
-### 1. Verificar Salud del Proyecto
-
-```bash
-npm run health
-```
-
-Este comando verifica que todas las dependencias y configuraciones estén correctas.
-
-### 2. Inicializar el Proyecto
+### 1. Inicializar el Proyecto
 
 ```bash
 npm run init
@@ -42,7 +34,7 @@ Este comando:
 
 ⚠️ **Nota**: Solo ejecutar este comando al inicio del proyecto.
 
-### 3. Configurar el Nombre del Proyecto
+### 2. Configurar el Nombre del Proyecto
 
 **IMPORTANTE**: Configura el nombre de tu aplicación antes de empezar a desarrollar.
 
@@ -80,7 +72,7 @@ Este script:
 
 ⚠️ **Nota**: Este script NO modifica el README.md (para mantenerlo como documentación base).
 
-### 4. Arrancar el Servidor de Desarrollo
+### 3. Arrancar el Servidor de Desarrollo
 
 ```bash
 npm start
@@ -97,7 +89,6 @@ La aplicación estará disponible en [http://localhost:4200](http://localhost:42
 | `npm start`         | Inicia el servidor en modo desarrollo →[localhost:4200](http://localhost:4200)   |
 | `npm run start:pro` | Inicia el servidor en modo producción →[localhost:4200](http://localhost:4200)   |
 | `npm run start:hmr` | Inicia con Hot Module Replacement (HMR) →[localhost:4200](http://localhost:4200) |
-| `npm run start:doc` | Visualiza la documentación generada →[localhost:8080](http://localhost:8080)     |
 
 ### Build y Compilación
 
@@ -106,7 +97,6 @@ La aplicación estará disponible en [http://localhost:4200](http://localhost:42
 | `npm run build`         | Compila la aplicación para producción                |
 | `npm run build:pro`     | Compila con source maps y estadísticas para análisis |
 | `npm run build:preview` | Compila en modo desarrollo para preview              |
-| `npm run build:doc`     | Genera la documentación con Compodoc                 |
 
 ### Testing
 
@@ -150,36 +140,12 @@ Primero ejecuta `npm run build:pro`, luego:
 
 ## 🔧 Comandos de Mantenimiento
 
-### Validación y Limpieza
+### Verificación de Versiones y Dependencias
 
-| Comando                  | Descripción                                                   |
-| ------------------------ | ------------------------------------------------------------- |
-| `npm run health`         | Verifica salud del proyecto (versiones, dependencias, config) |
-| `npm run validate`       | Valida estructura y configuración del proyecto                |
-| `npm run validate:quick` | Validación rápida (solo verificaciones esenciales)            |
-| `npm run validate:fix`   | Valida y corrige automáticamente problemas detectados         |
-| `npm run clean`          | Limpia archivos temporales y directorios de compilación       |
-| `npm run clean:deep`     | Limpieza profunda (incluye caché del navegador)               |
-| `npm run clean:all`      | Limpieza completa (incluye node_modules y package-lock.json)  |
-
-### Verificación de Actualizaciones
-
-| Comando                  | Descripción                                                     |
-| ------------------------ | --------------------------------------------------------------- |
-| `npm run check:versions` | Muestra versiones de Node, npm y Angular CLI                    |
-| `npm run check:outdated` | Verifica actualizaciones disponibles para dependencias          |
-| `npm run check:all`      | Ejecuta todas las verificaciones (health, validate, lint, test) |
-
-### Gestión de Entornos
-
-| Comando                       | Descripción                                    |
-| ----------------------------- | ---------------------------------------------- |
-| `npm run sync:env`            | Verifica sincronización de archivos de entorno |
-| `npm run sync:env:init`       | Inicializa configuración de sincronización     |
-| `npm run sync:env:verbose`    | Verifica sincronización con output detallado   |
-| `npm run generate:env`        | Genera archivos de configuración de entorno    |
-| `npm run generate:env:status` | Muestra estado de generación de entornos       |
-| `npm run generate:env:force`  | Fuerza regeneración de archivos de entorno     |
+| Comando                  | Descripción                                            |
+| ------------------------ | ------------------------------------------------------ |
+| `npm run check:versions` | Muestra versiones de Node, npm y Angular CLI           |
+| `npm run check:outdated` | Verifica actualizaciones disponibles para dependencias |
 
 ## 🎨 Generadores (Schematics)
 
@@ -187,36 +153,54 @@ Comandos para generar código con la estructura corporativa:
 
 ### Configuración Inicial
 
-| Comando                | Descripción                                       |
-| ---------------------- | ------------------------------------------------- |
-| `npm run add:login`    | Añade módulo de autenticación                     |
-| `npm run add:language` | Configura idiomas soportados                      |
-| `npm run add:icons`    | Añade iconos al proyecto                          |
-| `npm run add:pwa`      | Convierte la aplicación en PWA                    |
-| `npm run add:swagger`  | Genera servicios desde definición Swagger/OpenAPI |
+| Comando                     | Descripción                                       |
+| --------------------------- | ------------------------------------------------- |
+| `npm run add:login`         | Añade módulo de autenticación                     |
+| `npm run add:language`      | Configura idiomas soportados                      |
+| `npm run add:icons`         | Añade iconos al proyecto                          |
+| `npm run add:setup-icons`   | Configura el sistema de iconos                    |
+| `npm run add:pwa`           | Convierte la aplicación en PWA                    |
+| `npm run add:swagger`       | Genera servicios desde definición Swagger/OpenAPI |
+| `npm run add:auth-provider` | Añade un proveedor de autenticación               |
+| `npm run add:idp-selector`  | Añade selector de Identity Provider               |
+| `npm run add:environment`   | Genera configuración de entorno                   |
 
 ### Generación de Código
 
-| Comando                 | Descripción                |
-| ----------------------- | -------------------------- |
-| `npm run add:page`      | Genera una nueva página    |
-| `npm run add:component` | Genera un nuevo componente |
-| `npm run add:service`   | Genera un nuevo servicio   |
-| `npm run add:pipe`      | Genera una nueva pipe      |
-| `npm run add:directive` | Genera una nueva directiva |
-| `npm run add:model`     | Genera un nuevo modelo     |
-| `npm run add:interface` | Genera una nueva interfaz  |
+| Comando                   | Descripción                 |
+| ------------------------- | --------------------------- |
+| `npm run add:page`        | Genera una nueva página     |
+| `npm run add:component`   | Genera un nuevo componente  |
+| `npm run add:service`     | Genera un nuevo servicio    |
+| `npm run add:pipe`        | Genera una nueva pipe       |
+| `npm run add:directive`   | Genera una nueva directiva  |
+| `npm run add:model`       | Genera un nuevo modelo      |
+| `npm run add:interface`   | Genera una nueva interfaz   |
+| `npm run add:dto`         | Genera un nuevo DTO         |
+| `npm run add:mapper`      | Genera un nuevo mapper      |
+| `npm run add:repository`  | Genera un nuevo repositorio |
+| `npm run add:use-case`    | Genera un nuevo caso de uso |
+| `npm run add:guard`       | Genera un nuevo guard       |
+| `npm run add:interceptor` | Genera un nuevo interceptor |
+
+### Migración de Módulos
+
+| Comando                            | Descripción                                                  |
+| ---------------------------------- | ------------------------------------------------------------ |
+| `npm run add:module-to-provider`   | Migra módulos a providers standalone                         |
+| `npm run add:module-to-standalone` | Migra módulos a componentes standalone                       |
+| `npm run add:migrate-modules`      | Ejecuta ambas migraciones de módulos (provider + standalone) |
 
 ## 🔄 Git Hooks y Pre-commit
 
-| Comando                             | Descripción                                       |
-| ----------------------------------- | ------------------------------------------------- |
-| `npm run precommit`                 | Ejecuta linters y tests locales (usado por Husky) |
-| `npm run lint:staged`               | Ejecuta linters en archivos staged                |
-| `npm run lint:staged:fix`           | Corrige formato y ESLint en archivos staged       |
-| `npm run lint:staged:prettier:fix`  | Corrige solo formato en archivos staged           |
-| `npm run lint:staged:eslint:fix`    | Corrige solo ESLint en archivos staged            |
-| `npm run lint:staged:stylelint:fix` | Corrige solo Stylelint en archivos staged         |
+| Comando                             | Descripción                                              |
+| ----------------------------------- | -------------------------------------------------------- |
+| `npm run precommit`                 | Ejecuta linters staged y tests locales (usado por Husky) |
+| `npm run lint:staged`               | Ejecuta linters en archivos staged                       |
+| `npm run lint:staged:fix`           | Corrige formato y ESLint en archivos staged              |
+| `npm run lint:staged:prettier:fix`  | Corrige solo formato en archivos staged                  |
+| `npm run lint:staged:eslint:fix`    | Corrige solo ESLint en archivos staged                   |
+| `npm run lint:staged:stylelint:fix` | Corrige solo Stylelint en archivos staged                |
 
 ## 🏗️ Estructura del Proyecto
 
@@ -298,13 +282,12 @@ Aprende los fundamentos y explora temas avanzados en el [sitio web del Framework
 
 ### Tecnologías Principales
 
-- **Angular**: v18.2.13
-- **TypeScript**: v5.5.4
-- **RxJS**: v7.8.1
+- **Angular**: v21.2.6
+- **TypeScript**: v5.9.3
+- **RxJS**: v7.8.2
 - **Karma + Jasmine**: Testing
 - **ESLint + Prettier + Stylelint**: Code Quality
 - **Husky**: Git Hooks
-- **Compodoc**: Documentación
 
 ### Configuración de Swagger
 
@@ -320,7 +303,7 @@ Para generar servicios desde una API Swagger/OpenAPI:
 
 ```bash
 # Usa la versión correcta con nvm
-nvm use 22.9.0
+nvm use 24.14.1
 
 # Verifica la versión
 npm run check:versions
@@ -329,12 +312,8 @@ npm run check:versions
 ### Error: Tests no se ejecutan
 
 ```bash
-# Verifica la salud del proyecto
-npm run health
-
 # Reinstala dependencias
-npm run clean:all
-npm install
+npm ci
 ```
 
 ### Error: Husky hooks no funcionan
@@ -348,7 +327,7 @@ npm run postinstall
 
 ```bash
 # Limpia y reconstruye
-npm run clean
+rm -rf dist
 npm run build
 ```
 
@@ -357,7 +336,7 @@ npm run build
 1. **Antes de empezar a trabajar**:
 
    ```bash
-   npm run health
+   npm run check:versions
    npm run check:outdated
    ```
 
@@ -377,12 +356,6 @@ npm run build
 
    (Estos comandos se ejecutan automáticamente con Husky)
 
-4. **Antes de hacer push**:
-
-   ```bash
-   npm run check:all
-   ```
-
 ## 🆘 Soporte y Contacto
 
 ### Equipo FWK Angular
@@ -399,6 +372,7 @@ npm run build
 - **Mireia Malonda Mayor** - [mmalonda@mercadona.es](mailto:mmalonda@mercadona.es)
 - **Fran Montalt Leon** - [fmontalt@mercadona.es](mailto:fmontalt@mercadona.es)
 - **Rubén Sanz Rosa** - [rusanz@mercadona.es](mailto:rusanz@mercadona.es)
+- **Pablo Huitz Sav Herman** - [hhuitz@mercadona.es](mailto:hhuitz@mercadona.es)
 
 ### 📞 Teléfono de Guardias
 
@@ -439,7 +413,7 @@ Para crear un ticket de soporte:
 1. Accede a [Service Desk](https://mercadona.service-now.com/)
 2. Categoría: **Desarrollo > Framework Angular**
 3. Incluye:
-   - Versión del Framework (v3.18.0)
+   - Versión del Framework (v4.0.0)
    - Descripción detallada del problema
    - Pasos para reproducir
    - Logs de error (si aplica)
