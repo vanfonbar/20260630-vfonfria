@@ -3,9 +3,9 @@ import { Observable } from 'rxjs';
 
 import { Product } from '@/interfaces/product.interface';
 
-export interface ProductsUseCase {
-  getProducts(): Observable<Product[]>;
+export interface ProductRepositoryContract {
+  getAll(): Observable<Product[]>;
   searchByName(query: string): Observable<Product[]>;
 }
 
-export const PRODUCTS_USE_CASE = new InjectionToken<ProductsUseCase>('PRODUCTS_USE_CASE');
+export const PRODUCT_REPOSITORY = new InjectionToken<ProductRepositoryContract>('PRODUCT_REPOSITORY');

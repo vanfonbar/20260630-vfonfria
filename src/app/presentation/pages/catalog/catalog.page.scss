@@ -5,6 +5,9 @@
 }
 
 .catalog__header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -13,6 +16,7 @@
   font-weight: 700;
   color: #1a1a1a;
   margin: 0;
+  flex: 1;
 }
 
 .catalog__content {
@@ -22,6 +26,27 @@
 .catalog__error {
   color: #f44336;
   margin-bottom: 1rem;
+}
+
+.catalog__search {
+  width: 20rem;
+}
+
+.catalog__search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.catalog__empty {
+  text-align: center;
+  color: #6b6b6b;
+  padding: 2rem 0;
+  font-size: 1rem;
 }
 
 .catalog__grid {

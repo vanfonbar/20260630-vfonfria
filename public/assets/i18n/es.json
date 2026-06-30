@@ -8,7 +8,10 @@
   },
   "CATALOG": {
     "TITLE": "Catálogo de productos",
-    "ERROR_LOADING": "No se pudieron cargar los productos."
+    "ERROR_LOADING": "No se pudieron cargar los productos.",
+    "SEARCH_LABEL": "Buscar producto",
+    "SEARCH_PLACEHOLDER": "Buscar producto",
+    "NO_RESULTS": "No se encontraron productos para tu búsqueda."
   },
   "PRODUCT": {
     "IMAGE_ALT": "Imagen de {{name}}",

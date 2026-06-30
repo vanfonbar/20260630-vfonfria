@@ -1,11 +1,27 @@
 <div class="catalog">
   <header class="catalog__header">
     <h1 class="catalog__title">{{ 'CATALOG.TITLE' | mTranslate }}</h1>
+    <m-form-field class="catalog__search">
+      <m-icon m-prefix iconName="searchRegular" />
+      <input
+        #searchInput="m-input"
+        m-input
+        type="text"
+        [placeholder]="'CATALOG.SEARCH_PLACEHOLDER' | mTranslate"
+        [formControl]="searchControl" />
+      @if (searchControl.value) {
+      <button m-suffix type="button" class="catalog__search-clear" (click)="onClearSearch(searchInput)">
+        <m-icon iconName="closeRegular" />
+      </button>
+      }
+    </m-form-field>
   </header>
 
   <div class="catalog__content">
     @if (loadError()) {
     <p class="catalog__error">{{ 'CATALOG.ERROR_LOADING' | mTranslate }}</p>
+    } @if (!loading() && !loadError() && products().length === 0) {
+    <p class="catalog__empty">{{ 'CATALOG.NO_RESULTS' | mTranslate }}</p>
     }
     <div class="catalog__grid">
       @for (product of products(); track product.id) {
