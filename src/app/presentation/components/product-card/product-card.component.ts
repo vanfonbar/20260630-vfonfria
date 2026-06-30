@@ -1,5 +1,7 @@
-import { CurrencyPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, InputSignal, OutputEmitterRef, input, output } from '@angular/core';
+
+import { MTranslatePipe } from '@mercadona/core/translate';
 
 import { Product } from '@/interfaces/product.interface';
 
@@ -8,13 +10,13 @@ import { Product } from '@/interfaces/product.interface';
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CurrencyPipe]
+  imports: [CurrencyPipe, NgOptimizedImage, MTranslatePipe]
 })
 export class ProductCardComponent {
-  readonly product = input.required<Product>();
-  readonly addToCart = output<Product>();
+  readonly product: InputSignal<Product> = input.required<Product>();
+  readonly addToCart: OutputEmitterRef<Product> = output<Product>();
 
-  onAddToCart(): void {
+  protected onAddToCart(): void {
     this.addToCart.emit(this.product());
   }
 }

@@ -1,11 +1,14 @@
-<div class="catalog-page">
-  <header class="catalog-header">
-    <h1 class="catalog-title">Catálogo de productos</h1>
+<div class="catalog">
+  <header class="catalog__header">
+    <h1 class="catalog__title">{{ 'CATALOG.TITLE' | mTranslate }}</h1>
   </header>
 
-  <div class="catalog-content">
-    <div class="product-grid">
-      @for (product of products(); track $index) {
+  <div class="catalog__content">
+    @if (loadError()) {
+    <p class="catalog__error">{{ 'CATALOG.ERROR_LOADING' | mTranslate }}</p>
+    }
+    <div class="catalog__grid">
+      @for (product of products(); track product.id) {
       <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
       }
     </div>

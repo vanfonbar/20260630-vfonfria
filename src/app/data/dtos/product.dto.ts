@@ -2,9 +2,9 @@ export interface ProductDto {
   id: string;
   nombre: string;
   descripcion: string;
-  precio: any;
-  categoria: any;
+  precio: number;
+  categoria: string;
   imagen_url: string;
-  stock: any;
-  atributos: any;
+  stock: number;
+  atributos: Record<string, string>;
 }

@@ -1,53 +1,69 @@
-import { CurrencyPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, OnInit, signal } from '@angular/core';
+import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  Signal,
+  WritableSignal,
+  computed,
+  inject,
+  signal
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { MButtonComponent } from '@mercadona/components/button';
+import { MTranslatePipe } from '@mercadona/core/translate';
 
 import { CartItem } from '@/interfaces/cart-item.interface';
+import { CartStorageService } from '@/presentation/services/cart-storage.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
   styleUrl: './cart.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CurrencyPipe, RouterLink, MButtonComponent]
+  imports: [CurrencyPipe, NgOptimizedImage, RouterLink, MButtonComponent, MTranslatePipe]
 })
-export class CartPage implements OnInit {
-  readonly items = signal<CartItem[]>([]);
+export class CartPageComponent implements OnInit {
+  readonly #cartStorage: CartStorageService = inject(CartStorageService);
 
-  readonly total = computed(() => this.items().reduce((sum, item) => sum + item.product.price * item.quantity, 0));
-
-  readonly itemCount = computed(() => this.items().reduce((sum, item) => sum + item.quantity, 0));
+  protected readonly items: WritableSignal<CartItem[]> = signal<CartItem[]>([]);
+  protected readonly total: Signal<number> = computed<number>((): number =>
+    this.items().reduce((sum: number, item: CartItem): number => sum + item.product.price * item.quantity, 0)
+  );
+  protected readonly itemCount: Signal<number> = computed<number>((): number =>
+    this.items().reduce((sum: number, item: CartItem): number => sum + item.quantity, 0)
+  );
 
   ngOnInit(): void {
-    const stored = localStorage.getItem('cart');
-    if (stored) {
-      this.items.set(JSON.parse(stored) as CartItem[]);
-    }
+    this.items.set(this.#cartStorage.read());
   }
 
-  increaseQuantity(productId: string): void {
-    const updated = this.items().map((item) =>
-      item.product.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+  protected increaseQuantity(productId: string): void {
+    this.#persist(
+      this.items().map(
+        (item: CartItem): CartItem => (item.product.id === productId ? { ...item, quantity: item.quantity + 1 } : item)
+      )
     );
-    this.persist(updated);
   }
 
-  decreaseQuantity(productId: string): void {
-    const updated = this.items()
-      .map((item) => (item.product.id === productId ? { ...item, quantity: item.quantity - 1 } : item))
-      .filter((item) => item.quantity > 0);
-    this.persist(updated);
+  protected decreaseQuantity(productId: string): void {
+    this.#persist(
+      this.items()
+        .map(
+          (item: CartItem): CartItem =>
+            item.product.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item: CartItem): boolean => item.quantity > 0)
+    );
   }
 
-  removeItem(productId: string): void {
-    const updated = this.items().filter((item) => item.product.id !== productId);
-    this.persist(updated);
+  protected removeItem(productId: string): void {
+    this.#persist(this.items().filter((item: CartItem): boolean => item.product.id !== productId));
   }
 
-  private persist(items: CartItem[]): void {
+  #persist(items: CartItem[]): void {
     this.items.set(items);
-    localStorage.setItem('cart', JSON.stringify(items));
+    this.#cartStorage.write(items);
   }
 }

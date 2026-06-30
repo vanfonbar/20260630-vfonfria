@@ -9,15 +9,15 @@ import { Routes } from '@angular/router';
 export const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'catalogo',
+    redirectTo: 'catalog',
     pathMatch: 'full'
   },
   {
-    path: 'catalogo',
-    loadComponent: () => import('./presentation/pages/catalog/catalog.page').then((m) => m.CatalogPage)
+    path: 'catalog',
+    loadComponent: () => import('./presentation/pages/catalog/catalog.page').then((m) => m.CatalogPageComponent)
   },
   {
-    path: 'carrito',
-    loadComponent: () => import('./presentation/pages/cart/cart.page').then((m) => m.CartPage)
+    path: 'cart',
+    loadComponent: () => import('./presentation/pages/cart/cart.page').then((m) => m.CartPageComponent)
   }
 ];

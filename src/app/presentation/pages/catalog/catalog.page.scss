@@ -1,26 +1,31 @@
-.catalog-page {
-  max-width: 1200px;
+.catalog {
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 24px 16px;
+  padding: 1.5rem 1rem;
 }
 
-.catalog-header {
-  margin-bottom: 24px;
+.catalog__header {
+  margin-bottom: 1.5rem;
 }
 
-.catalog-title {
-  font-size: 28px;
+.catalog__title {
+  font-size: 1.75rem;
   font-weight: 700;
   color: #1a1a1a;
   margin: 0;
 }
 
-.catalog-content {
-  min-height: 300px;
+.catalog__content {
+  min-height: 18.75rem;
 }
 
-.product-grid {
+.catalog__error {
+  color: #f44336;
+  margin-bottom: 1rem;
+}
+
+.catalog__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.25rem;
 }

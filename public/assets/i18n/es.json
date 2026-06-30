@@ -1,1 +1,33 @@
-{}
+{
+  "APP": {
+    "BRAND": "🛒 Gestor de Pedidos",
+    "NAV": {
+      "CATALOG": "Catálogo",
+      "CART": "Carrito"
+    }
+  },
+  "CATALOG": {
+    "TITLE": "Catálogo de productos",
+    "ERROR_LOADING": "No se pudieron cargar los productos."
+  },
+  "PRODUCT": {
+    "IMAGE_ALT": "Imagen de {{name}}",
+    "OUT_OF_STOCK": "Agotado",
+    "UNITS_AVAILABLE": "{{count}} uds.",
+    "ADD_TO_CART": "Añadir al carrito"
+  },
+  "CART": {
+    "TITLE": "Mi carrito",
+    "BACK": "← Volver al catálogo",
+    "EMPTY": "Tu carrito está vacío.",
+    "VIEW_CATALOG": "Ver catálogo",
+    "PRODUCTS_COUNT": "Productos ({{count}})",
+    "TOTAL": "Total",
+    "CONFIRM": "Confirmar pedido",
+    "ARIA": {
+      "DECREASE": "Disminuir cantidad de {{name}}",
+      "INCREASE": "Aumentar cantidad de {{name}}",
+      "REMOVE": "Eliminar {{name}} del carrito"
+    }
+  }
+}

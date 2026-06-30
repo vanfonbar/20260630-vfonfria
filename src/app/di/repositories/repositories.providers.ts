@@ -1,11 +1,9 @@
 import { Provider } from '@angular/core';
 
-import { ProductRepository } from '@/domain/repositories/product.repository';
-import { ProductRepositoryImpl } from '@/repositories/product.repository.impl';
+import { PRODUCT_REPOSITORY } from '@/domain/repositories/product.repository';
+import { ProductRepositoryImpl } from '@/repositories/product.repository';
 
 export const repositoriesProviders: Provider[] = [
-  {
-    provide: ProductRepository,
-    useClass: ProductRepositoryImpl
-  }
+  ProductRepositoryImpl,
+  { provide: PRODUCT_REPOSITORY, useExisting: ProductRepositoryImpl }
 ];

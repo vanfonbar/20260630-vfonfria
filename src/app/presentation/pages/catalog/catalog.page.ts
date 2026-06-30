@@ -1,42 +1,40 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal, WritableSignal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { catchError, Observable, of } from 'rxjs';
+
+import { MTranslatePipe } from '@mercadona/core/translate';
 
 import { ProductCardComponent } from '@/components/product-card/product-card.component';
 import { Product } from '@/interfaces/product.interface';
-import { GetProductsUseCase } from '@/use-cases/get-products.use-case';
+import { CartStorageService } from '@/presentation/services/cart-storage.service';
+import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-case.contract';
 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.page.html',
   styleUrl: './catalog.page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ProductCardComponent]
+  imports: [ProductCardComponent, MTranslatePipe]
 })
-export class CatalogPage {
-  private readonly getProductsUseCase = inject(GetProductsUseCase);
+export class CatalogPageComponent {
+  readonly #useCase: ProductsUseCase = inject(PRODUCTS_USE_CASE);
+  readonly #cartStorage: CartStorageService = inject(CartStorageService);
 
-  readonly products = signal<Product[]>([]);
+  protected readonly loadError: WritableSignal<boolean> = signal<boolean>(false);
+  protected readonly products: Signal<Product[]> = toSignal(
+    this.#useCase.getProducts().pipe(
+      catchError((): Observable<Product[]> => {
+        this.loadError.set(true);
+        return of<Product[]>([]);
+      })
+    ),
+    { initialValue: [] as Product[] }
+  );
 
-  constructor() {
-    this.loadProducts();
-  }
-
-  onAddToCart(product: Product): void {
-    const raw = localStorage.getItem('cart');
-    const cart: { product: Product; quantity: number }[] = raw ? JSON.parse(raw) : [];
-    const existing = cart.find((item) => item.product.id === product.id);
-    if (existing) {
-      existing.quantity++;
-    } else {
-      cart.push({ product, quantity: 1 });
+  protected onAddToCart(product: Product): void {
+    if (product.stock <= 0) {
+      return;
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  private loadProducts(): void {
-    this.getProductsUseCase.execute().subscribe({
-      next: (products) => {
-        this.products.set(products);
-      }
-    });
+    this.#cartStorage.add(product);
   }
 }

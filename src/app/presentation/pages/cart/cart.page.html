@@ -1,46 +1,53 @@
-<div class="cart-page">
-  <header class="cart-header">
-    <h1 class="cart-title">Mi carrito</h1>
-    <a routerLink="/catalogo" class="link-back">← Volver al catálogo</a>
+<div class="cart">
+  <header class="cart__header">
+    <h1 class="cart__title">{{ 'CART.TITLE' | mTranslate }}</h1>
+    <a routerLink="/catalog" class="cart__link-back">{{ 'CART.BACK' | mTranslate }}</a>
   </header>
 
   @if (items().length === 0) {
-  <div class="empty-cart">
-    <p>Tu carrito está vacío.</p>
-    <a m-button routerLink="/catalogo" buttonType="flat" color="main" size="medium">Ver catálogo</a>
+  <div class="cart__empty">
+    <p>{{ 'CART.EMPTY' | mTranslate }}</p>
+    <a m-button routerLink="/catalog" buttonType="flat" color="main" size="medium">
+      {{ 'CART.VIEW_CATALOG' | mTranslate }}
+    </a>
   </div>
-  } @else {
-  <div class="cart-content">
-    <ul class="cart-items">
+  } @else { @let cartTotal = total(); @let count = itemCount();
+  <div class="cart__content">
+    <ul class="cart__items">
       @for (item of items(); track item.product.id) {
-      <li class="cart-item">
-        <img class="cart-item-image" [src]="item.product.imageUrl" [alt]="item.product.name" />
-        <div class="cart-item-info">
-          <span class="cart-item-name">{{ item.product.name }}</span>
-          <span class="cart-item-price"> {{ item.product.price | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }} </span>
+      <li class="cart__item">
+        <img
+          class="cart__item-image"
+          width="60"
+          height="60"
+          [ngSrc]="item.product.imageUrl"
+          [alt]="item.product.name" />
+        <div class="cart__item-info">
+          <span class="cart__item-name">{{ item.product.name }}</span>
+          <span class="cart__item-price">{{ item.product.price | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
         </div>
-        <div class="cart-item-controls">
+        <div class="cart__item-controls">
           <button
             m-button
             buttonType="outline"
             color="main"
             size="small"
-            [attr.aria-label]="`Disminuir cantidad de ${item.product.name}`"
+            [attr.aria-label]="'CART.ARIA.DECREASE' | mTranslate: { name: item.product.name }"
             (click)="decreaseQuantity(item.product.id)">
             −
           </button>
-          <span class="qty-value">{{ item.quantity }}</span>
+          <span class="cart__qty-value">{{ item.quantity }}</span>
           <button
             m-button
             buttonType="outline"
             color="main"
             size="small"
-            [attr.aria-label]="`Aumentar cantidad de ${item.product.name}`"
+            [attr.aria-label]="'CART.ARIA.INCREASE' | mTranslate: { name: item.product.name }"
             (click)="increaseQuantity(item.product.id)">
             +
           </button>
         </div>
-        <span class="cart-item-subtotal">
+        <span class="cart__item-subtotal">
           {{ item.product.price * item.quantity | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}
         </span>
         <button
@@ -48,7 +55,7 @@
           buttonType="ghost"
           color="destructive"
           size="small"
-          [attr.aria-label]="`Eliminar ${item.product.name} del carrito`"
+          [attr.aria-label]="'CART.ARIA.REMOVE' | mTranslate: { name: item.product.name }"
           (click)="removeItem(item.product.id)">
           ✕
         </button>
@@ -56,16 +63,18 @@
       }
     </ul>
 
-    <div class="cart-summary">
-      <div class="summary-row">
-        <span>Productos ({{ itemCount() }})</span>
-        <span>{{ total() | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
+    <div class="cart__summary">
+      <div class="cart__summary-row">
+        <span>{{ 'CART.PRODUCTS_COUNT' | mTranslate: { count: count } }}</span>
+        <span>{{ cartTotal | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
       </div>
-      <div class="summary-row total">
-        <span>Total</span>
-        <span>{{ total() | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
+      <div class="cart__summary-row cart__summary-row--total">
+        <span>{{ 'CART.TOTAL' | mTranslate }}</span>
+        <span>{{ cartTotal | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
       </div>
-      <button m-button buttonType="flat" color="main" size="normal" class="btn-checkout">Confirmar pedido</button>
+      <button m-button buttonType="flat" color="main" size="normal" class="cart__checkout-btn">
+        {{ 'CART.CONFIRM' | mTranslate }}
+      </button>
     </div>
   </div>
   }
