@@ -81,6 +81,82 @@ describe('ProductRepositoryImpl', () => {
     });
   });
 
+  describe('getByCategory', () => {
+    it('should return only products that belong to the given category', () => {
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.DAIRY).subscribe((products) => (result = products));
+
+      const req = httpTesting.expectOne(`${baseUrl}/productos`);
+      req.flush(MOCK_DTOS);
+
+      expect(result).toHaveSize(1);
+      expect(result![0].id).toBe('1');
+      expect(result![0].category).toBe(Category.DAIRY);
+    });
+
+    it('should return empty array when no products belong to the given category', () => {
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.FRESH).subscribe((products) => (result = products));
+
+      const req = httpTesting.expectOne(`${baseUrl}/productos`);
+      req.flush(MOCK_DTOS);
+
+      expect(result).toEqual([]);
+    });
+
+    it('should return multiple products when several belong to the given category', () => {
+      const multiDairy: ProductDto[] = [
+        ...MOCK_DTOS,
+        {
+          id: '4',
+          nombre: 'Yogur natural',
+          descripcion: 'Yogur de vaca',
+          precio: 1.2,
+          categoria: 'lacteos',
+          imagen_url: 'https://example.com/yogur.jpg',
+          stock: 60,
+          atributos: {}
+        }
+      ];
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.DAIRY).subscribe((products) => (result = products));
+
+      const req = httpTesting.expectOne(`${baseUrl}/productos`);
+      req.flush(multiDairy);
+
+      expect(result).toHaveSize(2);
+      result!.forEach((p) => expect(p.category).toBe(Category.DAIRY));
+    });
+
+    it('should not be affected by category values of other products', () => {
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.BUTCHER).subscribe((products) => (result = products));
+
+      const req = httpTesting.expectOne(`${baseUrl}/productos`);
+      req.flush(MOCK_DTOS);
+
+      expect(result).toHaveSize(1);
+      expect(result![0].id).toBe('3');
+    });
+
+    it('should map DTOs to Product entities correctly', () => {
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.DAIRY).subscribe((products) => (result = products));
+
+      const req = httpTesting.expectOne(`${baseUrl}/productos`);
+      req.flush(MOCK_DTOS);
+
+      expect(result![0].name).toBe('Leche entera Hacendado 1L');
+      expect(result![0].price).toBe(0.89);
+      expect(result![0].stock).toBe(150);
+    });
+  });
+
   describe('searchByName', () => {
     it('should return products whose name contains the query (case-insensitive)', () => {
       let result: Product[] | undefined;

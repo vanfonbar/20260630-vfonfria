@@ -8,6 +8,7 @@ import { MRepository } from '@mercadona/core/utils/repository';
 
 import { ProductRepositoryContract } from '@/domain/repositories/product.repository.contract';
 import { ProductDto } from '@/dtos/product.dto';
+import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
 import { productListMapper } from '@/mappers/product.mapper';
 
@@ -21,12 +22,21 @@ export class ProductRepositoryImpl extends MRepository implements ProductReposit
     return this.get<ProductDto[]>('/productos').pipe(map(productListMapper));
   }
 
+  getByCategory(category: Category): Observable<Product[]> {
+    return this.get<ProductDto[]>('/productos').pipe(
+      map(productListMapper),
+      map((products: Product[]): Product[] =>
+        products.filter((product: Product): boolean => product.category === category)
+      )
+    );
+  }
+
   searchByName(query: string): Observable<Product[]> {
     const lowerQuery: string = query.toLowerCase();
     return this.get<ProductDto[]>('/productos').pipe(
       map(productListMapper),
-      map((products: Product[]) =>
-        products.filter((product: Product) => product.name.toLowerCase().includes(lowerQuery))
+      map((products: Product[]): Product[] =>
+        products.filter((product: Product): boolean => product.name.toLowerCase().includes(lowerQuery))
       )
     );
   }

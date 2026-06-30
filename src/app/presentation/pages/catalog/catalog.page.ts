@@ -1,14 +1,29 @@
-import { ChangeDetectionStrategy, Component, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, Observable, startWith, switchMap, catchError, of, tap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  catchError,
+  combineLatest,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  Observable,
+  of,
+  startWith,
+  switchMap,
+  tap
+} from 'rxjs';
 
 import { MFormFieldComponent, MPrefixDirective, MSuffixDirective } from '@mercadona/components/form-field';
 import { MInputDirective } from '@mercadona/components/input';
 import { MTranslatePipe } from '@mercadona/core/translate';
 import { MIconComponent } from '@mercadona/icons';
 
+import { CategoryFilterComponent } from '@/components/category-filter/category-filter.component';
 import { ProductCardComponent } from '@/components/product-card/product-card.component';
+import { parseCategory } from '@/entities/utils/category.utils';
+import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
 import { CartStorageService } from '@/presentation/services/cart-storage.service';
 import { SearchStateService } from '@/presentation/services/search-state.service';
@@ -21,6 +36,7 @@ import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-cas
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ProductCardComponent,
+    CategoryFilterComponent,
     ReactiveFormsModule,
     MFormFieldComponent,
     MPrefixDirective,
@@ -34,6 +50,8 @@ export class CatalogPageComponent {
   readonly #useCase: ProductsUseCase = inject(PRODUCTS_USE_CASE);
   readonly #cartStorage: CartStorageService = inject(CartStorageService);
   readonly #searchState: SearchStateService = inject(SearchStateService);
+  readonly #route: ActivatedRoute = inject(ActivatedRoute);
+  readonly #router: Router = inject(Router);
 
   protected readonly loadError: WritableSignal<boolean> = signal<boolean>(false);
   protected readonly loading: WritableSignal<boolean> = signal<boolean>(true);
@@ -42,32 +60,56 @@ export class CatalogPageComponent {
     nonNullable: true
   });
 
+  protected readonly activeCategory: Signal<Category | null> = toSignal(
+    this.#route.queryParamMap.pipe(map((params) => parseCategory(params.get('category')))),
+    { initialValue: null }
+  );
+
   protected readonly products: Signal<Product[]> = toSignal(
-    this.searchControl.valueChanges.pipe(
-      startWith(this.searchControl.value),
-      debounceTime(300),
-      distinctUntilChanged(),
-      tap((term: string) => {
+    combineLatest([
+      this.searchControl.valueChanges.pipe(
+        startWith(this.searchControl.value),
+        debounceTime(300),
+        distinctUntilChanged()
+      ),
+      this.#route.queryParamMap.pipe(map((params) => parseCategory(params.get('category'))))
+    ]).pipe(
+      tap(([term]: [string, Category | null]) => {
         this.loading.set(true);
         this.loadError.set(false);
         this.#searchState.setSearchTerm(term);
       }),
-      switchMap((term: string) => {
-        const trimmed: string = term.trim();
-        const source$: Observable<Product[]> =
-          trimmed.length === 0 ? this.#useCase.getProducts() : this.#useCase.searchByName(trimmed);
+      switchMap(([term, category]: [string, Category | null]): Observable<Product[]> => {
+        const source$: Observable<Product[]> = category
+          ? this.#useCase.getProductsByCategory(category)
+          : this.#useCase.getProducts();
+
+        const trimmed: string = term.trim().toLowerCase();
         return source$.pipe(
+          map((products: Product[]): Product[] =>
+            trimmed.length === 0
+              ? products
+              : products.filter((p: Product): boolean => p.name.toLowerCase().includes(trimmed))
+          ),
           catchError((): Observable<Product[]> => {
             this.loadError.set(true);
             return of<Product[]>([]);
           }),
-          tap(() => this.loading.set(false))
+          tap((): void => this.loading.set(false))
         );
       }),
       takeUntilDestroyed()
     ),
     { initialValue: [] as Product[] }
   );
+
+  protected onCategoryChange(category: Category | null): void {
+    this.#router.navigate([], {
+      relativeTo: this.#route,
+      queryParams: { category: category ?? null },
+      queryParamsHandling: 'merge'
+    });
+  }
 
   protected onClearSearch(input: MInputDirective): void {
     this.searchControl.setValue('');

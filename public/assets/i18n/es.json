@@ -11,7 +11,17 @@
     "ERROR_LOADING": "No se pudieron cargar los productos.",
     "SEARCH_LABEL": "Buscar producto",
     "SEARCH_PLACEHOLDER": "Buscar producto",
-    "NO_RESULTS": "No se encontraron productos para tu búsqueda."
+    "NO_RESULTS": "No se encontraron productos para tu búsqueda.",
+    "FILTER_LABEL": "Filtrar por categoría",
+    "FILTER_ALL": "Todas",
+    "FILTER_FRESH": "Frescos",
+    "FILTER_DAIRY": "Lácteos",
+    "FILTER_BUTCHER": "Carnicería",
+    "FILTER_FISHMONGER": "Pescadería",
+    "FILTER_BAKERY": "Panadería",
+    "FILTER_BEVERAGES": "Bebidas",
+    "FILTER_FROZEN": "Congelados",
+    "FILTER_CLEANING": "Limpieza"
   },
   "PRODUCT": {
     "IMAGE_ALT": "Imagen de {{name}}",

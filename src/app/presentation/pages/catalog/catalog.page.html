@@ -17,14 +17,20 @@
     </m-form-field>
   </header>
 
+  <app-category-filter
+    class="catalog__filters"
+    [selected]="activeCategory()"
+    (categoryChange)="onCategoryChange($event)" />
+
+  @let hasError = loadError(); @let isLoading = loading(); @let productList = products();
   <div class="catalog__content">
-    @if (loadError()) {
+    @if (hasError) {
     <p class="catalog__error">{{ 'CATALOG.ERROR_LOADING' | mTranslate }}</p>
-    } @if (!loading() && !loadError() && products().length === 0) {
+    } @if (!isLoading && !hasError && productList.length === 0) {
     <p class="catalog__empty">{{ 'CATALOG.NO_RESULTS' | mTranslate }}</p>
     }
     <div class="catalog__grid">
-      @for (product of products(); track product.id) {
+      @for (product of productList; track product.id) {
       <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
       }
     </div>
