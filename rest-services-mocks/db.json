@@ -1,0 +1,124 @@
+{
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Leche entera Hacendado 1L",
+      "descripcion": "Leche entera de vaca, pasteurizada y homogeneizada. Envase de 1 litro.",
+      "precio": 0.89,
+      "categoria": "lacteos",
+      "imagen_url": "https://placehold.co/300x300?text=Leche",
+      "stock": 150,
+      "atributos": { "formato": "1L", "grasa": "3.6%" }
+    },
+    {
+      "id": "2",
+      "nombre": "Pan de molde integral Hacendado",
+      "descripcion": "Pan de molde elaborado con harina integral. Sin conservantes añadidos.",
+      "precio": 1.35,
+      "categoria": "panaderia",
+      "imagen_url": "https://placehold.co/300x300?text=Pan",
+      "stock": 80,
+      "atributos": { "peso": "450g", "rebanadas": "20" }
+    },
+    {
+      "id": "3",
+      "nombre": "Pechuga de pollo fileteada",
+      "descripcion": "Pechuga de pollo fileteada fresca, lista para cocinar.",
+      "precio": 5.49,
+      "categoria": "carniceria",
+      "imagen_url": "https://placehold.co/300x300?text=Pollo",
+      "stock": 40,
+      "atributos": { "peso": "500g", "origen": "España" }
+    },
+    {
+      "id": "4",
+      "nombre": "Tomates rama",
+      "descripcion": "Tomates frescos de rama, cultivados en España.",
+      "precio": 1.99,
+      "categoria": "frescos",
+      "imagen_url": "https://placehold.co/300x300?text=Tomates",
+      "stock": 200,
+      "atributos": { "peso": "1kg", "origen": "Almería" }
+    },
+    {
+      "id": "5",
+      "nombre": "Salmón noruego en rodajas",
+      "descripcion": "Rodajas de salmón atlántico noruego, fresco y sin espinas.",
+      "precio": 9.95,
+      "categoria": "pescaderia",
+      "imagen_url": "https://placehold.co/300x300?text=Salmon",
+      "stock": 25,
+      "atributos": { "peso": "400g", "origen": "Noruega" }
+    },
+    {
+      "id": "6",
+      "nombre": "Agua mineral Hacendado 1.5L",
+      "descripcion": "Agua mineral natural de manantial. Pack de 6 botellas de 1.5L.",
+      "precio": 2.1,
+      "categoria": "bebidas",
+      "imagen_url": "https://placehold.co/300x300?text=Agua",
+      "stock": 300,
+      "atributos": { "formato": "6x1.5L", "mineralización": "muy débil" }
+    },
+    {
+      "id": "7",
+      "nombre": "Pizza margarita Hacendado",
+      "descripcion": "Pizza congelada con tomate, mozzarella y albahaca.",
+      "precio": 1.75,
+      "categoria": "congelados",
+      "imagen_url": "https://placehold.co/300x300?text=Pizza",
+      "stock": 60,
+      "atributos": { "peso": "360g", "porciones": "3" }
+    },
+    {
+      "id": "8",
+      "nombre": "Detergente líquido Bosque Verde",
+      "descripcion": "Detergente líquido para lavadora, fórmula concentrada. 40 lavados.",
+      "precio": 3.45,
+      "categoria": "limpieza",
+      "imagen_url": "https://placehold.co/300x300?text=Detergente",
+      "stock": 90,
+      "atributos": { "volumen": "2L", "lavados": "40" }
+    },
+    {
+      "id": "9",
+      "nombre": "Yogur natural Hacendado pack 8",
+      "descripcion": "Yogur natural sin azúcares añadidos. Pack de 8 unidades.",
+      "precio": 1.15,
+      "categoria": "lacteos",
+      "imagen_url": "https://placehold.co/300x300?text=Yogur",
+      "stock": 120,
+      "atributos": { "unidades": "8", "peso": "125g/ud" }
+    },
+    {
+      "id": "10",
+      "nombre": "Plátanos de Canarias",
+      "descripcion": "Plátanos de Canarias con IGP, maduración óptima.",
+      "precio": 1.49,
+      "categoria": "frescos",
+      "imagen_url": "https://placehold.co/300x300?text=Platanos",
+      "stock": 0,
+      "atributos": { "peso": "1kg", "origen": "Canarias" }
+    },
+    {
+      "id": "11",
+      "nombre": "Cerveza Voll-Damm 33cl pack 12",
+      "descripcion": "Cerveza doble malta premium. Pack de 12 latas de 33cl.",
+      "precio": 8.99,
+      "categoria": "bebidas",
+      "imagen_url": "https://placehold.co/300x300?text=Cerveza",
+      "stock": 55,
+      "atributos": { "formato": "12x33cl", "alcohol": "7.2%" }
+    },
+    {
+      "id": "12",
+      "nombre": "Merluza en filetes",
+      "descripcion": "Filetes de merluza fresca del Atlántico Norte, sin piel ni espinas.",
+      "precio": 7.25,
+      "categoria": "pescaderia",
+      "imagen_url": "https://placehold.co/300x300?text=Merluza",
+      "stock": 30,
+      "atributos": { "peso": "500g", "origen": "Atlántico Norte" }
+    }
+  ]
+}

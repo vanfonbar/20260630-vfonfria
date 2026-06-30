@@ -1,0 +1,23 @@
+<div class="product-card">
+  <img class="product-image" [src]="product().imageUrl" />
+
+  <div class="product-info">
+    <span class="product-category">{{ product().category }}</span>
+    <h3 class="product-name">{{ product().name }}</h3>
+    <p class="product-description">{{ product().description }}</p>
+
+    <div class="product-footer">
+      <span class="product-price">
+        {{ product().price | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}
+      </span>
+
+      @if (product().stock > 0) {
+        <span class="product-stock">{{ product().stock }} uds.</span>
+      } @else {
+        <span class="product-stock out-of-stock">Agotado</span>
+      }
+    </div>
+  </div>
+
+  <div class="btn-add-cart" [class.disabled]="product().stock === 0" (click)="onAddToCart()">Añadir al carrito</div>
+</div>

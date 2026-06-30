@@ -1,0 +1,72 @@
+<div class="cart-page">
+  <header class="cart-header">
+    <h1 class="cart-title">Mi carrito</h1>
+    <a routerLink="/catalogo" class="link-back">← Volver al catálogo</a>
+  </header>
+
+  @if (items().length === 0) {
+  <div class="empty-cart">
+    <p>Tu carrito está vacío.</p>
+    <a m-button routerLink="/catalogo" buttonType="flat" color="main" size="medium">Ver catálogo</a>
+  </div>
+  } @else {
+  <div class="cart-content">
+    <ul class="cart-items">
+      @for (item of items(); track item.product.id) {
+      <li class="cart-item">
+        <img class="cart-item-image" [src]="item.product.imageUrl" [alt]="item.product.name" />
+        <div class="cart-item-info">
+          <span class="cart-item-name">{{ item.product.name }}</span>
+          <span class="cart-item-price"> {{ item.product.price | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }} </span>
+        </div>
+        <div class="cart-item-controls">
+          <button
+            m-button
+            buttonType="outline"
+            color="main"
+            size="small"
+            [attr.aria-label]="`Disminuir cantidad de ${item.product.name}`"
+            (click)="decreaseQuantity(item.product.id)">
+            −
+          </button>
+          <span class="qty-value">{{ item.quantity }}</span>
+          <button
+            m-button
+            buttonType="outline"
+            color="main"
+            size="small"
+            [attr.aria-label]="`Aumentar cantidad de ${item.product.name}`"
+            (click)="increaseQuantity(item.product.id)">
+            +
+          </button>
+        </div>
+        <span class="cart-item-subtotal">
+          {{ item.product.price * item.quantity | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}
+        </span>
+        <button
+          m-button
+          buttonType="ghost"
+          color="destructive"
+          size="small"
+          [attr.aria-label]="`Eliminar ${item.product.name} del carrito`"
+          (click)="removeItem(item.product.id)">
+          ✕
+        </button>
+      </li>
+      }
+    </ul>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span>Productos ({{ itemCount() }})</span>
+        <span>{{ total() | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
+      </div>
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>{{ total() | currency: 'EUR' : 'symbol' : '1.2-2' : 'es' }}</span>
+      </div>
+      <button m-button buttonType="flat" color="main" size="normal" class="btn-checkout">Confirmar pedido</button>
+    </div>
+  </div>
+  }
+</div>

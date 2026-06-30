@@ -11,7 +11,8 @@ import { MEnvironment } from '@mercadona/core/utils/environment';
  */
 const localEnvironment = {
   logLevel: MLoggerLevel.TRACE,
-  env: 'local' as MPlatformEnvironment
+  env: 'local' as MPlatformEnvironment,
+  apiUrl: 'http://localhost:3000'
 };
 
 const envInstance = new MEnvironment('yourAppName', localEnvironment);

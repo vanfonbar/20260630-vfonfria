@@ -137,3 +137,8 @@ fwkupdater-cli.xml
 
 # IA Context
 context
+# Atenea skills management
+.claude/atenea-plugins.json
+.claude/skills/update-*
+.claude/skills/atenea-*
+.claude/skills/fwk-*

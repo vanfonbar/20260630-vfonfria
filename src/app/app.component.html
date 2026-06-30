@@ -1,6 +1,11 @@
-<div style="text-align: center">
-  <h1>Welcome to Mercadona Angular FWK Archetype</h1>
-  <a href="https://angular.srv.mercadona.com/" target="_blank">Documentation</a>
-</div>
+<nav class="app-nav">
+  <a class="nav-brand" routerLink="/catalogo">🛒 Gestor de Pedidos</a>
+  <div class="nav-links">
+    <a routerLink="/catalogo" routerLinkActive="active">Catálogo</a>
+    <a routerLink="/carrito" routerLinkActive="active">Carrito</a>
+  </div>
+</nav>
 
-<router-outlet />
+<main class="app-content">
+  <router-outlet />
+</main>

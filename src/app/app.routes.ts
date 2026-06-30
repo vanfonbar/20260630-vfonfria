@@ -6,4 +6,18 @@ import { Routes } from '@angular/router';
 // IMPORTANT: Do not use the "/callback" as it will be overwritten by the Token module. More info:
 // https://angular.srv.mercadona.com/latest/development-prescription/routes/routes-not-permitted/
 
-export const appRoutes: Routes = [];
+export const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: 'catalogo',
+    pathMatch: 'full'
+  },
+  {
+    path: 'catalogo',
+    loadComponent: () => import('./presentation/pages/catalog/catalog.page').then((m) => m.CatalogPage)
+  },
+  {
+    path: 'carrito',
+    loadComponent: () => import('./presentation/pages/cart/cart.page').then((m) => m.CartPage)
+  }
+];
