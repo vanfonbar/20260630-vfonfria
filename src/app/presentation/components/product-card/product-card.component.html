@@ -1,12 +1,13 @@
 @let p = product();
 <article class="product-card">
-  <img
-    class="product-card__image"
-    width="240"
-    height="240"
-    priority
-    [ngSrc]="p.imageUrl"
-    [alt]="'PRODUCT.IMAGE_ALT' | mTranslate: { name: p.name }" />
+  <div class="product-card__image-wrapper">
+    <img
+      class="product-card__image"
+      fill
+      priority
+      [ngSrc]="p.imageUrl"
+      [alt]="'PRODUCT.IMAGE_ALT' | mTranslate: { name: p.name }" />
+  </div>
 
   <div class="product-card__info">
     <span class="product-card__category">{{ p.category }}</span>

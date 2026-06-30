@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 
 import { CartItem } from '@/interfaces/cart-item.interface';
 import { Product } from '@/interfaces/product.interface';
@@ -7,6 +7,12 @@ const STORAGE_KEY = 'cart';
 
 @Injectable({ providedIn: 'root' })
 export class CartStorageService {
+  readonly #items: WritableSignal<CartItem[]> = signal<CartItem[]>(this.read());
+
+  readonly itemCount: Signal<number> = computed<number>(() =>
+    this.#items().reduce((sum: number, item: CartItem): number => sum + item.quantity, 0)
+  );
+
   read(): CartItem[] {
     try {
       const raw: string | null = localStorage.getItem(STORAGE_KEY);
@@ -18,6 +24,7 @@ export class CartStorageService {
 
   write(items: CartItem[]): void {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    this.#items.set(items);
   }
 
   add(product: Product): void {

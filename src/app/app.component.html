@@ -1,8 +1,16 @@
+@let cartCount = cartStorage.itemCount();
 <nav class="app-nav">
   <a class="nav-brand" routerLink="/catalog">{{ 'APP.BRAND' | mTranslate }}</a>
   <div class="nav-links">
     <a routerLink="/catalog" routerLinkActive="active">{{ 'APP.NAV.CATALOG' | mTranslate }}</a>
-    <a routerLink="/cart" routerLinkActive="active">{{ 'APP.NAV.CART' | mTranslate }}</a>
+    <a
+      class="nav-links__cart"
+      routerLink="/cart"
+      routerLinkActive="active"
+      badgeColor="alert"
+      [m-badge]="cartCount > 0 ? cartCount : null">
+      {{ 'APP.NAV.CART' | mTranslate }}
+    </a>
   </div>
 </nav>
 
