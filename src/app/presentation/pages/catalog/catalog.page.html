@@ -22,7 +22,8 @@
     [selected]="activeCategory()"
     (categoryChange)="onCategoryChange($event)" />
 
-  @let hasError = loadError(); @let isLoading = loading(); @let productList = products();
+  @let hasError = loadError(); @let isLoading = loading(); @let productList = products(); @let paginatedList =
+  paginatedProducts();
   <div class="catalog__content" [m-spinner]="isLoading" [spinnerMessage]="'CATALOG.LOADING' | mTranslate">
     @if (hasError) {
     <div class="catalog__error">
@@ -35,9 +36,18 @@
     <p class="catalog__empty">{{ 'CATALOG.NO_RESULTS' | mTranslate }}</p>
     }
     <div class="catalog__grid">
-      @for (product of productList; track product.id) {
+      @for (product of paginatedList; track product.id) {
       <app-product-card [product]="product" (addToCart)="onAddToCart($event)" />
       }
     </div>
+    @if (productList.length > PAGE_SIZE) {
+    <m-paginator-numbered
+      class="catalog__paginator"
+      [itemsLength]="productList.length"
+      [pageIndex]="pageIndex()"
+      [pageSize]="PAGE_SIZE"
+      [pagesToShow]="5"
+      (page)="onPage($event)" />
+    }
   </div>
 </div>

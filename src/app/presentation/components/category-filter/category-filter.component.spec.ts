@@ -21,8 +21,7 @@ describe('CategoryFilterComponent', () => {
   });
 
   /**
-   *
-   * @param selected
+   * @param {Category | null} selected - Initial value for the selected input signal.
    */
   function createComponent(selected: Category | null = null): void {
     fixture = TestBed.createComponent(CategoryFilterComponent);
@@ -32,14 +31,14 @@ describe('CategoryFilterComponent', () => {
   }
 
   /**
-   *
+   * @returns {DebugElement[]} All filter item buttons in the component.
    */
   function getButtons(): DebugElement[] {
     return fixture.debugElement.queryAll(By.css('.category-filter__item'));
   }
 
   /**
-   *
+   * @returns {DebugElement[]} All filter item buttons with the active modifier class.
    */
   function getActiveButtons(): DebugElement[] {
     return fixture.debugElement.queryAll(By.css('.category-filter__item--active'));

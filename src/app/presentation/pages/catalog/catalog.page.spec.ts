@@ -8,6 +8,7 @@ import { provideMTranslateTesting } from '@mercadona/core/translate/testing';
 import { CatalogPageComponent } from './catalog.page';
 import { CartStorageService } from '@/presentation/services/cart-storage.service';
 import { SearchStateService } from '@/presentation/services/search-state.service';
+import { CATALOG_PAGE_SIZE } from '@/entities/constants/catalog.constants';
 import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
 import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-case.contract';
@@ -60,6 +61,18 @@ const PRODUCT_AGOTADO: Product = {
 
 const ALL_PRODUCTS: Product[] = [PRODUCT_LECHE, PRODUCT_YOGUR, PRODUCT_PAN, PRODUCT_AGOTADO];
 const DAIRY_PRODUCTS: Product[] = [PRODUCT_LECHE, PRODUCT_YOGUR];
+
+// CATALOG_PAGE_SIZE + 3 productos para testear paginación
+const LARGE_PRODUCT_LIST: Product[] = Array.from({ length: CATALOG_PAGE_SIZE + 3 }, (_, i) => ({
+  id: `p${i + 1}`,
+  name: `Producto ${i + 1}`,
+  description: '',
+  price: 1,
+  category: Category.DAIRY,
+  imageUrl: `https://example.com/product-${i + 1}.jpg`,
+  stock: 10,
+  attributes: {}
+}));
 
 // Acceso a miembros protegidos desde tests
 const access = (c: CatalogPageComponent): any => c as any;
@@ -597,6 +610,92 @@ describe('CatalogPageComponent', () => {
       fixture.detectChanges();
 
       expect(access(component).products()).toEqual([PRODUCT_LECHE]);
+    }));
+  });
+
+  // ─── Paginación ───────────────────────────────────────────────────────────────
+
+  describe('Paginación', () => {
+    const totalLarge = LARGE_PRODUCT_LIST.length;
+
+    it('should return all products on first page when total is less than CATALOG_PAGE_SIZE', fakeAsync(() => {
+      createComponent();
+      tick(300);
+      fixture.detectChanges();
+
+      expect(access(component).paginatedProducts()).toEqual(ALL_PRODUCTS);
+    }));
+
+    it('should return only the first CATALOG_PAGE_SIZE products when total exceeds it', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(LARGE_PRODUCT_LIST));
+      createComponent();
+      tick(300);
+      fixture.detectChanges();
+
+      expect(access(component).paginatedProducts().length).toBe(CATALOG_PAGE_SIZE);
+      expect(access(component).paginatedProducts()).toEqual(LARGE_PRODUCT_LIST.slice(0, CATALOG_PAGE_SIZE));
+    }));
+
+    it('should return the correct slice on the second page', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(LARGE_PRODUCT_LIST));
+      createComponent();
+      tick(300);
+
+      access(component).onPage({
+        pageIndex: 1,
+        previousPageIndex: 0,
+        pageSize: CATALOG_PAGE_SIZE,
+        itemsLength: totalLarge
+      });
+      fixture.detectChanges();
+
+      expect(access(component).paginatedProducts()).toEqual(LARGE_PRODUCT_LIST.slice(CATALOG_PAGE_SIZE));
+    }));
+
+    it('should update pageIndex when onPage is called', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).onPage({ pageIndex: 2, previousPageIndex: 1, pageSize: CATALOG_PAGE_SIZE, itemsLength: 40 });
+
+      expect(access(component).pageIndex()).toBe(2);
+    }));
+
+    it('should reset pageIndex to 0 when the search term changes', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(LARGE_PRODUCT_LIST));
+      createComponent();
+      tick(300);
+      access(component).onPage({
+        pageIndex: 1,
+        previousPageIndex: 0,
+        pageSize: CATALOG_PAGE_SIZE,
+        itemsLength: totalLarge
+      });
+      expect(access(component).pageIndex()).toBe(1);
+
+      access(component).searchControl.setValue('producto');
+      tick(300);
+
+      expect(access(component).pageIndex()).toBe(0);
+    }));
+
+    it('should reset pageIndex to 0 when the category changes', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(LARGE_PRODUCT_LIST));
+      useCaseSpy.getProductsByCategory.and.returnValue(of(LARGE_PRODUCT_LIST));
+      createComponent();
+      tick(300);
+      access(component).onPage({
+        pageIndex: 1,
+        previousPageIndex: 0,
+        pageSize: CATALOG_PAGE_SIZE,
+        itemsLength: totalLarge
+      });
+      expect(access(component).pageIndex()).toBe(1);
+
+      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
+      tick(0);
+
+      expect(access(component).pageIndex()).toBe(0);
     }));
   });
 

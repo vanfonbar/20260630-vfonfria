@@ -64,6 +64,12 @@
   font-size: 1rem;
 }
 
+.catalog__paginator {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .catalog__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
