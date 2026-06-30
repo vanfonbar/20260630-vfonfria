@@ -19,7 +19,7 @@
 
 .cart__link-back {
   font-size: 0.875rem;
-  color: #005c3a;
+  color: var(--main);
   text-decoration: none;
 
   &:hover {
@@ -30,7 +30,7 @@
 .cart__empty {
   text-align: center;
   padding: 3.75rem 1.25rem;
-  color: #666;
+  color: var(--textSecondary);
 }
 
 .cart__content {
@@ -58,9 +58,9 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--borderNeutral);
   border-radius: 0.5rem;
-  background: #fff;
+  background: var(--bgPrimary);
 }
 
 .cart__item-image {
@@ -84,7 +84,7 @@
 
 .cart__item-price {
   font-size: 0.8125rem;
-  color: #666;
+  color: var(--textSecondary);
 }
 
 .cart__item-controls {
@@ -108,8 +108,8 @@
 }
 
 .cart__summary {
-  background: #f9f9f9;
-  border: 1px solid #e0e0e0;
+  background: var(--bgSecondary);
+  border: 1px solid var(--borderNeutral);
   border-radius: 0.5rem;
   padding: 1.25rem;
   display: flex;
@@ -126,7 +126,7 @@
     font-size: 1.125rem;
     font-weight: 700;
     padding-top: 0.75rem;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--borderNeutral);
   }
 }
 

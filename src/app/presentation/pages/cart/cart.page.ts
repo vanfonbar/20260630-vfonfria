@@ -1,14 +1,5 @@
 import { CurrencyPipe, NgOptimizedImage } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  Signal,
-  WritableSignal,
-  computed,
-  inject,
-  signal
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { MButtonComponent } from '@mercadona/components/button';
@@ -24,20 +15,16 @@ import { CartStorageService } from '@/presentation/services/cart-storage.service
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CurrencyPipe, NgOptimizedImage, RouterLink, MButtonComponent, MTranslatePipe]
 })
-export class CartPageComponent implements OnInit {
+export class CartPageComponent {
   readonly #cartStorage: CartStorageService = inject(CartStorageService);
 
-  protected readonly items: WritableSignal<CartItem[]> = signal<CartItem[]>([]);
+  protected readonly items: Signal<CartItem[]> = this.#cartStorage.items;
   protected readonly total: Signal<number> = computed<number>((): number =>
     this.items().reduce((sum: number, item: CartItem): number => sum + item.product.price * item.quantity, 0)
   );
   protected readonly itemCount: Signal<number> = computed<number>((): number =>
     this.items().reduce((sum: number, item: CartItem): number => sum + item.quantity, 0)
   );
-
-  ngOnInit(): void {
-    this.items.set(this.#cartStorage.read());
-  }
 
   protected increaseQuantity(productId: string): void {
     this.#persist(
@@ -63,7 +50,6 @@ export class CartPageComponent implements OnInit {
   }
 
   #persist(items: CartItem[]): void {
-    this.items.set(items);
     this.#cartStorage.write(items);
   }
 }

@@ -28,9 +28,9 @@ import { MIconComponent } from '@mercadona/icons';
 import { CategoryFilterComponent } from '@/components/category-filter/category-filter.component';
 import { ProductCardComponent } from '@/components/product-card/product-card.component';
 import { SortSelectorComponent } from '@/components/sort-selector/sort-selector.component';
+import { parseCategory } from '@/domain/utils/category.utils';
 import { CATALOG_PAGE_SIZE } from '@/entities/constants/catalog.constants';
 import { SortCriteria } from '@/entities/types/sort.types';
-import { parseCategory } from '@/entities/utils/category.utils';
 import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
 import { CartStorageService } from '@/presentation/services/cart-storage.service';
@@ -80,18 +80,23 @@ export class CatalogPageComponent {
 
   protected readonly PAGE_SIZE = CATALOG_PAGE_SIZE;
 
-  protected readonly loadError: WritableSignal<boolean> = signal<boolean>(false);
-  protected readonly loading: WritableSignal<boolean> = signal<boolean>(true);
-  protected readonly pageIndex: WritableSignal<number> = signal<number>(0);
-  protected readonly sortCriteria: WritableSignal<SortCriteria | null> = signal<SortCriteria | null>(null);
+  readonly #loadError: WritableSignal<boolean> = signal<boolean>(false);
+  readonly #loading: WritableSignal<boolean> = signal<boolean>(true);
+  readonly #pageIndex: WritableSignal<number> = signal<number>(0);
+  readonly #sortCriteria: WritableSignal<SortCriteria | null> = signal<SortCriteria | null>(null);
+
+  protected readonly loadError: Signal<boolean> = this.#loadError.asReadonly();
+  protected readonly loading: Signal<boolean> = this.#loading.asReadonly();
+  protected readonly pageIndex: Signal<number> = this.#pageIndex.asReadonly();
+  protected readonly sortCriteria: Signal<SortCriteria | null> = this.#sortCriteria.asReadonly();
 
   protected readonly searchControl: FormControl<string> = new FormControl<string>(this.#searchState.searchTerm(), {
     nonNullable: true
   });
 
-  protected readonly activeCategory: Signal<Category | null> = toSignal(
+  protected readonly activeCategory: Signal<Category | undefined> = toSignal(
     this.#route.queryParamMap.pipe(map((params) => parseCategory(params.get('category')))),
-    { initialValue: null }
+    { initialValue: undefined }
   );
 
   protected readonly products: Signal<Product[]> = toSignal(
@@ -106,21 +111,21 @@ export class CatalogPageComponent {
       ),
       this.#route.queryParamMap.pipe(map((params) => parseCategory(params.get('category'))))
     ]).pipe(
-      tap(([term]: [string, Category | null]) => {
-        this.loading.set(true);
-        this.loadError.set(false);
-        this.pageIndex.set(0);
+      tap(([term]: [string, Category | undefined]) => {
+        this.#loading.set(true);
+        this.#loadError.set(false);
+        this.#pageIndex.set(0);
         this.#searchState.setSearchTerm(term);
       }),
-      switchMap(([term, category]: [string, Category | null]): Observable<Product[]> => {
+      switchMap(([term, category]: [string, Category | undefined]): Observable<Product[]> => {
         const trimmed: string = term.trim().toLowerCase();
         const source$: Observable<Product[]> = this.#resolveSource(trimmed, category);
         return source$.pipe(
           catchError((): Observable<Product[]> => {
-            this.loadError.set(true);
+            this.#loadError.set(true);
             return of<Product[]>([]);
           }),
-          tap((): void => this.loading.set(false))
+          tap((): void => this.#loading.set(false))
         );
       }),
       takeUntilDestroyed()
@@ -149,12 +154,12 @@ export class CatalogPageComponent {
   });
 
   protected onSortChange(criteria: SortCriteria | null): void {
-    this.sortCriteria.set(criteria);
-    this.pageIndex.set(0);
+    this.#sortCriteria.set(criteria);
+    this.#pageIndex.set(0);
   }
 
   protected onPage(event: MPaginatorEvent): void {
-    this.pageIndex.set(event.pageIndex);
+    this.#pageIndex.set(event.pageIndex);
   }
 
   protected retry(): void {
@@ -162,7 +167,7 @@ export class CatalogPageComponent {
     this.#retry$.next(this.searchControl.value);
   }
 
-  protected onCategoryChange(category: Category | null): void {
+  protected onCategoryChange(category: Category | undefined): void {
     this.#router.navigate([], {
       relativeTo: this.#route,
       queryParams: { category: category ?? null },
@@ -193,10 +198,10 @@ export class CatalogPageComponent {
    *   In a real backend, this would be a single parameterised request.
    *
    * @param {string} trimmed - Lowercase trimmed search term, or empty string if no search.
-   * @param {Category | null} category - Active category filter, or null for all categories.
+   * @param {Category | undefined} category - Active category filter, or undefined for all categories.
    * @returns {Observable<Product[]>} The appropriate data source for the current filter state.
    */
-  #resolveSource(trimmed: string, category: Category | null): Observable<Product[]> {
+  #resolveSource(trimmed: string, category: Category | undefined): Observable<Product[]> {
     if (!category) {
       return trimmed ? this.#useCase.searchByName(trimmed) : this.#useCase.getProducts();
     }

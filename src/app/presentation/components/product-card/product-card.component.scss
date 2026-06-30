@@ -1,10 +1,10 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--borderNeutral);
   border-radius: 0.5rem;
   overflow: hidden;
-  background: #fff;
+  background: var(--bgPrimary);
   transition: box-shadow 0.2s;
 
   &:hover {
@@ -33,7 +33,7 @@
 .product-card__category {
   font-size: 0.6875rem;
   text-transform: uppercase;
-  color: #005c3a;
+  color: var(--main);
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -42,13 +42,13 @@
   font-size: 0.9375rem;
   font-weight: 600;
   margin: 0;
-  color: #1a1a1a;
+  color: var(--textPrimary);
   line-height: 1.3;
 }
 
 .product-card__description {
   font-size: 0.8125rem;
-  color: #666;
+  color: var(--textSecondary);
   margin: 0;
   line-height: 1.4;
   flex: 1;
@@ -64,23 +64,23 @@
 .product-card__price {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--textPrimary);
 }
 
 .product-card__stock {
   font-size: 0.75rem;
-  color: #4caf50;
+  color: var(--success);
 
   &--out {
-    color: #f44336;
+    color: var(--alert);
   }
 }
 
 .product-card__add-btn {
   margin: 0.75rem;
   padding: 0.625rem;
-  background-color: #005c3a;
-  color: #fff;
+  background-color: var(--main);
+  color: var(--bgPrimary);
   text-align: center;
   border: none;
   border-radius: 0.25rem;
@@ -91,11 +91,11 @@
   transition: background-color 0.2s;
 
   &:hover:not(&--disabled) {
-    background-color: #004a2f;
+    background-color: var(--main-dark);
   }
 
   &--disabled {
-    background-color: #ccc;
+    background-color: var(--bgDisabled);
     cursor: not-allowed;
   }
 }

@@ -4,9 +4,9 @@
     type="button"
     class="category-filter__item"
     role="radio"
-    [class.category-filter__item--active]="active === null"
-    [attr.aria-checked]="active === null"
-    (click)="onSelect(null)">
+    [class.category-filter__item--active]="active === undefined"
+    [attr.aria-checked]="active === undefined"
+    (click)="onSelect(undefined)">
     {{ 'CATALOG.FILTER_ALL' | mTranslate }}
   </button>
   @for (cat of categories; track cat) {

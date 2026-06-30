@@ -23,7 +23,7 @@ describe('CategoryFilterComponent', () => {
   /**
    * @param {Category | null} selected - Initial value for the selected input signal.
    */
-  function createComponent(selected: Category | null = null): void {
+  function createComponent(selected: Category | undefined = undefined): void {
     fixture = TestBed.createComponent(CategoryFilterComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('selected', selected);
@@ -63,8 +63,8 @@ describe('CategoryFilterComponent', () => {
 
   // ─── Estado activo: selected = null ──────────────────────────────────────────
 
-  describe('Estado activo cuando selected es null ("Todas")', () => {
-    beforeEach(() => createComponent(null));
+  describe('Estado activo cuando selected es undefined ("Todas")', () => {
+    beforeEach(() => createComponent(undefined));
 
     it('should apply the active modifier class to the "Todas" button', () => {
       expect(getButtons()[0].classes['category-filter__item--active']).toBeTrue();
@@ -127,7 +127,7 @@ describe('CategoryFilterComponent', () => {
 
   describe('Reactividad al cambiar el input selected', () => {
     it('should update the active button when selected changes from null to a category', () => {
-      createComponent(null);
+      createComponent(undefined);
 
       fixture.componentRef.setInput('selected', Category.BAKERY);
       fixture.detectChanges();
@@ -147,10 +147,10 @@ describe('CategoryFilterComponent', () => {
       expect(getActiveButtons().length).toBe(1);
     });
 
-    it('should restore "Todas" as active when selected changes back to null', () => {
+    it('should restore "Todas" as active when selected changes back to undefined', () => {
       createComponent(Category.DAIRY);
 
-      fixture.componentRef.setInput('selected', null);
+      fixture.componentRef.setInput('selected', undefined);
       fixture.detectChanges();
 
       expect(getButtons()[0].classes['category-filter__item--active']).toBeTrue();
@@ -161,19 +161,19 @@ describe('CategoryFilterComponent', () => {
   // ─── Emisión de eventos ───────────────────────────────────────────────────────
 
   describe('Emisión de eventos', () => {
-    it('should emit null when "Todas" is clicked and a category was previously active', () => {
+    it('should emit undefined when "Todas" is clicked and a category was previously active', () => {
       createComponent(Category.DAIRY);
-      let emitted: Category | null | undefined;
+      let emitted: Category | undefined;
       component.categoryChange.subscribe((cat) => (emitted = cat));
 
       getButtons()[0].nativeElement.click();
 
-      expect(emitted).toBeNull();
+      expect(emitted).toBeUndefined();
     });
 
     it('should emit the category when its button is clicked', () => {
-      createComponent(null);
-      let emitted: Category | null | undefined;
+      createComponent(undefined);
+      let emitted: Category | undefined;
       component.categoryChange.subscribe((cat) => (emitted = cat));
 
       const freshIndex = ALL_CATEGORIES.indexOf(Category.FRESH) + 1;
@@ -184,7 +184,7 @@ describe('CategoryFilterComponent', () => {
 
     it('should emit the new category when switching from one category to another', () => {
       createComponent(Category.DAIRY);
-      let emitted: Category | null | undefined;
+      let emitted: Category | undefined;
       component.categoryChange.subscribe((cat) => (emitted = cat));
 
       const bakeryIndex = ALL_CATEGORIES.indexOf(Category.BAKERY) + 1;
@@ -194,7 +194,7 @@ describe('CategoryFilterComponent', () => {
     });
 
     it('should NOT emit when clicking the already-active "Todas" button', () => {
-      createComponent(null);
+      createComponent(undefined);
       let emitCount = 0;
       component.categoryChange.subscribe(() => emitCount++);
 

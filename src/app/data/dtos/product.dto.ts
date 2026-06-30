@@ -1,10 +1,10 @@
 export interface ProductDto {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  precio: number;
-  categoria: string;
-  imagen_url: string;
-  stock: number;
-  atributos: Record<string, string>;
+  readonly id: string;
+  readonly nombre: string;
+  readonly descripcion: string;
+  readonly precio: number;
+  readonly categoria: string;
+  readonly imagen_url: string;
+  readonly stock: number;
+  readonly atributos: Record<string, string>;
 }

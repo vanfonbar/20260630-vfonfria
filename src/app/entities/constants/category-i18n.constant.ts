@@ -9,4 +9,4 @@ export const CATEGORY_I18N_KEYS: Record<Category, string> = {
   [Category.BEVERAGES]: 'CATALOG.FILTER_BEVERAGES',
   [Category.FROZEN]: 'CATALOG.FILTER_FROZEN',
   [Category.CLEANING]: 'CATALOG.FILTER_CLEANING'
-};
+} as const;

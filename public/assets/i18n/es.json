@@ -2,53 +2,54 @@
   "APP": {
     "BRAND": "🛒 Gestor de Pedidos",
     "NAV": {
-      "CATALOG": "Catálogo",
-      "CART": "Carrito"
+      "CART": "Carrito",
+      "CATALOG": "Catálogo"
     }
   },
-  "CATALOG": {
-    "TITLE": "Catálogo de productos",
-    "ERROR_LOADING": "No se pudieron cargar los productos.",
-    "SEARCH_LABEL": "Buscar producto",
-    "SEARCH_PLACEHOLDER": "Buscar producto",
-    "NO_RESULTS": "No se encontraron productos para tu búsqueda.",
-    "LOADING": "Cargando productos...",
-    "ERROR_RETRY": "Reintentar",
-    "FILTER_LABEL": "Filtrar por categoría",
-    "FILTER_ALL": "Todas",
-    "FILTER_FRESH": "Frescos",
-    "FILTER_DAIRY": "Lácteos",
-    "FILTER_BUTCHER": "Carnicería",
-    "FILTER_FISHMONGER": "Pescadería",
-    "FILTER_BAKERY": "Panadería",
-    "FILTER_BEVERAGES": "Bebidas",
-    "FILTER_FROZEN": "Congelados",
-    "FILTER_CLEANING": "Limpieza",
-    "SORT_LABEL": "Ordenar por",
-    "SORT_DEFAULT": "Sin ordenar",
-    "SORT_NAME_ASC": "Nombre: A → Z",
-    "SORT_NAME_DESC": "Nombre: Z → A",
-    "SORT_PRICE_ASC": "Precio: menor a mayor",
-    "SORT_PRICE_DESC": "Precio: mayor a menor"
-  },
-  "PRODUCT": {
-    "IMAGE_ALT": "Imagen de {{name}}",
-    "OUT_OF_STOCK": "Agotado",
-    "UNITS_AVAILABLE": "{{count}} uds.",
-    "ADD_TO_CART": "Añadir al carrito"
-  },
   "CART": {
-    "TITLE": "Mi carrito",
-    "BACK": "← Volver al catálogo",
-    "EMPTY": "Tu carrito está vacío.",
-    "VIEW_CATALOG": "Ver catálogo",
-    "PRODUCTS_COUNT": "Productos ({{count}})",
-    "TOTAL": "Total",
-    "CONFIRM": "Confirmar pedido",
     "ARIA": {
       "DECREASE": "Disminuir cantidad de {{name}}",
       "INCREASE": "Aumentar cantidad de {{name}}",
       "REMOVE": "Eliminar {{name}} del carrito"
-    }
+    },
+    "BACK": "← Volver al catálogo",
+    "CONFIRM": "Confirmar pedido",
+    "EMPTY": "Tu carrito está vacío.",
+    "PRODUCTS_COUNT": "Productos ({{count}})",
+    "TITLE": "Mi carrito",
+    "TOTAL": "Total",
+    "VIEW_CATALOG": "Ver catálogo"
+  },
+  "CATALOG": {
+    "ERROR_LOADING": "No se pudieron cargar los productos.",
+    "ERROR_RETRY": "Reintentar",
+    "FILTER_ALL": "Todas",
+    "FILTER_BAKERY": "Panadería",
+    "FILTER_BEVERAGES": "Bebidas",
+    "FILTER_BUTCHER": "Carnicería",
+    "FILTER_CLEANING": "Limpieza",
+    "FILTER_DAIRY": "Lácteos",
+    "FILTER_FISHMONGER": "Pescadería",
+    "FILTER_FRESH": "Frescos",
+    "FILTER_FROZEN": "Congelados",
+    "FILTER_LABEL": "Filtrar por categoría",
+    "LOADING": "Cargando productos...",
+    "NO_RESULTS": "No se encontraron productos para tu búsqueda.",
+    "SEARCH_CLEAR": "Limpiar búsqueda",
+    "SEARCH_LABEL": "Buscar producto",
+    "SEARCH_PLACEHOLDER": "Buscar producto",
+    "SORT_DEFAULT": "Sin ordenar",
+    "SORT_LABEL": "Ordenar por",
+    "SORT_NAME_ASC": "Nombre: A → Z",
+    "SORT_NAME_DESC": "Nombre: Z → A",
+    "SORT_PRICE_ASC": "Precio: menor a mayor",
+    "SORT_PRICE_DESC": "Precio: mayor a menor",
+    "TITLE": "Catálogo de productos"
+  },
+  "PRODUCT": {
+    "ADD_TO_CART": "Añadir al carrito",
+    "IMAGE_ALT": "Imagen de {{name}}",
+    "OUT_OF_STOCK": "Agotado",
+    "UNITS_AVAILABLE": "{{count}} uds."
   }
 }

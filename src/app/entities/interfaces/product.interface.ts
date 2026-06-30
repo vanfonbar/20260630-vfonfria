@@ -1,12 +1,12 @@
 import { Category } from '@/enums/category.enum';
 
 export interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  category: Category;
-  imageUrl: string;
-  stock: number;
-  attributes: Record<string, string>;
+  readonly id: string;
+  readonly name: string;
+  readonly description: string;
+  readonly price: number;
+  readonly category: Category;
+  readonly imageUrl: string;
+  readonly stock: number;
+  readonly attributes: Record<string, string>;
 }

@@ -185,7 +185,7 @@ describe('CatalogPageComponent', () => {
       createComponent();
       tick(300);
 
-      expect(access(component).activeCategory()).toBeNull();
+      expect(access(component).activeCategory()).toBeUndefined();
     }));
 
     it('should restore search term from SearchStateService on init', fakeAsync(() => {
@@ -232,7 +232,7 @@ describe('CatalogPageComponent', () => {
       tick(300);
 
       expect(useCaseSpy.getProducts).toHaveBeenCalledOnceWith();
-      expect(access(component).activeCategory()).toBeNull();
+      expect(access(component).activeCategory()).toBeUndefined();
     }));
 
     it('should update products when category param is added after component creation', fakeAsync(() => {
@@ -258,7 +258,7 @@ describe('CatalogPageComponent', () => {
       tick(0);
 
       expect(useCaseSpy.getProducts).toHaveBeenCalledOnceWith();
-      expect(access(component).activeCategory()).toBeNull();
+      expect(access(component).activeCategory()).toBeUndefined();
     }));
 
     it('should switch categories when the URL param changes', fakeAsync(() => {

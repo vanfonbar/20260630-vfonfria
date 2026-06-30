@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, InputSignal, OutputEmitterRef, inpu
 
 import { MTranslatePipe } from '@mercadona/core/translate';
 
+import { CATEGORY_I18N_KEYS } from '@/entities/constants/category-i18n.constant';
 import { Product } from '@/interfaces/product.interface';
 
 @Component({
@@ -15,6 +16,8 @@ import { Product } from '@/interfaces/product.interface';
 export class ProductCardComponent {
   readonly product: InputSignal<Product> = input.required<Product>();
   readonly addToCart: OutputEmitterRef<Product> = output<Product>();
+
+  protected readonly categoryI18nKeys = CATEGORY_I18N_KEYS;
 
   protected onAddToCart(): void {
     this.addToCart.emit(this.product());

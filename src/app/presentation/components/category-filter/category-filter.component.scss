@@ -17,13 +17,13 @@
     color 0.15s;
 
   &:hover:not(&--active) {
-    border-color: #005c3a;
-    color: #005c3a;
+    border-color: var(--main);
+    color: var(--main);
   }
 
   &--active {
-    background-color: #005c3a;
-    border-color: #005c3a;
+    background-color: var(--main);
+    border-color: var(--main);
     color: #fff;
     font-weight: 600;
   }

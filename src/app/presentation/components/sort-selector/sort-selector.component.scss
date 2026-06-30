@@ -6,20 +6,20 @@
 
 .sort-selector__label {
   font-size: 0.875rem;
-  color: #6b6b6b;
+  color: var(--textSecondary);
   white-space: nowrap;
 }
 
 .sort-selector__select {
   font-size: 0.875rem;
   padding: 0.375rem 0.5rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--borderNeutral);
   border-radius: 0.25rem;
-  background: #fff;
+  background: var(--bgPrimary);
   cursor: pointer;
 
   &:focus {
-    outline: 2px solid #005c3a;
+    outline: 2px solid var(--main);
     outline-offset: 1px;
   }
 }

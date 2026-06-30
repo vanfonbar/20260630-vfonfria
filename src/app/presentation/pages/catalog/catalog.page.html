@@ -10,7 +10,12 @@
         [placeholder]="'CATALOG.SEARCH_PLACEHOLDER' | mTranslate"
         [formControl]="searchControl" />
       @if (searchControl.value) {
-      <button m-suffix type="button" class="catalog__search-clear" (click)="onClearSearch(searchInput)">
+      <button
+        m-suffix
+        type="button"
+        class="catalog__search-clear"
+        [attr.aria-label]="'CATALOG.SEARCH_CLEAR' | mTranslate"
+        (click)="onClearSearch(searchInput)">
         <m-icon iconName="closeRegular" />
       </button>
       }

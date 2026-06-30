@@ -14,7 +14,7 @@
 .catalog__title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--textPrimary);
   margin: 0;
   flex: 1;
 }
@@ -43,7 +43,7 @@
 
 .catalog__error-text {
   margin: 0;
-  color: #f44336;
+  color: var(--alert);
   font-size: 1rem;
 }
 
@@ -63,7 +63,7 @@
 
 .catalog__empty {
   text-align: center;
-  color: #6b6b6b;
+  color: var(--textSecondary);
   padding: 2rem 0;
   font-size: 1rem;
 }

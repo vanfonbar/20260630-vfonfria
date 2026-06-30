@@ -13,14 +13,14 @@ import { provideMTranslate } from '@mercadona/core/translate';
 import { provideMErrorHandler } from '@mercadona/core-ui/error-handler';
 import { provideMPageError } from '@mercadona/core-ui/page-error';
 
-import { repositoriesProviders } from './di/repositories/repositories.providers';
-import { useCasesProviders } from './di/use-cases/use-cases.providers';
+import { provideRepositories } from './di/repositories/repositories.providers';
+import { provideUseCases } from './di/use-cases/use-cases.providers';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    ...repositoriesProviders,
-    ...useCasesProviders,
+    ...provideRepositories(),
+    ...provideUseCases(),
     provideZonelessChangeDetection(),
     provideAnimations(),
     provideMErrorHandler(),
