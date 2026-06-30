@@ -23,9 +23,14 @@
     (categoryChange)="onCategoryChange($event)" />
 
   @let hasError = loadError(); @let isLoading = loading(); @let productList = products();
-  <div class="catalog__content">
+  <div class="catalog__content" [m-spinner]="isLoading" [spinnerMessage]="'CATALOG.LOADING' | mTranslate">
     @if (hasError) {
-    <p class="catalog__error">{{ 'CATALOG.ERROR_LOADING' | mTranslate }}</p>
+    <div class="catalog__error">
+      <p class="catalog__error-text">{{ 'CATALOG.ERROR_LOADING' | mTranslate }}</p>
+      <button m-button buttonType="flat" color="main" size="small" (click)="retry()">
+        {{ 'CATALOG.ERROR_RETRY' | mTranslate }}
+      </button>
+    </div>
     } @if (!isLoading && !hasError && productList.length === 0) {
     <p class="catalog__empty">{{ 'CATALOG.NO_RESULTS' | mTranslate }}</p>
     }

@@ -515,6 +515,91 @@ describe('CatalogPageComponent', () => {
     }));
   });
 
+  // ─── Reintentar ──────────────────────────────────────────────────────────────
+
+  describe('Reintentar', () => {
+    it('should re-trigger getProducts when retry() is called after an error', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(throwError(() => new Error('error')));
+      createComponent();
+      tick(300);
+      useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
+
+      access(component).retry();
+      tick(0);
+
+      expect(useCaseSpy.getProducts).toHaveBeenCalledTimes(2);
+    }));
+
+    it('should reset loadError to false when retry succeeds', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(throwError(() => new Error('error')));
+      createComponent();
+      tick(300);
+      useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
+
+      access(component).retry();
+      tick(0);
+      fixture.detectChanges();
+
+      expect(access(component).loadError()).toBeFalse();
+    }));
+
+    it('should restore products when retry succeeds', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(throwError(() => new Error('error')));
+      createComponent();
+      tick(300);
+      useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
+
+      access(component).retry();
+      tick(0);
+      fixture.detectChanges();
+
+      expect(access(component).products()).toEqual(ALL_PRODUCTS);
+    }));
+
+    it('should keep loadError true when retry also fails', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(throwError(() => new Error('error')));
+      createComponent();
+      tick(300);
+
+      access(component).retry();
+      tick(0);
+      fixture.detectChanges();
+
+      expect(access(component).loadError()).toBeTrue();
+    }));
+
+    it('should re-trigger getProductsByCategory when retry() is called with an active category', fakeAsync(() => {
+      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
+      useCaseSpy.getProductsByCategory.and.returnValue(throwError(() => new Error('error')));
+      createComponent();
+      tick(300);
+      useCaseSpy.getProductsByCategory.and.returnValue(of(DAIRY_PRODUCTS));
+
+      access(component).retry();
+      tick(0);
+
+      expect(useCaseSpy.getProductsByCategory).toHaveBeenCalledTimes(2);
+      expect(useCaseSpy.getProductsByCategory).toHaveBeenCalledWith(Category.DAIRY);
+    }));
+
+    it('should preserve current search term when retrying', fakeAsync(() => {
+      createComponent();
+      tick(300);
+      access(component).searchControl.setValue('yogur');
+      tick(300);
+      useCaseSpy.getProducts.and.returnValue(throwError(() => new Error('error')));
+      access(component).searchControl.setValue('leche');
+      tick(300);
+      useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
+
+      access(component).retry();
+      tick(0);
+      fixture.detectChanges();
+
+      expect(access(component).products()).toEqual([PRODUCT_LECHE]);
+    }));
+  });
+
   // ─── Limpiar búsqueda ─────────────────────────────────────────────────────────
 
   describe('Limpiar búsqueda', () => {

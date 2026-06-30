@@ -12,6 +12,8 @@
     "SEARCH_LABEL": "Buscar producto",
     "SEARCH_PLACEHOLDER": "Buscar producto",
     "NO_RESULTS": "No se encontraron productos para tu búsqueda.",
+    "LOADING": "Cargando productos...",
+    "ERROR_RETRY": "Reintentar",
     "FILTER_LABEL": "Filtrar por categoría",
     "FILTER_ALL": "Todas",
     "FILTER_FRESH": "Frescos",

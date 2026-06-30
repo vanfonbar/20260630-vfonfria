@@ -29,8 +29,18 @@
 }
 
 .catalog__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 0;
+}
+
+.catalog__error-text {
+  margin: 0;
   color: #f44336;
-  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 .catalog__search {

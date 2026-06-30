@@ -8,15 +8,19 @@ import {
   debounceTime,
   distinctUntilChanged,
   map,
+  merge,
   Observable,
   of,
   startWith,
+  Subject,
   switchMap,
   tap
 } from 'rxjs';
 
+import { MButtonComponent } from '@mercadona/components/button';
 import { MFormFieldComponent, MPrefixDirective, MSuffixDirective } from '@mercadona/components/form-field';
 import { MInputDirective } from '@mercadona/components/input';
+import { MSpinnerDirective } from '@mercadona/components/spinner';
 import { MTranslatePipe } from '@mercadona/core/translate';
 import { MIconComponent } from '@mercadona/icons';
 
@@ -43,6 +47,8 @@ import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-cas
     MSuffixDirective,
     MInputDirective,
     MIconComponent,
+    MSpinnerDirective,
+    MButtonComponent,
     MTranslatePipe
   ]
 })
@@ -52,6 +58,7 @@ export class CatalogPageComponent {
   readonly #searchState: SearchStateService = inject(SearchStateService);
   readonly #route: ActivatedRoute = inject(ActivatedRoute);
   readonly #router: Router = inject(Router);
+  readonly #retry$: Subject<string> = new Subject<string>();
 
   protected readonly loadError: WritableSignal<boolean> = signal<boolean>(false);
   protected readonly loading: WritableSignal<boolean> = signal<boolean>(true);
@@ -67,10 +74,13 @@ export class CatalogPageComponent {
 
   protected readonly products: Signal<Product[]> = toSignal(
     combineLatest([
-      this.searchControl.valueChanges.pipe(
-        startWith(this.searchControl.value),
-        debounceTime(300),
-        distinctUntilChanged()
+      merge(
+        this.searchControl.valueChanges.pipe(
+          startWith(this.searchControl.value),
+          debounceTime(300),
+          distinctUntilChanged()
+        ),
+        this.#retry$
       ),
       this.#route.queryParamMap.pipe(map((params) => parseCategory(params.get('category'))))
     ]).pipe(
@@ -102,6 +112,10 @@ export class CatalogPageComponent {
     ),
     { initialValue: [] as Product[] }
   );
+
+  protected retry(): void {
+    this.#retry$.next(this.searchControl.value);
+  }
 
   protected onCategoryChange(category: Category | null): void {
     this.#router.navigate([], {
