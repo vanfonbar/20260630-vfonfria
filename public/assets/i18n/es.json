@@ -23,7 +23,13 @@
     "FILTER_BAKERY": "Panadería",
     "FILTER_BEVERAGES": "Bebidas",
     "FILTER_FROZEN": "Congelados",
-    "FILTER_CLEANING": "Limpieza"
+    "FILTER_CLEANING": "Limpieza",
+    "SORT_LABEL": "Ordenar por",
+    "SORT_DEFAULT": "Sin ordenar",
+    "SORT_NAME_ASC": "Nombre: A → Z",
+    "SORT_NAME_DESC": "Nombre: Z → A",
+    "SORT_PRICE_ASC": "Precio: menor a mayor",
+    "SORT_PRICE_DESC": "Precio: mayor a menor"
   },
   "PRODUCT": {
     "IMAGE_ALT": "Imagen de {{name}}",

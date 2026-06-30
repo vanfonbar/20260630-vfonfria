@@ -1,0 +1,10 @@
+<div class="sort-selector">
+  <label class="sort-selector__label" for="sort-select">
+    {{ 'CATALOG.SORT_LABEL' | mTranslate }}
+  </label>
+  <select id="sort-select" class="sort-selector__select" [value]="selectedValue()" (change)="onSelectChange($event)">
+    @for (option of options; track option.value) {
+      <option [value]="option.value">{{ option.labelKey | mTranslate }}</option>
+    }
+  </select>
+</div>

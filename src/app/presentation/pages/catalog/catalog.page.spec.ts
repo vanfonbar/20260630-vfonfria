@@ -9,6 +9,7 @@ import { CatalogPageComponent } from './catalog.page';
 import { CartStorageService } from '@/presentation/services/cart-storage.service';
 import { SearchStateService } from '@/presentation/services/search-state.service';
 import { CATALOG_PAGE_SIZE } from '@/entities/constants/catalog.constants';
+import { SortCriteria } from '@/entities/types/sort.types';
 import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
 import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-case.contract';
@@ -61,6 +62,13 @@ const PRODUCT_AGOTADO: Product = {
 
 const ALL_PRODUCTS: Product[] = [PRODUCT_LECHE, PRODUCT_YOGUR, PRODUCT_PAN, PRODUCT_AGOTADO];
 const DAIRY_PRODUCTS: Product[] = [PRODUCT_LECHE, PRODUCT_YOGUR];
+
+// Productos con precio y nombre variados para tests de ordenación
+const PRODUCTS_FOR_SORT: Product[] = [
+  { ...PRODUCT_PAN, id: 's1', name: 'Cebolla', price: 0.5 },
+  { ...PRODUCT_PAN, id: 's2', name: 'Aguacate', price: 1.8 },
+  { ...PRODUCT_PAN, id: 's3', name: 'Brócoli', price: 1.2 }
+];
 
 // CATALOG_PAGE_SIZE + 3 productos para testear paginación
 const LARGE_PRODUCT_LIST: Product[] = Array.from({ length: CATALOG_PAGE_SIZE + 3 }, (_, i) => ({
@@ -722,6 +730,149 @@ describe('CatalogPageComponent', () => {
       access(component).onClearSearch(mockInput);
 
       expect(mockInput.focus).toHaveBeenCalled();
+    }));
+  });
+
+  // ─── Ordenación ───────────────────────────────────────────────────────────────
+
+  describe('Ordenación', () => {
+    const SORT_PRICE_ASC: SortCriteria = { field: 'price', direction: 'asc' };
+    const SORT_PRICE_DESC: SortCriteria = { field: 'price', direction: 'desc' };
+    const SORT_NAME_ASC: SortCriteria = { field: 'name', direction: 'asc' };
+    const SORT_NAME_DESC: SortCriteria = { field: 'name', direction: 'desc' };
+
+    beforeEach(() => {
+      useCaseSpy.getProducts.and.returnValue(of(PRODUCTS_FOR_SORT));
+    });
+
+    it('should return products in original order when sortCriteria is null', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      expect(access(component).sortedProducts()).toEqual(PRODUCTS_FOR_SORT);
+    }));
+
+    it('should sort by price ascending', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).onSortChange(SORT_PRICE_ASC);
+      fixture.detectChanges();
+
+      const prices = access(component)
+        .sortedProducts()
+        .map((p: Product) => p.price);
+      expect(prices).toEqual([0.5, 1.2, 1.8]);
+    }));
+
+    it('should sort by price descending', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).onSortChange(SORT_PRICE_DESC);
+      fixture.detectChanges();
+
+      const prices = access(component)
+        .sortedProducts()
+        .map((p: Product) => p.price);
+      expect(prices).toEqual([1.8, 1.2, 0.5]);
+    }));
+
+    it('should sort by name ascending (A → Z)', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).onSortChange(SORT_NAME_ASC);
+      fixture.detectChanges();
+
+      const names = access(component)
+        .sortedProducts()
+        .map((p: Product) => p.name);
+      expect(names).toEqual(['Aguacate', 'Brócoli', 'Cebolla']);
+    }));
+
+    it('should sort by name descending (Z → A)', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).onSortChange(SORT_NAME_DESC);
+      fixture.detectChanges();
+
+      const names = access(component)
+        .sortedProducts()
+        .map((p: Product) => p.name);
+      expect(names).toEqual(['Cebolla', 'Brócoli', 'Aguacate']);
+    }));
+
+    it('should restore original order when sort is removed (null)', fakeAsync(() => {
+      createComponent();
+      tick(300);
+      access(component).onSortChange(SORT_PRICE_ASC);
+
+      access(component).onSortChange(null);
+      fixture.detectChanges();
+
+      expect(access(component).sortedProducts()).toEqual(PRODUCTS_FOR_SORT);
+    }));
+
+    it('should reset pageIndex to 0 when sort changes', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(LARGE_PRODUCT_LIST));
+      createComponent();
+      tick(300);
+      access(component).onPage({
+        pageIndex: 1,
+        previousPageIndex: 0,
+        pageSize: CATALOG_PAGE_SIZE,
+        itemsLength: LARGE_PRODUCT_LIST.length
+      });
+      expect(access(component).pageIndex()).toBe(1);
+
+      access(component).onSortChange(SORT_PRICE_ASC);
+
+      expect(access(component).pageIndex()).toBe(0);
+    }));
+
+    it('should not mutate the original products array', fakeAsync(() => {
+      createComponent();
+      tick(300);
+      const originalRef = access(component).products();
+
+      access(component).onSortChange(SORT_PRICE_ASC);
+
+      expect(access(component).products()).toBe(originalRef);
+    }));
+
+    it('should combine sort with active category filter', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
+      useCaseSpy.getProductsByCategory.and.returnValue(of(DAIRY_PRODUCTS));
+      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
+      createComponent();
+      tick(300);
+
+      access(component).onSortChange(SORT_PRICE_ASC);
+      fixture.detectChanges();
+
+      // Only DAIRY products, sorted by price asc (YOGUR 1.2 → LECHE 0.89 → sorted: LECHE 0.89, YOGUR 1.2)
+      const prices = access(component)
+        .sortedProducts()
+        .map((p: Product) => p.price);
+      expect(prices).toEqual([0.89, 1.2]);
+    }));
+
+    it('should combine sort with active search term', fakeAsync(() => {
+      useCaseSpy.getProducts.and.returnValue(of(PRODUCTS_FOR_SORT));
+      createComponent();
+      tick(300);
+      // Search for products containing 'a' → Aguacate, Brócoli (no), Cebolla (no) → actually 'a' matches Aguacate, Cebolla(no), Brócoli(no)
+      // Let's use a clearer search: 'oca' matches only Aguacate? No. Let's search 'a' which matches Aguacate and... Cebolla has 'a'
+      // Better: search 'agu' → only Aguacate
+      access(component).searchControl.setValue('agu');
+      tick(300);
+
+      access(component).onSortChange(SORT_PRICE_DESC);
+      fixture.detectChanges();
+
+      expect(access(component).sortedProducts()).toEqual([{ ...PRODUCT_PAN, id: 's2', name: 'Aguacate', price: 1.8 }]);
     }));
   });
 });

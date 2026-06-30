@@ -19,8 +19,12 @@
   flex: 1;
 }
 
-.catalog__filters {
-  display: block;
+.catalog__toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 

@@ -27,7 +27,9 @@ import { MIconComponent } from '@mercadona/icons';
 
 import { CategoryFilterComponent } from '@/components/category-filter/category-filter.component';
 import { ProductCardComponent } from '@/components/product-card/product-card.component';
+import { SortSelectorComponent } from '@/components/sort-selector/sort-selector.component';
 import { CATALOG_PAGE_SIZE } from '@/entities/constants/catalog.constants';
+import { SortCriteria } from '@/entities/types/sort.types';
 import { parseCategory } from '@/entities/utils/category.utils';
 import { Category } from '@/enums/category.enum';
 import { Product } from '@/interfaces/product.interface';
@@ -55,6 +57,7 @@ import { PRODUCTS_USE_CASE, ProductsUseCase } from '@/use-cases/products.use-cas
   imports: [
     ProductCardComponent,
     CategoryFilterComponent,
+    SortSelectorComponent,
     ReactiveFormsModule,
     MFormFieldComponent,
     MPrefixDirective,
@@ -80,6 +83,7 @@ export class CatalogPageComponent {
   protected readonly loadError: WritableSignal<boolean> = signal<boolean>(false);
   protected readonly loading: WritableSignal<boolean> = signal<boolean>(true);
   protected readonly pageIndex: WritableSignal<number> = signal<number>(0);
+  protected readonly sortCriteria: WritableSignal<SortCriteria | null> = signal<SortCriteria | null>(null);
 
   protected readonly searchControl: FormControl<string> = new FormControl<string>(this.#searchState.searchTerm(), {
     nonNullable: true
@@ -132,10 +136,30 @@ export class CatalogPageComponent {
     { initialValue: [] as Product[] }
   );
 
+  protected readonly sortedProducts: Signal<Product[]> = computed<Product[]>(() => {
+    const criteria: SortCriteria | null = this.sortCriteria();
+    if (!criteria) {
+      return this.products();
+    }
+
+    const multiplier: number = criteria.direction === 'asc' ? 1 : -1;
+    return [...this.products()].sort((a: Product, b: Product): number => {
+      if (criteria.field === 'price') {
+        return (a.price - b.price) * multiplier;
+      }
+      return a.name.localeCompare(b.name, 'es') * multiplier;
+    });
+  });
+
   protected readonly paginatedProducts: Signal<Product[]> = computed<Product[]>(() => {
     const start: number = this.pageIndex() * this.PAGE_SIZE;
-    return this.products().slice(start, start + this.PAGE_SIZE);
+    return this.sortedProducts().slice(start, start + this.PAGE_SIZE);
   });
+
+  protected onSortChange(criteria: SortCriteria | null): void {
+    this.sortCriteria.set(criteria);
+    this.pageIndex.set(0);
+  }
 
   protected onPage(event: MPaginatorEvent): void {
     this.pageIndex.set(event.pageIndex);

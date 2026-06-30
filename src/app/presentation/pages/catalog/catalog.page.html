@@ -17,10 +17,10 @@
     </m-form-field>
   </header>
 
-  <app-category-filter
-    class="catalog__filters"
-    [selected]="activeCategory()"
-    (categoryChange)="onCategoryChange($event)" />
+  <div class="catalog__toolbar">
+    <app-category-filter [selected]="activeCategory()" (categoryChange)="onCategoryChange($event)" />
+    <app-sort-selector [selected]="sortCriteria()" (sortChange)="onSortChange($event)" />
+  </div>
 
   @let hasError = loadError(); @let isLoading = loading(); @let productList = products(); @let paginatedList =
   paginatedProducts();
