@@ -102,7 +102,8 @@ describe('CatalogPageComponent', () => {
     useCaseSpy = jasmine.createSpyObj<ProductsUseCase>('ProductsUseCase', [
       'getProducts',
       'getProductsByCategory',
-      'searchByName'
+      'searchByName',
+      'invalidateCache'
     ]);
     cartStorageSpy = jasmine.createSpyObj<CartStorageService>('CartStorageService', ['add']);
     routerSpy = jasmine.createSpyObj<Router>('Router', ['navigate']);
@@ -110,6 +111,9 @@ describe('CatalogPageComponent', () => {
     useCaseSpy.getProducts.and.returnValue(of(ALL_PRODUCTS));
     useCaseSpy.getProductsByCategory.and.callFake((cat: Category) =>
       of(ALL_PRODUCTS.filter((p: Product) => p.category === cat))
+    );
+    useCaseSpy.searchByName.and.callFake((query: string) =>
+      of(ALL_PRODUCTS.filter((p: Product) => p.name.toLowerCase().includes(query.toLowerCase())))
     );
 
     TestBed.configureTestingModule({
@@ -156,13 +160,17 @@ describe('CatalogPageComponent', () => {
       expect(useCaseSpy.getProductsByCategory).not.toHaveBeenCalled();
     }));
 
-    it('should never call the use case searchByName (search is handled client-side)', fakeAsync(() => {
+    it('should call searchByName when a search term is entered without category', fakeAsync(() => {
+      useCaseSpy.searchByName.and.returnValue(of([PRODUCT_LECHE]));
       createComponent();
       tick(300);
+      useCaseSpy.getProducts.calls.reset();
+
       access(component).searchControl.setValue('leche');
       tick(300);
 
-      expect(useCaseSpy.searchByName).not.toHaveBeenCalled();
+      expect(useCaseSpy.searchByName).toHaveBeenCalledOnceWith('leche');
+      expect(useCaseSpy.getProducts).not.toHaveBeenCalled();
     }));
 
     it('should show all products on initial load', fakeAsync(() => {
@@ -306,10 +314,26 @@ describe('CatalogPageComponent', () => {
     }));
   });
 
-  // ─── Búsqueda por nombre (client-side) ────────────────────────────────────────
+  // ─── Búsqueda por nombre ──────────────────────────────────────────────────────
 
   describe('Búsqueda por nombre', () => {
-    it('should filter products client-side after debounce', fakeAsync(() => {
+    beforeEach(() => {
+      useCaseSpy.searchByName.and.callFake((query: string) =>
+        of(ALL_PRODUCTS.filter((p) => p.name.toLowerCase().includes(query.toLowerCase())))
+      );
+    });
+
+    it('should delegate to searchByName use case when a term is entered', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).searchControl.setValue('leche');
+      tick(300);
+
+      expect(useCaseSpy.searchByName).toHaveBeenCalledOnceWith('leche');
+    }));
+
+    it('should show matching products returned by searchByName', fakeAsync(() => {
       createComponent();
       tick(300);
 
@@ -320,52 +344,53 @@ describe('CatalogPageComponent', () => {
       expect(access(component).products()).toEqual([PRODUCT_LECHE]);
     }));
 
-    it('should debounce: multiple rapid changes trigger only one request', fakeAsync(() => {
+    it('should debounce: multiple rapid changes call searchByName only once', fakeAsync(() => {
       createComponent();
       tick(300);
-      useCaseSpy.getProducts.calls.reset();
 
       access(component).searchControl.setValue('p');
       access(component).searchControl.setValue('pa');
       access(component).searchControl.setValue('pan');
       tick(300);
 
-      expect(useCaseSpy.getProducts).toHaveBeenCalledOnceWith();
+      expect(useCaseSpy.searchByName).toHaveBeenCalledOnceWith('pan');
     }));
 
-    it('should show all products when search is cleared', fakeAsync(() => {
+    it('should call getProducts (not searchByName) when search is cleared', fakeAsync(() => {
       createComponent();
       tick(300);
       access(component).searchControl.setValue('leche');
       tick(300);
+      useCaseSpy.getProducts.calls.reset();
 
       access(component).searchControl.setValue('');
       tick(300);
       fixture.detectChanges();
 
+      expect(useCaseSpy.getProducts).toHaveBeenCalledOnceWith();
       expect(access(component).products()).toEqual(ALL_PRODUCTS);
     }));
 
-    it('should be case-insensitive', fakeAsync(() => {
+    it('should pass the trimmed lowercase term to searchByName', fakeAsync(() => {
       createComponent();
       tick(300);
 
-      access(component).searchControl.setValue('LECHE');
+      access(component).searchControl.setValue('  LECHE  ');
       tick(300);
-      fixture.detectChanges();
 
-      expect(access(component).products()).toEqual([PRODUCT_LECHE]);
+      expect(useCaseSpy.searchByName).toHaveBeenCalledOnceWith('leche');
     }));
 
-    it('should trim whitespace before filtering', fakeAsync(() => {
+    it('should call getProducts when search contains only whitespace', fakeAsync(() => {
       createComponent();
       tick(300);
+      useCaseSpy.getProducts.calls.reset();
 
-      access(component).searchControl.setValue('  leche  ');
+      access(component).searchControl.setValue('   ');
       tick(300);
-      fixture.detectChanges();
 
-      expect(access(component).products()).toEqual([PRODUCT_LECHE]);
+      expect(useCaseSpy.getProducts).toHaveBeenCalledOnceWith();
+      expect(useCaseSpy.searchByName).not.toHaveBeenCalled();
     }));
 
     it('should show all products when search contains only whitespace', fakeAsync(() => {
@@ -393,7 +418,19 @@ describe('CatalogPageComponent', () => {
   // ─── Búsqueda + Categoría combinados ─────────────────────────────────────────
 
   describe('Búsqueda + Categoría combinados', () => {
-    it('should filter by name within the active category results', fakeAsync(() => {
+    it('should call getProductsByCategory (not searchByName) when both term and category are active', fakeAsync(() => {
+      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
+      createComponent();
+      tick(300);
+
+      access(component).searchControl.setValue('yogur');
+      tick(300);
+
+      expect(useCaseSpy.getProductsByCategory).toHaveBeenCalledWith(Category.DAIRY);
+      expect(useCaseSpy.searchByName).not.toHaveBeenCalled();
+    }));
+
+    it('should filter by name client-side within the active category results', fakeAsync(() => {
       mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
       createComponent();
       tick(300);
@@ -419,17 +456,19 @@ describe('CatalogPageComponent', () => {
       expect(access(component).products()).toEqual(DAIRY_PRODUCTS);
     }));
 
-    it('should re-apply current search when category changes', fakeAsync(() => {
+    it('should switch to searchByName when category is removed while a search term is active', fakeAsync(() => {
+      useCaseSpy.searchByName.and.returnValue(of([PRODUCT_LECHE]));
+      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
       createComponent();
       tick(300);
       access(component).searchControl.setValue('leche');
       tick(300);
+      useCaseSpy.searchByName.calls.reset();
 
-      mockQueryParamMap.next(convertToParamMap({ category: 'lacteos' }));
+      mockQueryParamMap.next(convertToParamMap({}));
       tick(0);
-      fixture.detectChanges();
 
-      expect(access(component).products()).toEqual([PRODUCT_LECHE]);
+      expect(useCaseSpy.searchByName).toHaveBeenCalledWith('leche');
     }));
 
     it('should return empty array when search term has no match within the category', fakeAsync(() => {
@@ -603,6 +642,15 @@ describe('CatalogPageComponent', () => {
       expect(useCaseSpy.getProductsByCategory).toHaveBeenCalledWith(Category.DAIRY);
     }));
 
+    it('should call invalidateCache() before re-triggering the request', fakeAsync(() => {
+      createComponent();
+      tick(300);
+
+      access(component).retry();
+
+      expect(useCaseSpy.invalidateCache).toHaveBeenCalledOnceWith();
+    }));
+
     it('should preserve current search term when retrying', fakeAsync(() => {
       createComponent();
       tick(300);
@@ -743,6 +791,9 @@ describe('CatalogPageComponent', () => {
 
     beforeEach(() => {
       useCaseSpy.getProducts.and.returnValue(of(PRODUCTS_FOR_SORT));
+      useCaseSpy.searchByName.and.callFake((query: string) =>
+        of(PRODUCTS_FOR_SORT.filter((p: Product) => p.name.toLowerCase().includes(query)))
+      );
     });
 
     it('should return products in original order when sortCriteria is null', fakeAsync(() => {

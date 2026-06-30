@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -6,6 +6,7 @@ import { environment } from '@environment';
 
 import { MRepository } from '@mercadona/core/utils/repository';
 
+import { CacheService } from '@/data/services/cache.service';
 import { ProductRepositoryContract } from '@/domain/repositories/product.repository.contract';
 import { ProductDto } from '@/dtos/product.dto';
 import { Category } from '@/enums/category.enum';
@@ -14,30 +15,42 @@ import { productListMapper } from '@/mappers/product.mapper';
 
 @Injectable()
 export class ProductRepositoryImpl extends MRepository implements ProductRepositoryContract {
+  readonly #cache: CacheService = inject(CacheService);
+
   constructor() {
     super(environment.apiUrl);
   }
 
   getAll(): Observable<Product[]> {
-    return this.get<ProductDto[]>('/productos').pipe(map(productListMapper));
+    return this.#cache.getOrFetch('products:all', this.get<ProductDto[]>('/productos').pipe(map(productListMapper)));
   }
 
   getByCategory(category: Category): Observable<Product[]> {
-    return this.get<ProductDto[]>('/productos').pipe(
-      map(productListMapper),
-      map((products: Product[]): Product[] =>
-        products.filter((product: Product): boolean => product.category === category)
+    return this.#cache.getOrFetch(
+      `products:category:${category}`,
+      this.get<ProductDto[]>('/productos').pipe(
+        map(productListMapper),
+        map((products: Product[]): Product[] =>
+          products.filter((product: Product): boolean => product.category === category)
+        )
       )
     );
   }
 
   searchByName(query: string): Observable<Product[]> {
     const lowerQuery: string = query.toLowerCase();
-    return this.get<ProductDto[]>('/productos').pipe(
-      map(productListMapper),
-      map((products: Product[]): Product[] =>
-        products.filter((product: Product): boolean => product.name.toLowerCase().includes(lowerQuery))
+    return this.#cache.getOrFetch(
+      `products:search:${lowerQuery}`,
+      this.get<ProductDto[]>('/productos').pipe(
+        map(productListMapper),
+        map((products: Product[]): Product[] =>
+          products.filter((product: Product): boolean => product.name.toLowerCase().includes(lowerQuery))
+        )
       )
     );
+  }
+
+  clearCache(): void {
+    this.#cache.clear();
   }
 }

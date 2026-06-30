@@ -113,17 +113,9 @@ export class CatalogPageComponent {
         this.#searchState.setSearchTerm(term);
       }),
       switchMap(([term, category]: [string, Category | null]): Observable<Product[]> => {
-        const source$: Observable<Product[]> = category
-          ? this.#useCase.getProductsByCategory(category)
-          : this.#useCase.getProducts();
-
         const trimmed: string = term.trim().toLowerCase();
+        const source$: Observable<Product[]> = this.#resolveSource(trimmed, category);
         return source$.pipe(
-          map((products: Product[]): Product[] =>
-            trimmed.length === 0
-              ? products
-              : products.filter((p: Product): boolean => p.name.toLowerCase().includes(trimmed))
-          ),
           catchError((): Observable<Product[]> => {
             this.loadError.set(true);
             return of<Product[]>([]);
@@ -166,6 +158,7 @@ export class CatalogPageComponent {
   }
 
   protected retry(): void {
+    this.#useCase.invalidateCache();
     this.#retry$.next(this.searchControl.value);
   }
 
@@ -187,5 +180,36 @@ export class CatalogPageComponent {
       return;
     }
     this.#cartStorage.add(product);
+  }
+
+  /**
+   * Resolves the data source based on the active search term and category.
+   *
+   * - No term, no category   → getProducts()             (cache: products:all)
+   * - No term, with category → getProductsByCategory()   (cache: products:category:x)
+   * - With term, no category → searchByName()            (cache: products:search:x)
+   * - With term, with category → getProductsByCategory() filtered client-side.
+   *   The mock does not support combined server-side filtering (?categoria&nombre_like).
+   *   In a real backend, this would be a single parameterised request.
+   *
+   * @param {string} trimmed - Lowercase trimmed search term, or empty string if no search.
+   * @param {Category | null} category - Active category filter, or null for all categories.
+   * @returns {Observable<Product[]>} The appropriate data source for the current filter state.
+   */
+  #resolveSource(trimmed: string, category: Category | null): Observable<Product[]> {
+    if (!category) {
+      return trimmed ? this.#useCase.searchByName(trimmed) : this.#useCase.getProducts();
+    }
+    if (!trimmed) {
+      return this.#useCase.getProductsByCategory(category);
+    }
+
+    return this.#useCase
+      .getProductsByCategory(category)
+      .pipe(
+        map((products: Product[]): Product[] =>
+          products.filter((p: Product): boolean => p.name.toLowerCase().includes(trimmed))
+        )
+      );
   }
 }

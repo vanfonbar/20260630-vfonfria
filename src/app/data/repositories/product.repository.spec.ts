@@ -81,6 +81,108 @@ describe('ProductRepositoryImpl', () => {
     });
   });
 
+  describe('Caché', () => {
+    it('should not make a second HTTP request when getAll() is called twice', () => {
+      let first: Product[] | undefined;
+      let second: Product[] | undefined;
+
+      repository.getAll().subscribe((p) => (first = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.getAll().subscribe((p) => (second = p));
+      httpTesting.expectNone(`${baseUrl}/productos`);
+
+      expect(second).toEqual(first);
+    });
+
+    it('should not make a second HTTP request when getByCategory() is called twice with the same category', () => {
+      let first: Product[] | undefined;
+      let second: Product[] | undefined;
+
+      repository.getByCategory(Category.DAIRY).subscribe((p) => (first = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.getByCategory(Category.DAIRY).subscribe((p) => (second = p));
+      httpTesting.expectNone(`${baseUrl}/productos`);
+
+      expect(second).toEqual(first);
+    });
+
+    it('should make independent HTTP requests for getAll() and getByCategory() (different cache keys)', () => {
+      let allResult: Product[] | undefined;
+      let categoryResult: Product[] | undefined;
+
+      repository.getAll().subscribe((p) => (allResult = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.getByCategory(Category.DAIRY).subscribe((p) => (categoryResult = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      expect(allResult).toHaveSize(3);
+      expect(categoryResult).toHaveSize(1);
+    });
+
+    it('should make independent HTTP requests for different categories (different cache keys)', () => {
+      repository.getByCategory(Category.DAIRY).subscribe();
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      let result: Product[] | undefined;
+      repository.getByCategory(Category.BUTCHER).subscribe((p) => (result = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      expect(result).toHaveSize(1);
+      expect(result![0].id).toBe('3');
+    });
+
+    it('should make a new HTTP request for getAll() after clearCache()', () => {
+      let result: Product[] | undefined;
+
+      repository.getAll().subscribe();
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.clearCache();
+
+      repository.getAll().subscribe((p) => (result = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      expect(result).toHaveSize(3);
+    });
+
+    it('should make a new HTTP request for getByCategory() after clearCache()', () => {
+      let result: Product[] | undefined;
+
+      repository.getByCategory(Category.DAIRY).subscribe();
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.clearCache();
+
+      repository.getByCategory(Category.DAIRY).subscribe((p) => (result = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      expect(result).toHaveSize(1);
+    });
+
+    it('should clear all method caches when clearCache() is called', () => {
+      let getAllResult: Product[] | undefined;
+      let getByCategoryResult: Product[] | undefined;
+
+      repository.getAll().subscribe();
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+      repository.getByCategory(Category.DAIRY).subscribe();
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      repository.clearCache();
+
+      repository.getAll().subscribe((p) => (getAllResult = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+      repository.getByCategory(Category.DAIRY).subscribe((p) => (getByCategoryResult = p));
+      httpTesting.expectOne(`${baseUrl}/productos`).flush(MOCK_DTOS);
+
+      expect(getAllResult).toHaveSize(3);
+      expect(getByCategoryResult).toHaveSize(1);
+    });
+  });
+
   describe('getByCategory', () => {
     it('should return only products that belong to the given category', () => {
       let result: Product[] | undefined;

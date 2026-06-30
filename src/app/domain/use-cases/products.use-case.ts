@@ -21,4 +21,8 @@ export class ProductsUseCaseImpl implements ProductsUseCase {
   searchByName(query: string): Observable<Product[]> {
     return this.#repository.searchByName(query);
   }
+
+  invalidateCache(): void {
+    this.#repository.clearCache();
+  }
 }

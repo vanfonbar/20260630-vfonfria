@@ -8,6 +8,7 @@ export interface ProductRepositoryContract {
   getAll(): Observable<Product[]>;
   getByCategory(category: Category): Observable<Product[]>;
   searchByName(query: string): Observable<Product[]>;
+  clearCache(): void;
 }
 
 export const PRODUCT_REPOSITORY = new InjectionToken<ProductRepositoryContract>('PRODUCT_REPOSITORY');
